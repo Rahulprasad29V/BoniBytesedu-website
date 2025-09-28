@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boni Bytes Edutech | Welcome</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .section-active {
+            color: #2563eb; /* blue-600 */
+            font-weight: 600;
+        }
+        /* Modal styles */
+        .modal-backdrop {
+            transition: opacity 0.3s ease;
+        }
+        .modal-content {
+            transition: transform 0.3s ease;
+        }
+        .spinner {
+            border-top-color: #3498db;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Header & Navigation -->
+    <header class="bg-white shadow-md fixed w-full top-0 z-50 transition-all duration-300">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#home" class="text-xl font-bold text-gray-900 whitespace-nowrap">
+                Boni Bytes Edutech
+            </a>
+            <div class="hidden md:flex space-x-6 items-center">
+                <a href="#home" class="nav-link text-gray-600 hover:text-blue-600 transition">Home</a>
+                <a href="#about" class="nav-link text-gray-600 hover:text-blue-600 transition">About</a>
+                <a href="#director-message" class="nav-link text-gray-600 hover:text-blue-600 transition">Director's Message</a>
+                <a href="#services" class="nav-link text-gray-600 hover:text-blue-600 transition">Services</a>
+                <a href="#events" class="nav-link text-gray-600 hover:text-blue-600 transition">Events</a>
+                <a href="#projects" class="nav-link text-gray-600 hover:text-blue-600 transition">Projects</a>
+                <a href="#gallery" class="nav-link text-gray-600 hover:text-blue-600 transition">Gallery</a>
+                <a href="#testimonials" class="nav-link text-gray-600 hover:text-blue-600 transition">Testimonials</a>
+                <a href="#contact" class="bg-blue-600 text-white px-5 py-2 rounded-full hover:bg-blue-700 transition shadow">Contact Us</a>
+            </div>
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="md:hidden">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden">
+            <a href="#home" class="block py-2 px-6 text-sm hover:bg-gray-100">Home</a>
+            <a href="#about" class="block py-2 px-6 text-sm hover:bg-gray-100">About</a>
+            <a href="#director-message" class="block py-2 px-6 text-sm hover:bg-gray-100">Director's Message</a>
+            <a href="#services" class="block py-2 px-6 text-sm hover:bg-gray-100">Services</a>
+            <a href="#events" class="block py-2 px-6 text-sm hover:bg-gray-100">Events</a>
+            <a href="#projects" class="block py-2 px-6 text-sm hover:bg-gray-100">Projects</a>
+            <a href="#gallery" class="block py-2 px-6 text-sm hover:bg-gray-100">Gallery</a>
+            <a href="#testimonials" class="block py-2 px-6 text-sm hover:bg-gray-100">Testimonials</a>
+            <a href="#contact" class="block py-2 px-6 text-sm hover:bg-gray-100">Contact Us</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="min-h-screen flex items-center bg-cover bg-center" style="background-image: url('https://placehold.co/1920x1080/e2e8f0/334155?text=Company+Showcase');">
+            <div class="bg-black bg-opacity-50 w-full min-h-screen flex items-center">
+                <div class="container mx-auto px-6 text-center text-white">
+                    <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4">Innovate. Create. Deliver.</h1>
+                    <p class="text-lg md:text-xl mb-8 max-w-3xl mx-auto">We provide cutting-edge solutions to solve your most complex business challenges. Let's build the future together.</p>
+                    <a href="#contact" class="bg-white text-blue-600 font-bold py-3 px-8 rounded-full text-lg hover:bg-gray-200 transition-transform transform hover:scale-105">Get Started</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Us Section -->
+        <section id="about" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">Who We Are</h2>
+                <div class="w-24 h-1 bg-blue-600 mx-auto mb-12"></div>
+                <div class="flex flex-col md:flex-row items-center gap-12">
+                    <div class="md:w-1/2">
+                        <img src="https://placehold.co/600x400/3b82f6/ffffff?text=Our+Team" alt="Our Team" class="rounded-lg shadow-2xl w-full">
+                    </div>
+                    <div class="md:w-1/2">
+                        <h3 class="text-2xl font-semibold mb-4">Our Mission</h3>
+                        <p class="text-gray-600 mb-4 leading-relaxed">
+                            Our mission is to empower businesses with transformative technology and strategic insights. We believe in creating partnerships with our clients, understanding their unique needs, and delivering solutions that drive growth, efficiency, and market leadership.
+                        </p>
+                        <p class="text-gray-600 leading-relaxed">
+                            Founded in [Year], our team of passionate experts has been dedicated to pushing the boundaries of what's possible. We are thinkers, creators, and problem-solvers committed to excellence and your success.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Director's Message Section -->
+        <section id="director-message" class="py-20 bg-gray-50">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">A Message From Our Director</h2>
+                <div class="w-24 h-1 bg-blue-600 mx-auto mb-12"></div>
+                <div class="flex flex-col md:flex-row items-center justify-center gap-12">
+                    <div class="md:w-1/3 text-center">
+                        <img src="https://placehold.co/400x400/3b82f6/ffffff?text=Director" alt="Director Photo" class="rounded-full shadow-2xl w-64 h-64 mx-auto object-cover">
+                        <h3 class="text-2xl font-bold mt-6 mb-1">[Director's Name]</h3>
+                        <p class="text-gray-500 font-semibold">CEO & Director</p>
+                    </div>
+                    <div class="md:w-2/3">
+                        <p class="text-gray-600 mb-4 leading-relaxed text-lg italic">
+                            "Welcome to Boni Bytes Edutech. Since our inception in [Year], we've been driven by a single, powerful mission: to deliver excellence and innovation in everything we do. Our journey has been one of growth, partnership, and an unwavering commitment to our clients' success."
+                        </p>
+                        <p class="text-gray-600 leading-relaxed">
+                           We believe that the future is built by those who dare to challenge the present. Our team is our greatest asset—a collective of bright, passionate, and creative minds dedicated to solving complex problems and creating tangible value. We foster a culture of collaboration and continuous learning, ensuring we stay at the forefront of our industry. Thank you for your trust in us. We are excited to build a brighter future, together.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">What We Offer</h2>
+                <div class="w-24 h-1 bg-blue-600 mx-auto mb-12"></div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Service 1 -->
+                    <div class="bg-white p-8 rounded-lg shadow-lg text-center hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
+                        <div class="bg-blue-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
+                            <svg class="w-10 h-10 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Strategic Consulting</h3>
+                        <p class="text-gray-600">We provide expert guidance to help you navigate market changes and achieve your long-term goals.</p>
+                    </div>
+                    <!-- Service 2 -->
+                    <div class="bg-white p-8 rounded-lg shadow-lg text-center hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
+                         <div class="bg-blue-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
+                            <svg class="w-10 h-10 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Web Development</h3>
+                        <p class="text-gray-600">Custom web solutions that are scalable, secure, and designed to deliver an exceptional user experience.</p>
+                    </div>
+                    <!-- Service 3 -->
+                    <div class="bg-white p-8 rounded-lg shadow-lg text-center hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
+                         <div class="bg-blue-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
+                            <svg class="w-10 h-10 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Mobile Apps</h3>
+                        <p class="text-gray-600">Engaging and intuitive mobile applications for iOS and Android that connect with your customers.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Events Section -->
+        <section id="events" class="py-20 bg-gray-50">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Our Events</h2>
+                    <div class="w-24 h-1 bg-blue-600 mx-auto"></div>
+                    <div class="mt-6">
+                        <button id="suggest-event-btn" class="bg-blue-600 text-white font-bold py-2 px-6 rounded-full hover:bg-blue-700 transition shadow-md flex items-center justify-center mx-auto">
+                            ✨ Suggest an Event Idea
+                        </button>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Event 1: Webinars -->
+                    <div class="bg-white p-8 rounded-lg shadow-lg text-center hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
+                        <div class="bg-blue-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
+                            <svg class="w-10 h-10 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 013-3h.008c1.538 0 2.94.832 3.722 2.144A4.5 4.5 0 0118 6.75v3.75a3 3 0 01-3 3h-.008z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Webinars</h3>
+                        <p class="text-gray-600">Join our industry experts for insightful webinars on the latest trends and technologies.</p>
+                    </div>
+                    <!-- Event 2: Workshops -->
+                    <div class="bg-white p-8 rounded-lg shadow-lg text-center hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
+                         <div class="bg-blue-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
+                            <svg class="w-10 h-10 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15.59 14.47a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.63 2.25c-5.52 0-10.34 2.84-13.06 6.69a14.98 14.98 0 0021.5 6.69z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Workshops</h3>
+                        <p class="text-gray-600">Hands-on workshops designed to help you develop practical skills and accelerate your learning.</p>
+                    </div>
+                    <!-- Event 3: Hackathons -->
+                    <div class="bg-white p-8 rounded-lg shadow-lg text-center hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
+                         <div class="bg-blue-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
+                            <svg class="w-10 h-10 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 7.5l3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0021 18V6a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6v12a2.25 2.25 0 002.25 2.25z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Hackathons</h3>
+                        <p class="text-gray-600">Compete in our exciting hackathons to solve real-world problems and showcase your talent.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">Our Projects</h2>
+                <div class="w-24 h-1 bg-blue-600 mx-auto mb-12"></div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Project 1 -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden group">
+                        <img src="https://placehold.co/600x400/60a5fa/ffffff?text=Project+Alpha" alt="Project Alpha" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">Project Alpha</h3>
+                            <p class="text-gray-600 mb-4">A groundbreaking web platform for enterprise resource planning.</p>
+                             <button class="generate-desc-btn text-sm bg-gray-200 text-gray-700 px-3 py-1 rounded-full hover:bg-gray-300 transition" data-project="Project Alpha" data-desc="A groundbreaking web platform for enterprise resource planning.">✨ Draft Description</button>
+                        </div>
+                    </div>
+                    <!-- Project 2 -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden group">
+                        <img src="https://placehold.co/600x400/34d399/ffffff?text=Project+Beta" alt="Project Beta" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">Project Beta</h3>
+                            <p class="text-gray-600 mb-4">An innovative mobile app for personal finance management.</p>
+                            <button class="generate-desc-btn text-sm bg-gray-200 text-gray-700 px-3 py-1 rounded-full hover:bg-gray-300 transition" data-project="Project Beta" data-desc="An innovative mobile app for personal finance management.">✨ Draft Description</button>
+                        </div>
+                    </div>
+                    <!-- Project 3 -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden group">
+                        <img src="https://placehold.co/600x400/fbbf24/ffffff?text=Project+Gamma" alt="Project Gamma" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">Project Gamma</h3>
+                            <p class="text-gray-600 mb-4">A data analytics dashboard for visualizing complex market data.</p>
+                            <button class="generate-desc-btn text-sm bg-gray-200 text-gray-700 px-3 py-1 rounded-full hover:bg-gray-300 transition" data-project="Project Gamma" data-desc="A data analytics dashboard for visualizing complex market data.">✨ Draft Description</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery" class="py-20 bg-gray-50">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">Gallery</h2>
+                <div class="w-24 h-1 bg-blue-600 mx-auto mb-12"></div>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                    <div class="group"><img src="https://placehold.co/600x400/f87171/ffffff?text=Event+1" alt="Gallery Image 1" class="rounded-lg shadow-md hover:shadow-xl transform hover:scale-105 transition-all duration-300 w-full h-full object-cover"></div>
+                    <div class="group"><img src="https://placehold.co/600x400/60a5fa/ffffff?text=Team+Photo" alt="Gallery Image 2" class="rounded-lg shadow-md hover:shadow-xl transform hover:scale-105 transition-all duration-300 w-full h-full object-cover"></div>
+                    <div class="group"><img src="https://placehold.co/600x400/34d399/ffffff?text=Workshop" alt="Gallery Image 3" class="rounded-lg shadow-md hover:shadow-xl transform hover:scale-105 transition-all duration-300 w-full h-full object-cover"></div>
+                    <div class="group"><img src="https://placehold.co/600x400/fbbf24/ffffff?text=Hackathon" alt="Gallery Image 4" class="rounded-lg shadow-md hover:shadow-xl transform hover:scale-105 transition-all duration-300 w-full h-full object-cover"></div>
+                    <div class="group"><img src="https://placehold.co/600x400/a78bfa/ffffff?text=Office+Space" alt="Gallery Image 5" class="rounded-lg shadow-md hover:shadow-xl transform hover:scale-105 transition-all duration-300 w-full h-full object-cover"></div>
+                    <div class="group"><img src="https://placehold.co/600x400/f472b6/ffffff?text=Product+Launch" alt="Gallery Image 6" class="rounded-lg shadow-md hover:shadow-xl transform hover:scale-105 transition-all duration-300 w-full h-full object-cover"></div>
+                    <div class="group"><img src="https://placehold.co/600x400/78716c/ffffff?text=Milestone" alt="Gallery Image 7" class="rounded-lg shadow-md hover:shadow-xl transform hover:scale-105 transition-all duration-300 w-full h-full object-cover"></div>
+                    <div class="group"><img src="https://placehold.co/600x400/84cc16/ffffff?text=Community" alt="Gallery Image 8" class="rounded-lg shadow-md hover:shadow-xl transform hover:scale-105 transition-all duration-300 w-full h-full object-cover"></div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                     <h2 class="text-3xl md:text-4xl font-bold mb-4">What Our Clients Say</h2>
+                     <div class="w-24 h-1 bg-blue-600 mx-auto"></div>
+                     <button id="generate-testimonial-btn" class="mt-6 bg-gray-200 text-gray-700 px-4 py-2 rounded-full hover:bg-gray-300 transition">✨ Generate a Testimonial Idea</button>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Testimonial 1 -->
+                    <div class="bg-gray-50 p-8 rounded-lg shadow-md">
+                        <p class="text-gray-600 mb-6 italic">"Working with this company was a game-changer for our business. Their professionalism and expertise are second to none. Highly recommended!"</p>
+                        <div class="flex items-center">
+                            <img src="https://placehold.co/50x50/a7a7a7/ffffff?text=A" alt="Client 1" class="w-12 h-12 rounded-full mr-4">
+                            <div>
+                                <p class="font-bold">Jane Doe</p>
+                                <p class="text-sm text-gray-500">CEO, Tech Innovators</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Testimonial 2 -->
+                     <div class="bg-gray-50 p-8 rounded-lg shadow-md">
+                        <p class="text-gray-600 mb-6 italic">"The results exceeded our expectations. They delivered on time and within budget, with a final product that has significantly boosted our online presence."</p>
+                        <div class="flex items-center">
+                            <img src="https://placehold.co/50x50/a7a7a7/ffffff?text=B" alt="Client 2" class="w-12 h-12 rounded-full mr-4">
+                            <div>
+                                <p class="font-bold">John Smith</p>
+                                <p class="text-sm text-gray-500">Marketing Director, Future Corp</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Testimonial 3 -->
+                     <div class="bg-gray-50 p-8 rounded-lg shadow-md">
+                        <p class="text-gray-600 mb-6 italic">"An incredible team that is truly passionate about what they do. They listened to our vision and brought it to life beautifully."</p>
+                        <div class="flex items-center">
+                            <img src="https://placehold.co/50x50/a7a7a7/ffffff?text=C" alt="Client 3" class="w-12 h-12 rounded-full mr-4">
+                            <div>
+                                <p class="font-bold">Samantha Lee</p>
+                                <p class="text-sm text-gray-500">Founder, Creative Solutions</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 bg-blue-700 text-white">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Start Your Project?</h2>
+                <p class="text-blue-200 mb-8 max-w-2xl mx-auto">We're here to help you achieve your goals. Reach out to us for a free consultation and let's discuss how we can work together.</p>
+                <div class="max-w-xl mx-auto bg-white/10 p-6 rounded-lg">
+                    <input id="contact-keywords" type="text" placeholder="Enter a few keywords about your project..." class="w-full p-3 rounded-md text-gray-800 placeholder-gray-500 mb-4">
+                    <button id="draft-message-btn" class="bg-white text-blue-600 font-bold py-3 px-8 rounded-full text-lg hover:bg-gray-200 transition-transform transform hover:scale-105 inline-block shadow-lg">✨ Draft My Message</button>
+                    <div id="drafted-message-container" class="mt-4 text-left p-4 bg-white/20 rounded-md text-white hidden"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-10">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2025 Boni Bytes Edutech. All Rights Reserved.</p>
+            <div class="flex justify-center space-x-6 mt-4">
+                <a href="#" class="hover:text-blue-400">Twitter</a>
+                <a href="#" class="hover:text-blue-400">LinkedIn</a>
+                <a href="#" class="hover:text-blue-400">GitHub</a>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- AI Result Modal -->
+    <div id="ai-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4 hidden modal-backdrop">
+        <div class="bg-white rounded-lg shadow-2xl p-6 w-full max-w-2xl modal-content transform scale-95">
+            <div class="flex justify-between items-center mb-4">
+                <h3 id="modal-title" class="text-2xl font-bold">AI Suggestion</h3>
+                <button id="close-modal-btn" class="text-gray-500 hover:text-gray-800">&times;</button>
+            </div>
+            <div id="modal-body" class="text-gray-700 leading-relaxed">
+                <!-- Loading spinner -->
+                <div id="modal-spinner" class="flex justify-center items-center h-40">
+                    <div class="spinner w-12 h-12 rounded-full border-4 border-gray-200"></div>
+                </div>
+                <!-- Generated content -->
+                <div id="modal-content-area" class="hidden"></div>
+            </div>
+             <div class="mt-6 text-right">
+                <button id="copy-modal-btn" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">Copy Text</button>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        // --- Standard Website Interactivity ---
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+        });
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                if (pageYOffset >= section.offsetTop - 68) current = section.getAttribute('id');
+            });
+            navLinks.forEach(link => {
+                link.classList.remove('section-active');
+                if (link.getAttribute('href')?.substring(1) === current) {
+                    link.classList.add('section-active');
+                }
+            });
+        });
+
+        // --- Gemini API Integration ---
+        const apiKey = ""; // API Key is handled by the environment
+        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+
+        // Modal Elements
+        const modal = document.getElementById('ai-modal');
+        const modalTitle = document.getElementById('modal-title');
+        const modalSpinner = document.getElementById('modal-spinner');
+        const modalContentArea = document.getElementById('modal-content-area');
+        const closeModalBtn = document.getElementById('close-modal-btn');
+        const copyModalBtn = document.getElementById('copy-modal-btn');
+        
+        // Function to show the modal
+        const showModal = (title) => {
+            modalTitle.textContent = title;
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+            modalSpinner.classList.remove('hidden');
+            modalContentArea.classList.add('hidden');
+            // Animate in
+            setTimeout(() => {
+                modal.querySelector('.modal-backdrop').classList.add('opacity-100');
+                modal.querySelector('.modal-content').classList.remove('scale-95');
+            }, 10);
+        };
+        
+        // Function to hide the modal
+        const hideModal = () => {
+             modal.querySelector('.modal-backdrop').classList.remove('opacity-100');
+             modal.querySelector('.modal-content').classList.add('scale-95');
+             setTimeout(() => {
+                modal.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }, 300);
+        };
+        
+        closeModalBtn.addEventListener('click', hideModal);
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) hideModal();
+        });
+        
+        // Function to copy modal content
+        copyModalBtn.addEventListener('click', () => {
+            const textToCopy = modalContentArea.innerText;
+            const tempTextArea = document.createElement('textarea');
+            tempTextArea.value = textToCopy;
+            document.body.appendChild(tempTextArea);
+            tempTextArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempTextArea);
+            copyModalBtn.textContent = 'Copied!';
+            setTimeout(() => { copyModalBtn.textContent = 'Copy Text'; }, 2000);
+        });
+
+        // Function to call Gemini API
+        async function callGemini(systemPrompt, userQuery) {
+            try {
+                const payload = {
+                    systemInstruction: { parts: [{ text: systemPrompt }] },
+                    contents: [{ parts: [{ text: userQuery }] }],
+                };
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload),
+                });
+
+                if (!response.ok) {
+                    throw new Error(`API error: ${response.statusText}`);
+                }
+
+                const result = await response.json();
+                return result.candidates?.[0]?.content?.parts?.[0]?.text || "Sorry, I couldn't generate a response. Please try again.";
+            } catch (error) {
+                console.error("Gemini API call failed:", error);
+                return "An error occurred while contacting the AI. Please check the console for details.";
+            }
+        }
+
+        // Function to display result in modal
+        const displayInModal = (content) => {
+            modalSpinner.classList.add('hidden');
+            modalContentArea.innerHTML = content.replace(/\n/g, '<br>'); // Basic formatting
+            modalContentArea.classList.remove('hidden');
+        };
+
+        // 1. Suggest Event Idea
+        document.getElementById('suggest-event-btn').addEventListener('click', async () => {
+            showModal('✨ AI Event Idea');
+            const systemPrompt = "You are a creative event planner for a top-tier tech consultancy specializing in strategic consulting, web development, and mobile apps. Your tone is innovative and professional.";
+            const userQuery = "Suggest a creative and engaging idea for a new event (it could be a webinar, workshop, or hackathon). Provide a catchy title and a brief, compelling one-paragraph description.";
+            const result = await callGemini(systemPrompt, userQuery);
+            displayInModal(result);
+        });
+
+        // 2. Draft Project Description
+        document.querySelectorAll('.generate-desc-btn').forEach(button => {
+            button.addEventListener('click', async (e) => {
+                const project = e.target.dataset.project;
+                const desc = e.target.dataset.desc;
+                showModal(`✨ AI Draft for ${project}`);
+                const systemPrompt = "You are a professional marketing copywriter for a tech company. Your task is to write compelling, detailed project descriptions for a portfolio. Use an engaging and benefit-oriented tone.";
+                const userQuery = `Write a more detailed and exciting project description for a project named "${project}". The current brief is: "${desc}". Elaborate on its potential impact, key features, and the value it brings to users or businesses. Format it as two paragraphs.`;
+                const result = await callGemini(systemPrompt, userQuery);
+                displayInModal(result);
+            });
+        });
+
+        // 3. Generate Testimonial Idea
+        document.getElementById('generate-testimonial-btn').addEventListener('click', async () => {
+            showModal('✨ AI Testimonial Idea');
+            const systemPrompt = "You are a highly satisfied client of a tech consultancy that delivers outstanding results in web development and strategic consulting. Your tone is authentic and enthusiastic.";
+            const userQuery = "Write a short, impactful testimonial (2-3 sentences) praising the company's expertise, professionalism, and the positive results of a recent project. Include a fictional but realistic name and title for the person giving the testimonial.";
+            const result = await callGemini(systemPrompt, userQuery);
+            displayInModal(result);
+        });
+        
+        // 4. Draft Contact Message
+        document.getElementById('draft-message-btn').addEventListener('click', async (e) => {
+            const button = e.target;
+            const keywords = document.getElementById('contact-keywords').value;
+            if (!keywords.trim()) {
+                alert("Please enter some keywords first.");
+                return;
+            }
+            
+            button.textContent = 'Drafting...';
+            button.disabled = true;
+
+            const systemPrompt = "You are a helpful assistant aiding a user in drafting a professional inquiry email to a tech company. The tone should be clear, concise, and professional.";
+            const userQuery = `Based on the following keywords, draft a short inquiry email (2-3 paragraphs) to 'Boni Bytes Edutech'. The email should introduce the project idea and ask for a consultation. Keywords: "${keywords}"`;
+            const result = await callGemini(systemPrompt, userQuery);
+
+            const container = document.getElementById('drafted-message-container');
+            container.innerHTML = result.replace(/\n/g, '<br>');
+            container.classList.remove('hidden');
+
+            button.textContent = '✨ Draft My Message';
+            button.disabled = false;
+        });
+
+    </script>
+
+</body>
+</html>
+
