@@ -1,0 +1,11 @@
+# Allow all search engines to crawl the site
+User-agent: *
+Allow: /
+
+# Disallow crawling of any potential admin or private folders
+Disallow: /admin/
+Disallow: /private/
+
+# Location of the sitemap
+# !! IMPORTANT: Replace "https://www.yourdomain.com" with your real domain !!
+Sitemap: https://www.bonibytesedutech.live/sitemap.xml
