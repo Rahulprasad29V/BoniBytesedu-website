@@ -34,9 +34,8 @@
 </head>
 <body class="bg-gray-50 text-gray-800">
 
-    <!-- Header & Navigation -->
     <header class="bg-white shadow-md fixed w-full top-0 z-50 transition-all duration-300">
-       <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+       <nav id="main-nav" class="container mx-auto px-6 py-4 flex justify-between items-center transition-all duration-300">
             <a href="#home" class="flex items-center">
                 <img src="logo.png" alt="Boni Bytes Edutech Logo" class="h-10 w-auto mr-3">
                 <span class="text-xl font-bold text-gray-900 whitespace-nowrap">
@@ -54,12 +53,10 @@
                 <a href="#testimonials" class="nav-link text-gray-600 hover:text-blue-600 transition">Testimonials</a>
                 <a href="#contact" class="bg-blue-600 text-white px-5 py-2 rounded-full hover:bg-blue-700 transition shadow">Contact Us</a>
             </div>
-            <!-- Mobile Menu Button -->
             <button id="mobile-menu-button" class="md:hidden">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
             </button>
         </nav>
-        <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden">
             <a href="#home" class="block py-2 px-6 text-sm hover:bg-gray-100">Home</a>
             <a href="#about" class="block py-2 px-6 text-sm hover:bg-gray-100">About</a>
@@ -74,8 +71,7 @@
     </header>
 
     <main>
-        <!-- Hero Section -->
-        <section id="home" class="min-h-screen flex items-center bg-cover bg-center" style="background-image: url('');">
+        <section id="home" class="min-h-screen flex items-center bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1770&q=80');">
             <div class="bg-black bg-opacity-50 w-full min-h-screen flex items-center">
                 <div class="container mx-auto px-6 text-center text-white">
                     <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4">Innovate. Create. Deliver.</h1>
@@ -85,14 +81,13 @@
             </div>
         </section>
 
-        <!-- About Us Section -->
         <section id="about" class="py-20 bg-white">
             <div class="container mx-auto px-6">
                 <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">Who We Are</h2>
                 <div class="w-24 h-1 bg-blue-600 mx-auto mb-12"></div>
                 <div class="flex flex-col md:flex-row items-center gap-12">
                     <div class="md:w-1/2">
-                        <img src="https://placehold.co/600x400/3b82f6/ffffff?text=Our+Team" alt="Our Team" class="rounded-lg shadow-2xl w-full">
+                        <img src="https://placehold.co/600x400/3b82f6/ffffff?text=Replace+with+Your+Team+Photo" alt="Our Team" class="rounded-lg shadow-2xl w-full">
                     </div>
                     <div class="md:w-1/2">
                         <h3 class="text-2xl font-semibold mb-4">Our Mission</h3>
@@ -107,14 +102,13 @@
             </div>
         </section>
 
-        <!-- Director's Message Section -->
         <section id="director-message" class="py-20 bg-gray-50">
             <div class="container mx-auto px-6">
                 <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">A Message From Our Director</h2>
                 <div class="w-24 h-1 bg-blue-600 mx-auto mb-12"></div>
                 <div class="flex flex-col md:flex-row items-center justify-center gap-12">
                     <div class="md:w-1/3 text-center">
-                        <img src="https://placehold.co/400x400/3b82f6/ffffff?text=Director" alt="Director Photo" class="rounded-full shadow-2xl w-64 h-64 mx-auto object-cover">
+                        <img src="https://placehold.co/400x400/3b82f6/ffffff?text=Replace+with+Your+Photo" alt="Director Photo" class="rounded-full shadow-2xl w-64 h-64 mx-auto object-cover">
                         <h3 class="text-2xl font-bold mt-6 mb-1">Rahulprasad Veeramani</h3>
                         <p class="text-gray-500 font-semibold">Founder & CEO </p>
                     </div>
@@ -123,20 +117,18 @@
                             "Welcome to Boni Bytes Edutech. Since our inception in 2024, we've been driven by a single, powerful mission: to deliver excellence and innovation in everything we do. Our journey has been one of growth, partnership, and an unwavering commitment to our clients' success."
                         </p>
                         <p class="text-gray-600 leading-relaxed">
-                           We believe that the future is built by those who dare to challenge the present. Our team is our greatest asset—a collective of bright, passionate, and creative minds dedicated to solving complex problems and creating tangible value. We foster a culture of collaboration and continuous learning, ensuring we stay at the forefront of our industry. Thank you for your trust in us. We are excited to build a brighter future, together.
+                            We believe that the future is built by those who dare to challenge the present. Our team is our greatest asset—a collective of bright, passionate, and creative minds dedicated to solving complex problems and creating tangible value. We foster a culture of collaboration and continuous learning, ensuring we stay at the forefront of our industry. Thank you for your trust in us. We are excited to build a brighter future, together.
                         </p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Services Section -->
         <section id="services" class="py-20 bg-white">
             <div class="container mx-auto px-6">
                 <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">What We Offer</h2>
                 <div class="w-24 h-1 bg-blue-600 mx-auto mb-12"></div>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Service 1 -->
                     <div class="bg-white p-8 rounded-lg shadow-lg text-center hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
                         <div class="bg-blue-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
                             <svg class="w-10 h-10 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -144,7 +136,6 @@
                         <h3 class="text-xl font-bold mb-2">Strategic Consulting</h3>
                         <p class="text-gray-600">We provide expert guidance to help you navigate market changes and achieve your long-term goals.</p>
                     </div>
-                    <!-- Service 2 -->
                     <div class="bg-white p-8 rounded-lg shadow-lg text-center hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
                          <div class="bg-blue-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
                             <svg class="w-10 h-10 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
@@ -152,7 +143,6 @@
                         <h3 class="text-xl font-bold mb-2">Web Development</h3>
                         <p class="text-gray-600">Custom web solutions that are scalable, secure, and designed to deliver an exceptional user experience.</p>
                     </div>
-                    <!-- Service 3 -->
                     <div class="bg-white p-8 rounded-lg shadow-lg text-center hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
                          <div class="bg-blue-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
                             <svg class="w-10 h-10 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
@@ -164,17 +154,16 @@
             </div>
         </section>
 
-        <!-- Events Section -->
         <section id="events" class="py-20 bg-gray-50">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-12">
                     <h2 class="text-3xl md:text-4xl font-bold mb-4">Our Events</h2>
                     <div class="w-24 h-1 bg-blue-600 mx-auto"></div>
                     <div class="mt-6">
+                        <button id="suggest-event-btn" class="bg-blue-100 text-blue-700 font-semibold py-2 px-5 rounded-full hover:bg-blue-200 transition shadow">✨ Suggest an Event Idea</button>
                     </div>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Event 1: Webinars -->
                     <div class="bg-white p-8 rounded-lg shadow-lg text-center hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
                         <div class="bg-blue-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
                             <svg class="w-10 h-10 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -184,7 +173,6 @@
                         <h3 class="text-xl font-bold mb-2">Webinars</h3>
                         <p class="text-gray-600">Join our industry experts for insightful webinars on the latest trends and technologies.</p>
                     </div>
-                    <!-- Event 2: Workshops -->
                     <div class="bg-white p-8 rounded-lg shadow-lg text-center hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
                          <div class="bg-blue-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
                             <svg class="w-10 h-10 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -194,7 +182,6 @@
                         <h3 class="text-xl font-bold mb-2">Workshops</h3>
                         <p class="text-gray-600">Hands-on workshops designed to help you develop practical skills and accelerate your learning.</p>
                     </div>
-                    <!-- Event 3: Hackathons -->
                     <div class="bg-white p-8 rounded-lg shadow-lg text-center hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
                          <div class="bg-blue-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
                             <svg class="w-10 h-10 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -208,33 +195,29 @@
             </div>
         </section>
 
-        <!-- Projects Section -->
         <section id="projects" class="py-20 bg-white">
             <div class="container mx-auto px-6">
                 <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">Our Projects</h2>
                 <div class="w-24 h-1 bg-blue-600 mx-auto mb-12"></div>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Project 1 -->
                     <div class="bg-white rounded-lg shadow-lg overflow-hidden group">
-                        <img src="https://placehold.co/600x400/60a5fa/ffffff?text=Project+Alpha" alt="Project Alpha" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300">
+                        <img src="https://placehold.co/600x400/60a5fa/ffffff?text=Screenshot+of+Project+Alpha" alt="Project Alpha" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300">
                         <div class="p-6">
                             <h3 class="text-xl font-bold mb-2">Project Alpha</h3>
                             <p class="text-gray-600 mb-4">A groundbreaking web platform for enterprise resource planning.</p>
                              <button class="generate-desc-btn text-sm bg-gray-200 text-gray-700 px-3 py-1 rounded-full hover:bg-gray-300 transition" data-project="Project Alpha" data-desc="A groundbreaking web platform for enterprise resource planning.">✨ Draft Description</button>
                         </div>
                     </div>
-                    <!-- Project 2 -->
                     <div class="bg-white rounded-lg shadow-lg overflow-hidden group">
-                        <img src="https://placehold.co/600x400/34d399/ffffff?text=Project+Beta" alt="Project Beta" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300">
+                        <img src="https://placehold.co/600x400/34d399/ffffff?text=Screenshot+of+Project+Beta" alt="Project Beta" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300">
                         <div class="p-6">
                             <h3 class="text-xl font-bold mb-2">Project Beta</h3>
                             <p class="text-gray-600 mb-4">An innovative mobile app for personal finance management.</p>
                             <button class="generate-desc-btn text-sm bg-gray-200 text-gray-700 px-3 py-1 rounded-full hover:bg-gray-300 transition" data-project="Project Beta" data-desc="An innovative mobile app for personal finance management.">✨ Draft Description</button>
                         </div>
                     </div>
-                    <!-- Project 3 -->
                     <div class="bg-white rounded-lg shadow-lg overflow-hidden group">
-                        <img src="https://placehold.co/600x400/fbbf24/ffffff?text=Project+Gamma" alt="Project Gamma" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300">
+                        <img src="https://placehold.co/600x400/fbbf24/ffffff?text=Screenshot+of+Project+Gamma" alt="Project Gamma" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300">
                         <div class="p-6">
                             <h3 class="text-xl font-bold mb-2">Project Gamma</h3>
                             <p class="text-gray-600 mb-4">A data analytics dashboard for visualizing complex market data.</p>
@@ -245,16 +228,15 @@
             </div>
         </section>
 
-        <!-- Gallery Section -->
         <section id="gallery" class="py-20 bg-gray-50">
             <div class="container mx-auto px-6">
                 <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">Gallery</h2>
                 <div class="w-24 h-1 bg-blue-600 mx-auto mb-12"></div>
                 <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                    <div class="group"><img src="https://tse4.mm.bing.net/th/id/OIP.bmbZVhVq4MciLzaJ3E790QHaDy?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Gallery Image 1" class="rounded-lg shadow-md hover:shadow-xl transform hover:scale-105 transition-all duration-300 w-full h-full object-cover"></div>
-                    <div class="group"><img src="https://tse4.mm.bing.net/th/id/OIP.0DPBb2SIjDziT7eRpAXWHgHaD6?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Gallery Image 2" class="rounded-lg shadow-md hover:shadow-xl transform hover:scale-105 transition-all duration-300 w-full h-full object-cover"></div>
-                    <div class="group"><img src="https://drive.google.com/file/d/135mtIdb13KbiFNMB-xQ9m2t1DwopkwSJ/view?usp=sharing" alt="Gallery Image 3" class="rounded-lg shadow-md hover:shadow-xl transform hover:scale-105 transition-all duration-300 w-full h-full object-cover"></div>
-                    <div class="group"><img src="https://placehold.co/600x400/fbbf24/ffffff?text=Hackathon" alt="Gallery Image 4" class="rounded-lg shadow-md hover:shadow-xl transform hover:scale-105 transition-all duration-300 w-full h-full object-cover"></div>
+                    <div class="group"><img src="https://placehold.co/600x400/3b82f6/ffffff?text=Event+Photo+1" alt="Gallery Image 1" class="rounded-lg shadow-md hover:shadow-xl transform hover:scale-105 transition-all duration-300 w-full h-full object-cover"></div>
+                    <div class="group"><img src="https://placehold.co/600x400/10b981/ffffff?text=Workshop+Photo" alt="Gallery Image 2" class="rounded-lg shadow-md hover:shadow-xl transform hover:scale-105 transition-all duration-300 w-full h-full object-cover"></div>
+                    <div class="group"><img src="https://placehold.co/600x400/ef4444/ffffff?text=Event+Photo+2" alt="Gallery Image 3" class="rounded-lg shadow-md hover:shadow-xl transform hover:scale-105 transition-all duration-300 w-full h-full object-cover"></div>
+                    <div class="group"><img src="https://placehold.co/600x400/fbbf24/ffffff?text=Hackathon+Photo" alt="Gallery Image 4" class="rounded-lg shadow-md hover:shadow-xl transform hover:scale-105 transition-all duration-300 w-full h-full object-cover"></div>
                     <div class="group"><img src="https://placehold.co/600x400/a78bfa/ffffff?text=Office+Space" alt="Gallery Image 5" class="rounded-lg shadow-md hover:shadow-xl transform hover:scale-105 transition-all duration-300 w-full h-full object-cover"></div>
                     <div class="group"><img src="https://placehold.co/600x400/f472b6/ffffff?text=Product+Launch" alt="Gallery Image 6" class="rounded-lg shadow-md hover:shadow-xl transform hover:scale-105 transition-all duration-300 w-full h-full object-cover"></div>
                     <div class="group"><img src="https://placehold.co/600x400/78716c/ffffff?text=Milestone" alt="Gallery Image 7" class="rounded-lg shadow-md hover:shadow-xl transform hover:scale-105 transition-all duration-300 w-full h-full object-cover"></div>
@@ -263,41 +245,40 @@
             </div>
         </section>
         
-        <!-- Testimonials Section -->
         <section id="testimonials" class="py-20 bg-white">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-12">
                      <h2 class="text-3xl md:text-4xl font-bold mb-4">What Our Clients Say</h2>
                      <div class="w-24 h-1 bg-blue-600 mx-auto"></div>
+                     <div class="mt-6">
+                        <button id="generate-testimonial-btn" class="bg-blue-100 text-blue-700 font-semibold py-2 px-5 rounded-full hover:bg-blue-200 transition shadow">✨ Generate a Testimonial</button>
+                     </div>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Testimonial 1 -->
                     <div class="bg-gray-50 p-8 rounded-lg shadow-md">
                         <p class="text-gray-600 mb-6 italic">"Working with this company was a game-changer for our business. Their professionalism and expertise are second to none. Highly recommended!"</p>
                         <div class="flex items-center">
-                            <img src="https://placehold.co/50x50/a7a7a7/ffffff?text=A" alt="Client 1" class="w-12 h-12 rounded-full mr-4">
+                            <img src="https://placehold.co/50x50/a7a7a7/ffffff?text=JD" alt="Client 1" class="w-12 h-12 rounded-full mr-4">
                             <div>
                                 <p class="font-bold">Jane Doe</p>
                                 <p class="text-sm text-gray-500">CEO, Tech Innovators</p>
                             </div>
                         </div>
                     </div>
-                    <!-- Testimonial 2 -->
-                     <div class="bg-gray-50 p-8 rounded-lg shadow-md">
+                    <div class="bg-gray-50 p-8 rounded-lg shadow-md">
                         <p class="text-gray-600 mb-6 italic">"The results exceeded our expectations. They delivered on time and within budget, with a final product that has significantly boosted our online presence."</p>
                         <div class="flex items-center">
-                            <img src="https://placehold.co/50x50/a7a7a7/ffffff?text=B" alt="Client 2" class="w-12 h-12 rounded-full mr-4">
+                            <img src="https://placehold.co/50x50/a7a7a7/ffffff?text=JS" alt="Client 2" class="w-12 h-12 rounded-full mr-4">
                             <div>
                                 <p class="font-bold">John Smith</p>
                                 <p class="text-sm text-gray-500">Marketing Director, Future Corp</p>
                             </div>
                         </div>
                     </div>
-                    <!-- Testimonial 3 -->
-                     <div class="bg-gray-50 p-8 rounded-lg shadow-md">
+                    <div class="bg-gray-50 p-8 rounded-lg shadow-md">
                         <p class="text-gray-600 mb-6 italic">"An incredible team that is truly passionate about what they do. They listened to our vision and brought it to life beautifully."</p>
                         <div class="flex items-center">
-                            <img src="https://placehold.co/50x50/a7a7a7/ffffff?text=C" alt="Client 3" class="w-12 h-12 rounded-full mr-4">
+                            <img src="https://placehold.co/50x50/a7a7a7/ffffff?text=SL" alt="Client 3" class="w-12 h-12 rounded-full mr-4">
                             <div>
                                 <p class="font-bold">Samantha Lee</p>
                                 <p class="text-sm text-gray-500">Founder, Creative Solutions</p>
@@ -308,7 +289,6 @@
             </div>
         </section>
 
-        <!-- Contact Section -->
         <section id="contact" class="py-20 bg-blue-700 text-white">
             <div class="container mx-auto px-6 text-center">
                 <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Start Your Project?</h2>
@@ -322,7 +302,6 @@
         </section>
     </main>
     
-    <!-- Footer -->
     <footer class="bg-gray-900 text-white py-10">
         <div class="container mx-auto px-6 text-center">
             <p>&copy; 2025 Boni Bytes Edutech. All Rights Reserved.</p>
@@ -334,7 +313,6 @@
         </div>
     </footer>
     
-    <!-- AI Result Modal -->
     <div id="ai-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4 hidden modal-backdrop">
         <div class="bg-white rounded-lg shadow-2xl p-6 w-full max-w-2xl modal-content transform scale-95">
             <div class="flex justify-between items-center mb-4">
@@ -342,11 +320,9 @@
                 <button id="close-modal-btn" class="text-gray-500 hover:text-gray-800">&times;</button>
             </div>
             <div id="modal-body" class="text-gray-700 leading-relaxed">
-                <!-- Loading spinner -->
                 <div id="modal-spinner" class="flex justify-center items-center h-40">
                     <div class="spinner w-12 h-12 rounded-full border-4 border-gray-200"></div>
                 </div>
-                <!-- Generated content -->
                 <div id="modal-content-area" class="hidden"></div>
             </div>
              <div class="mt-6 text-right">
@@ -377,6 +353,18 @@
                     link.classList.add('section-active');
                 }
             });
+
+            // --- ADDED THIS CODE ---
+            // This adds the header shrink effect
+            const nav = document.getElementById('main-nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('py-2');
+                nav.classList.remove('py-4');
+            } else {
+                nav.classList.add('py-4');
+                nav.classList.remove('py-2');
+            }
+            // --- END OF ADDED CODE ---
         });
 
         // --- Gemini API Integration ---
@@ -524,15 +512,3 @@
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
