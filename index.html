@@ -388,7 +388,8 @@
             }
         });
 
-        // --- (ADDED) IMAGE GALLERY MODAL LOGIC ---
+      // --- (CORRECTED) IMAGE GALLERY MODAL LOGIC ---
+
         const imageModal = document.getElementById('image-modal');
         const modalImageContent = document.getElementById('modal-image-content');
         const closeImageModalBtn = document.getElementById('close-image-modal-btn');
@@ -397,18 +398,20 @@
         // Function to open the modal
         const openImageModal = (src, alt) => {
             modalImageContent.src = src;
-            modalImageContent.alt = alt; // Set alt text for accessibility
+            modalImageContent.alt = alt;
             imageModal.classList.remove('hidden');
             document.body.style.overflow = 'hidden'; 
             setTimeout(() => {
-                imageModal.querySelector('.modal-backdrop').classList.add('opacity-100');
+                // --- THIS LINE IS FIXED ---
+                imageModal.classList.add('opacity-100'); 
                 imageModal.querySelector('.modal-content').classList.remove('scale-95');
             }, 10);
         };
 
         // Function to close the modal
         const closeImageModal = () => {
-            imageModal.querySelector('.modal-backdrop').classList.remove('opacity-100');
+            // --- THIS LINE IS FIXED ---
+            imageModal.classList.remove('opacity-100');
             imageModal.querySelector('.modal-content').classList.add('scale-95');
             setTimeout(() => {
                 imageModal.classList.add('hidden');
@@ -421,7 +424,7 @@
         // Add click listeners to all gallery images
         galleryImages.forEach(img => {
             img.addEventListener('click', () => {
-                openImageModal(img.src, img.alt); // Pass the alt text to the modal
+                openImageModal(img.src, img.alt);
             });
         });
 
@@ -432,7 +435,7 @@
                 closeImageModal();
             }
         });
-        // --- END OF ADDED IMAGE MODAL LOGIC ---
+        // --- END OF CORRECTED LOGIC ---
 
 
         // --- Gemini API Integration ---
@@ -579,3 +582,4 @@
 
 </body>
 </html>
+
