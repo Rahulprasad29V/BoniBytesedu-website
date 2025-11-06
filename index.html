@@ -353,7 +353,52 @@
             <img id="modal-image-content" src="" alt="Gallery Image Full View" class="w-full h-auto max-h-[80vh] object-contain">
         </div>
     </div>
+<body>
+    <div id="chatbot" class="fixed bottom-5 right-5 bg-white shadow-xl rounded-2xl w-80 border border-gray-200 overflow-hidden">
+  <div id="chat-header" class="bg-indigo-600 text-white px-4 py-2 font-semibold cursor-pointer">
+    Chat with Boni AI 🤖
+  </div>
+  <div id="chat-body" class="h-64 p-3 overflow-y-auto text-sm"></div>
+  <div class="p-2 border-t flex">
+    <input id="userInput" type="text" placeholder="Type a message..." class="flex-grow border rounded-lg px-2 py-1 text-sm focus:outline-none">
+    <button id="sendBtn" class="ml-2 bg-indigo-600 text-white px-3 rounded-lg text-sm">Send</button>
+  </div>
+</div>
 
+<script>
+  const chatBody = document.getElementById('chat-body');
+  const sendBtn = document.getElementById('sendBtn');
+  const userInput = document.getElementById('userInput');
+
+  async function sendMessage() {
+    const message = userInput.value.trim();
+    if (!message) return;
+    appendMessage('You', message);
+    userInput.value = '';
+
+    const res = await fetch('http://localhost:3000/api/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message }),
+    });
+
+    const data = await res.json();
+    appendMessage('Boni AI', data.reply);
+  }
+
+  function appendMessage(sender, text) {
+    const msg = document.createElement('div');
+    msg.innerHTML = `<strong>${sender}:</strong> ${text}`;
+    chatBody.appendChild(msg);
+    chatBody.scrollTop = chatBody.scrollHeight;
+  }
+
+  sendBtn.onclick = sendMessage;
+  userInput.addEventListener('keypress', e => {
+    if (e.key === 'Enter') sendMessage();
+  });
+</script>
+</body>
 
     <script>
         // --- Standard Website Interactivity ---
@@ -582,6 +627,7 @@
 
 </body>
 </html>
+
 
 
 
