@@ -354,32 +354,30 @@
         </div>
     </div>
 <body>
-   <!-- 🌐 Chatbot Floating Button -->
-<button id="chatToggle" 
-  class="fixed bottom-5 right-5 bg-indigo-600 text-white p-3 rounded-full shadow-lg hover:bg-indigo-700 transition">
-  💬
+  <!-- 💬 Floating Chat Button -->
+<button id="chatToggle"
+  class="fixed bottom-5 right-5 bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition">
+  💬 Chat
 </button>
 
-<!-- 💬 Chatbot Box -->
-<div id="chatbot" 
-  class="fixed bottom-20 right-5 bg-white shadow-2xl rounded-2xl w-80 border border-gray-200 overflow-hidden hidden">
-  
-  <div id="chat-header" class="bg-indigo-600 text-white px-4 py-2 font-semibold flex justify-between items-center">
-    <span>Boni AI Assistant 🤖</span>
-    <button id="closeChat" class="text-white text-lg font-bold hover:text-gray-200">&times;</button>
+<!-- 🤖 Chat Box -->
+<div id="chatbot"
+  class="fixed bottom-20 right-5 w-80 bg-white shadow-2xl rounded-2xl border border-gray-200 overflow-hidden hidden">
+  <div id="chat-header" class="bg-blue-600 text-white px-4 py-2 flex justify-between items-center font-semibold">
+    Boni AI Assistant 🤖
+    <button id="closeChat" class="text-white text-lg hover:text-gray-200">&times;</button>
   </div>
 
   <div id="chat-body" class="h-64 p-3 overflow-y-auto text-sm"></div>
 
   <div class="p-2 border-t flex">
-    <input id="userInput" 
-      type="text" 
-      placeholder="Type a message..." 
+    <input id="userInput" type="text" placeholder="Type a message..."
       class="flex-grow border rounded-lg px-2 py-1 text-sm focus:outline-none">
-    <button id="sendBtn" 
-      class="ml-2 bg-indigo-600 text-white px-3 rounded-lg text-sm hover:bg-indigo-700">Send</button>
+    <button id="sendBtn"
+      class="ml-2 bg-blue-600 text-white px-3 rounded-lg text-sm hover:bg-blue-700">Send</button>
   </div>
 </div>
+
 
 <script>
   // --- Elements ---
@@ -748,6 +746,7 @@
 
 </body>
 </html>
+
 
 
 
