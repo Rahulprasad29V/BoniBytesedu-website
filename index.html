@@ -673,10 +673,81 @@
             button.disabled = false;
         });
 
+        <script>
+  const GEMINI_API_KEY = AIzaSyBlc_l5J_ZUPRmLXAm0SlMHu0Qe7aVCx24 
+
+  const chatToggle = document.getElementById('chatToggle');
+  const chatbot = document.getElementById('chatbot');
+  const closeChat = document.getElementById('closeChat');
+  const sendBtn = document.getElementById('sendBtn');
+  const userInput = document.getElementById('userInput');
+  const chatBody = document.getElementById('chat-body');
+
+  // Toggle chat box
+  chatToggle.addEventListener('click', () => chatbot.classList.toggle('hidden'));
+  closeChat.addEventListener('click', () => chatbot.classList.add('hidden'));
+
+  // Append messages to chat body
+  function appendMessage(sender, text) {
+      const msg = document.createElement('div');
+      msg.className = 'my-1';
+      msg.innerHTML = `<strong>${sender}:</strong> ${text}`;
+      chatBody.appendChild(msg);
+      chatBody.scrollTop = chatBody.scrollHeight;
+  }
+
+  // Send message function
+  async function sendMessage() {
+      const message = userInput.value.trim();
+      if (!message) return;
+      appendMessage('You', message);
+      userInput.value = '';
+
+      appendMessage('Boni AI', '💭 Thinking...');
+      const lastMessage = chatBody.lastChild;
+
+      try {
+          const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${GEMINI_API_KEY}`, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ contents: [{ parts: [{ text: message }] }] })
+          });
+          const data = await res.json();
+          const reply = data?.candidates?.[0]?.content?.parts?.[0]?.text || "⚠️ No response from AI.";
+          lastMessage.innerHTML = `<strong>Boni AI:</strong> ${reply}`;
+      } catch (err) {
+          lastMessage.innerHTML = `<strong>Boni AI:</strong> ⚠️ Error connecting to Gemini API.`;
+      }
+  }
+
+  sendBtn.addEventListener('click', sendMessage);
+  userInput.addEventListener('keypress', e => { if (e.key === 'Enter') sendMessage(); });
+</script>
+
+
     </script>
+<!-- Chat Toggle Button -->
+<button id="chatToggle" 
+    class="fixed bottom-5 right-5 bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition">
+    💬 Chat
+</button>
+
+<!-- Chat Box -->
+<div id="chatbot" class="fixed bottom-20 right-5 w-80 bg-white shadow-2xl rounded-2xl border border-gray-200 overflow-hidden hidden">
+    <div id="chat-header" class="bg-blue-600 text-white px-4 py-2 flex justify-between items-center font-semibold">
+        Boni AI Assistant 🤖
+        <button id="closeChat" class="text-white text-lg hover:text-gray-200">&times;</button>
+    </div>
+    <div id="chat-body" class="h-64 p-3 overflow-y-auto text-sm"></div>
+    <div class="p-2 border-t flex">
+        <input id="userInput" type="text" placeholder="Type a message..." class="flex-grow border rounded-lg px-2 py-1 text-sm focus:outline-none">
+        <button id="sendBtn" class="ml-2 bg-blue-600 text-white px-3 rounded-lg text-sm hover:bg-blue-700">Send</button>
+    </div>
+</div>
 
 </body>
 </html>
+
 
 
 
