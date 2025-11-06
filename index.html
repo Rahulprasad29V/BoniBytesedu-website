@@ -354,51 +354,101 @@
         </div>
     </div>
 <body>
-    <div id="chatbot" class="fixed bottom-5 right-5 bg-white shadow-xl rounded-2xl w-80 border border-gray-200 overflow-hidden">
-  <div id="chat-header" class="bg-indigo-600 text-white px-4 py-2 font-semibold cursor-pointer">
-    Chat with Boni AI 🤖
+   <!-- 🌐 Chatbot Floating Button -->
+<button id="chatToggle" 
+  class="fixed bottom-5 right-5 bg-indigo-600 text-white p-3 rounded-full shadow-lg hover:bg-indigo-700 transition">
+  💬
+</button>
+
+<!-- 💬 Chatbot Box -->
+<div id="chatbot" 
+  class="fixed bottom-20 right-5 bg-white shadow-2xl rounded-2xl w-80 border border-gray-200 overflow-hidden hidden">
+  
+  <div id="chat-header" class="bg-indigo-600 text-white px-4 py-2 font-semibold flex justify-between items-center">
+    <span>Boni AI Assistant 🤖</span>
+    <button id="closeChat" class="text-white text-lg font-bold hover:text-gray-200">&times;</button>
   </div>
+
   <div id="chat-body" class="h-64 p-3 overflow-y-auto text-sm"></div>
+
   <div class="p-2 border-t flex">
-    <input id="userInput" type="text" placeholder="Type a message..." class="flex-grow border rounded-lg px-2 py-1 text-sm focus:outline-none">
-    <button id="sendBtn" class="ml-2 bg-indigo-600 text-white px-3 rounded-lg text-sm">Send</button>
+    <input id="userInput" 
+      type="text" 
+      placeholder="Type a message..." 
+      class="flex-grow border rounded-lg px-2 py-1 text-sm focus:outline-none">
+    <button id="sendBtn" 
+      class="ml-2 bg-indigo-600 text-white px-3 rounded-lg text-sm hover:bg-indigo-700">Send</button>
   </div>
 </div>
 
 <script>
-  const chatBody = document.getElementById('chat-body');
+  // --- Elements ---
+  const chatToggle = document.getElementById('chatToggle');
+  const chatbot = document.getElementById('chatbot');
+  const closeChat = document.getElementById('closeChat');
   const sendBtn = document.getElementById('sendBtn');
   const userInput = document.getElementById('userInput');
+  const chatBody = document.getElementById('chat-body');
 
+  // --- Toggle open/close ---
+  chatToggle.addEventListener('click', () => {
+    chatbot.classList.toggle('hidden');
+    chatbot.classList.add('animate-fade-in');
+  });
+
+  closeChat.addEventListener('click', () => {
+    chatbot.classList.add('hidden');
+  });
+
+  // --- Message sending logic ---
   async function sendMessage() {
     const message = userInput.value.trim();
     if (!message) return;
+
     appendMessage('You', message);
     userInput.value = '';
 
-    const res = await fetch('http://localhost:3000/api/chat', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ message }),
-    });
+    try {
+      const res = await fetch('http://localhost:3000/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message }),
+      });
 
-    const data = await res.json();
-    appendMessage('Boni AI', data.reply);
+      const data = await res.json();
+      appendMessage('Boni AI', data.reply);
+    } catch (err) {
+      appendMessage('Boni AI', '⚠️ Error connecting to server.');
+    }
   }
 
   function appendMessage(sender, text) {
     const msg = document.createElement('div');
+    msg.className = 'my-1';
     msg.innerHTML = `<strong>${sender}:</strong> ${text}`;
     chatBody.appendChild(msg);
     chatBody.scrollTop = chatBody.scrollHeight;
   }
 
-  sendBtn.onclick = sendMessage;
+  sendBtn.addEventListener('click', sendMessage);
   userInput.addEventListener('keypress', e => {
     if (e.key === 'Enter') sendMessage();
   });
+
+  // --- Optional fade animation ---
+  const style = document.createElement('style');
+  style.innerHTML = `
+    .animate-fade-in {
+      animation: fadeIn 0.3s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  `;
+  document.head.appendChild(style);
 </script>
-</body>
+
 
     <script>
         // --- Standard Website Interactivity ---
@@ -627,6 +677,7 @@
 
 </body>
 </html>
+
 
 
 
