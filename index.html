@@ -31,13 +31,22 @@
 
   <!-- NAVBAR -->
 <!-- Navbar Start -->
+<!-- Navbar Start -->
 <nav class="navbar">
-  <div class="logo">MyWebsite</div>
+  <!-- Logo + Brand Name -->
+  <div class="logo">
+    <img src="assets/logo.png" alt="Boni Bytes Edutech Logo" class="logo-img">
+    <span>Boni Bytes Edutech</span>
+  </div>
+
+  <!-- Hamburger for mobile -->
   <div class="menu-toggle" id="mobile-menu">
     <span></span>
     <span></span>
     <span></span>
   </div>
+
+  <!-- Menu Links -->
   <ul class="nav-links" id="nav-links">
     <li><a href="#home">Home</a></li>
     <li><a href="#courses">Courses</a></li>
@@ -51,7 +60,6 @@
 <!-- Navbar End -->
 
 <style>
-  /* Basic Reset */
   * {
     margin: 0;
     padding: 0;
@@ -63,7 +71,6 @@
     scroll-behavior: smooth;
   }
 
-  /* Navbar Styles */
   .navbar {
     display: flex;
     justify-content: space-between;
@@ -76,13 +83,26 @@
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
   }
 
-  .navbar .logo {
-    font-size: 1.8rem;
-    font-weight: bold;
-    color: #0d47a1; /* Blue color */
-    letter-spacing: 1px;
+  /* Logo and Brand Name */
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
   }
 
+  .logo-img {
+    height: 40px;
+    width: 40px;
+    object-fit: contain;
+  }
+
+  .logo span {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #0d47a1;
+  }
+
+  /* Navbar Links */
   .nav-links {
     list-style: none;
     display: flex;
@@ -90,7 +110,7 @@
   }
 
   .nav-links li a {
-    color: #0d47a1; /* Blue color */
+    color: #0d47a1;
     text-decoration: none;
     font-weight: 500;
     position: relative;
@@ -114,7 +134,7 @@
   }
 
   .nav-links li a:hover {
-    color: #1565c0; /* Slightly lighter blue on hover */
+    color: #1565c0;
   }
 
   .youtube-link {
@@ -159,7 +179,7 @@
       background-color: #ffffff;
       flex-direction: column;
       gap: 15px;
-      width: 200px;
+      width: 220px;
       padding: 20px;
       border-radius: 8px 0 0 8px;
       display: none;
@@ -180,6 +200,15 @@
     }
   }
 </style>
+
+<script>
+  const mobileMenu = document.getElementById('mobile-menu');
+  const navLinks = document.getElementById('nav-links');
+
+  mobileMenu.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+  });
+</script>
 
 <script>
   const mobileMenu = document.getElementById('mobile-menu');
@@ -693,6 +722,7 @@
   </script>
 </body>
 </html>
+
 
 
 
