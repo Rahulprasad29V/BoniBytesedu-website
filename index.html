@@ -30,41 +30,97 @@
 <body class="bg-white text-slate-800 antialiased">
 
   <!-- NAVBAR -->
-  <header class="fixed top-0 left-0 right-0 z-50 glass shadow-sm">
-    <div class="container mx-auto px-6 md:px-10 py-3 flex items-center justify-between">
-      <a href="#home" class="flex items-center gap-3">
-        <img src="logo.png" alt="Boni Bytes logo" class="h-10 w-10 object-contain" />
-        <div class="text-lg font-extrabold">Boni Bytes Edutech</div>
-      </a>
+  <!-- Navbar Start -->
+<nav class="navbar">
+  <div class="logo">My Website</div>
+  <div class="menu-toggle" id="mobile-menu">&#9776;</div> <!-- Hamburger icon -->
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#courses">Courses</a></li>
+    <li><a href="#project-lab">Project Lab</a></li>
+    <li><a href="#gallery">Gallery 📸</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#youtube">YouTube</a></li>
+  </ul>
+</nav>
+<!-- Navbar End -->
 
-      <nav class="hidden md:flex items-center gap-6">
-        <a class="nav-link text-slate-700 hover:text-[var(--brand-blue)]" href="#home">Home</a>
-        <a class="nav-link text-slate-700 hover:text-[var(--brand-blue)]" href="#courses">Courses</a>
-        <a class="nav-link text-slate-700 hover:text-[var(--brand-blue)]" href="#project-lab">Project Lab</a>
-        <a class="nav-link text-slate-700 hover:text-[var(--brand-blue)]" href="#gallery">Gallery 📸</a>
-        <a class="nav-link text-slate-700 hover:text-[var(--brand-blue)]" href="#about">About</a>
-        <a class="nav-link text-slate-700 hover:text-[var(--brand-blue)]" href="#contact">Contact</a>
-        <a href="#youtube" style="color: Red; text-decoration: none;">YouTube</a>
-        <a href="#contact" class="ml-4 inline-block bg-[var(--brand-blue)] text-white px-4 py-2 rounded-full shadow">Get in touch ✨</a>
-      </nav>
+<!-- Smooth Scroll -->
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
 
-      <button id="mobile-open" class="md:hidden p-2 rounded-md hover:bg-slate-100" aria-label="Open menu">
-        <svg class="w-6 h-6 text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
-      </button>
-    </div>
-    <div id="mobile-menu" class="md:hidden hidden border-t">
-      <div class="px-6 py-4 space-y-2">
-        <a href="#home" class="block py-2">Home</a>
-        <a href="#courses" class="block py-2">Courses</a>
-        <a href="#project-lab" class="block py-2">Project Lab</a>
-        <a href="#gallery" class="block py-2">Gallery</a>
-        <a href="#about" class="block py-2">About</a>
-        <a href="#contact" class="block py-2">Contact</a>
-      </div>
-    </div>
-  </header>
+  /* Navbar Styles */
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    padding: 10px 20px;
+    position: relative;
+  }
 
-  <main class="pt-20">
+  .navbar .logo {
+    color: white;
+    font-size: 1.5rem;
+  }
+
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+  }
+
+  .nav-links li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+  }
+
+  .menu-toggle {
+    display: none;
+    font-size: 1.5rem;
+    color: white;
+    cursor: pointer;
+  }
+
+  /* Mobile Styles */
+  @media screen and (max-width: 768px) {
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      gap: 10px;
+      background-color: #333;
+      position: absolute;
+      top: 60px;
+      right: 0;
+      width: 200px;
+      padding: 20px;
+      border-radius: 5px;
+    }
+
+    .nav-links.active {
+      display: flex;
+    }
+
+    .menu-toggle {
+      display: block;
+    }
+  }
+</style>
+
+<!-- Mobile Menu Toggle Script -->
+<script>
+  const mobileMenu = document.getElementById('mobile-menu');
+  const navLinks = document.getElementById('nav-links');
+
+  mobileMenu.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+  });
+</script>
+
     <!-- HERO -->
     <section id="home" class="min-h-[72vh] flex items-center">
       <div class="container mx-auto px-6 md:px-10 flex flex-col-reverse md:flex-row items-center gap-10">
@@ -568,6 +624,7 @@
   </script>
 </body>
 </html>
+
 
 
 
