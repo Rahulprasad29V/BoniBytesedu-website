@@ -33,7 +33,7 @@
     <div class="container mx-auto px-6 md:px-10 py-3 flex items-center justify-between">
       <a href="#home" class="flex items-center gap-3">
         <img src="logo.png" alt="Boni Bytes logo" class="h-10 w-10 object-contain" />
-        <div class="text-lg font-extrabold">Boni Bytes Edutech</div>
+        <div class="text-lg font-extrabold">Boni Bytes</div>
       </a>
 
       <nav class="hidden md:flex items-center gap-6">
@@ -95,8 +95,8 @@
           <div class="w-[380px] h-[300px] rounded-xl bg-gradient-to-br from-[var(--brand-blue)] to-blue-400 text-white flex items-center justify-center shadow-xl">
             <div class="text-center px-6">
               <img src="logo.png" alt="Boni Bytes logo" class="mx-auto h-40 w-50 object-contain mb-3" />
-              <div class="text-2xl font-bold">Boni Bytes Edutech </div>
-              <div class="mt-2 text-sm"> Edutech & Project Lab ⚡</div>
+              <div class="text-2xl font-bold">Boni Bytes Edutech</div>
+              <div class="mt-2 text-sm">Edutech & Project Lab ⚡</div>
             </div>
           </div>
         </div>
@@ -173,7 +173,7 @@
           <h4 class="font-semibold text-lg">Request a Project Quote</h4>
           <p class="mt-2 text-slate-600 text-sm">Tell us about your idea — we’ll reply with a high-level estimate.</p>
 
-          <form id="contactForm" action="https://formspree.io/f/xanawjwk" method="POST">
+          <form id="quoteForm" class="mt-4 grid grid-cols-1 gap-3">
             <input id="q-name" required type="text" placeholder="Your name" class="p-3 border rounded" />
             <input id="q-email" required type="email" placeholder="Email address" class="p-3 border rounded" />
             <select id="q-type" class="p-3 border rounded">
@@ -297,7 +297,7 @@
     </section>
 
     <!-- CONTACT -->
-    <form id="contactForm" class="bg-slate-50 p-6 rounded-xl shadow-sm">
+    <section id="contact" class="py-16 bg-white">
       <div class="container mx-auto px-6 md:px-10">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
           <div>
@@ -520,43 +520,5 @@
       }
     });
   </script>
-  <script>
-document.addEventListener("DOMContentLoaded", function () {
-  const form = document.getElementById("contactForm");
-  const successMsg = document.getElementById("formSuccess");
-
-  form.addEventListener("submit", async function (e) {
-    e.preventDefault();
-
-    const formData = new FormData(form);
-    const object = Object.fromEntries(formData);
-    const json = JSON.stringify(object);
-
-    try {
-      const res = await fetch(form.action, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: json
-      });
-
-      if (res.ok) {
-        successMsg.classList.remove("hidden");
-        form.reset();
-        setTimeout(() => successMsg.classList.add("hidden"), 4000);
-      } else {
-        alert("⚠️ Oops! Something went wrong. Please try again.");
-      }
-    } catch (err) {
-      alert("⚠️ Network error. Please check your connection.");
-    }
-  });
-});
-</script>
 </body>
 </html>
-
-
-
-
-
-
