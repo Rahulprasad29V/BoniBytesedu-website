@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Boni Bytes — Edutech & Projects</title>
-  <meta name="description" content="Boni Bytes blends education and real-world tech projects — training, workshops, and custom web & mobile solutions." />
+  <meta name="description" content="Boni Bytes blends education and real-world tech projects — training, workshops, hackathons and custom web & mobile solutions." />
   <meta name="theme-color" content="#2563EB" />
 
   <!-- Tailwind CDN -->
@@ -16,21 +16,14 @@
       --brand-blue: #2563EB;
       --soft-blue: #E9F2FF;
     }
-    html, body { font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; }
-    /* subtle glass navbar */
-    .glass {
-      backdrop-filter: blur(6px) saturate(120%);
-      background-color: rgba(255,255,255,0.72);
-    }
-    /* chat bubble animations */
-    @keyframes popIn {
-      from { transform: translateY(10px) scale(0.98); opacity: 0; }
-      to { transform: translateY(0) scale(1); opacity: 1; }
-    }
+    html,body { font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; }
+    .glass { backdrop-filter: blur(6px) saturate(120%); background-color: rgba(255,255,255,0.75); }
+    @keyframes popIn { from { transform: translateY(8px) scale(0.98); opacity: 0 } to { transform: translateY(0) scale(1); opacity: 1 } }
     .animate-pop { animation: popIn 220ms ease-out; }
-    /* message bubble styles */
-    .msg-user { background: #f1f5f9; color: #0f172a; }
-    .msg-bot { background: var(--soft-blue); color: #0f172a; }
+    .msg-user { background:#f1f5f9; color:#0f172a; }
+    .msg-bot { background:var(--soft-blue); color:#0f172a; }
+    .gallery-img { transition: transform .25s ease, box-shadow .25s; }
+    .gallery-img:hover { transform: translateY(-6px) scale(1.02); box-shadow: 0 18px 30px rgba(37,99,235,0.12); }
   </style>
 </head>
 <body class="bg-white text-slate-800 antialiased">
@@ -39,8 +32,7 @@
   <header class="fixed top-0 left-0 right-0 z-50 glass shadow-sm">
     <div class="container mx-auto px-6 md:px-10 py-3 flex items-center justify-between">
       <a href="#home" class="flex items-center gap-3">
-        <!-- Replace with SVG logo if you have one -->
-        <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-[var(--brand-blue)] to-blue-400 flex items-center justify-center text-white font-bold">BB</div>
+        <img src="images/logo.png" alt="Boni Bytes logo" class="h-10 w-10 object-contain" />
         <div class="text-lg font-extrabold">Boni Bytes</div>
       </a>
 
@@ -48,22 +40,22 @@
         <a class="nav-link text-slate-700 hover:text-[var(--brand-blue)]" href="#home">Home</a>
         <a class="nav-link text-slate-700 hover:text-[var(--brand-blue)]" href="#courses">Courses</a>
         <a class="nav-link text-slate-700 hover:text-[var(--brand-blue)]" href="#project-lab">Project Lab</a>
+        <a class="nav-link text-slate-700 hover:text-[var(--brand-blue)]" href="#gallery">Gallery 📸</a>
         <a class="nav-link text-slate-700 hover:text-[var(--brand-blue)]" href="#about">About</a>
         <a class="nav-link text-slate-700 hover:text-[var(--brand-blue)]" href="#contact">Contact</a>
-        <a href="#contact" class="ml-4 inline-block bg-[var(--brand-blue)] text-white px-4 py-2 rounded-full shadow">Get in touch</a>
+        <a href="#contact" class="ml-4 inline-block bg-[var(--brand-blue)] text-white px-4 py-2 rounded-full shadow">Get in touch ✨</a>
       </nav>
 
       <button id="mobile-open" class="md:hidden p-2 rounded-md hover:bg-slate-100" aria-label="Open menu">
         <svg class="w-6 h-6 text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
       </button>
     </div>
-
-    <!-- mobile menu -->
     <div id="mobile-menu" class="md:hidden hidden border-t">
       <div class="px-6 py-4 space-y-2">
         <a href="#home" class="block py-2">Home</a>
         <a href="#courses" class="block py-2">Courses</a>
         <a href="#project-lab" class="block py-2">Project Lab</a>
+        <a href="#gallery" class="block py-2">Gallery</a>
         <a href="#about" class="block py-2">About</a>
         <a href="#contact" class="block py-2">Contact</a>
       </div>
@@ -76,15 +68,15 @@
       <div class="container mx-auto px-6 md:px-10 flex flex-col-reverse md:flex-row items-center gap-10">
         <div class="md:w-1/2">
           <h1 class="text-3xl md:text-5xl font-extrabold leading-tight text-slate-900">
-            Empowering Minds & Building the Future
+            Empowering Minds & Building the Future ⚡💙
           </h1>
           <p class="mt-4 text-slate-600 max-w-xl">
-            Boni Bytes brings together education and hands-on product engineering — training learners and delivering real-world web, mobile, and AI projects for businesses and institutions.
+            Boni Bytes blends education with hands-on product engineering — training learners and delivering real-world web, mobile and AI projects for businesses, universities, and startups. 🚀🎓
           </p>
 
           <div class="mt-6 flex flex-wrap gap-3">
-            <a href="#courses" class="inline-flex items-center px-5 py-3 rounded-full border border-[var(--brand-blue)] text-[var(--brand-blue)] font-semibold hover:bg-[var(--brand-blue)] hover:text-white transition">🎓 Learn with us</a>
-            <a href="#project-lab" class="inline-flex items-center px-5 py-3 rounded-full bg-[var(--brand-blue)] text-white font-semibold hover:opacity-90 transition">🛠️ Build with us</a>
+            <a href="#courses" class="inline-flex items-center px-5 py-3 rounded-full border border-[var(--brand-blue)] text-[var(--brand-blue)] font-semibold hover:bg-[var(--brand-blue)] hover:text-white transition">🎓 Learn</a>
+            <a href="#project-lab" class="inline-flex items-center px-5 py-3 rounded-full bg-[var(--brand-blue)] text-white font-semibold hover:opacity-90 transition">🛠️ Build</a>
           </div>
 
           <div class="mt-8 grid grid-cols-2 gap-4 text-sm text-slate-600">
@@ -100,54 +92,54 @@
         </div>
 
         <div class="md:w-1/2 flex justify-center">
-          <!-- Placeholder illustration: replace with hero image -->
           <div class="w-[380px] h-[300px] rounded-xl bg-gradient-to-br from-[var(--brand-blue)] to-blue-400 text-white flex items-center justify-center shadow-xl">
             <div class="text-center px-6">
+              <img src="images/logo.png" alt="Boni Bytes logo" class="mx-auto h-16 w-16 object-contain mb-3" />
               <div class="text-2xl font-bold">Boni Bytes</div>
-              <div class="mt-2 text-sm">Edutech & Project Lab</div>
+              <div class="mt-2 text-sm">Edutech & Project Lab ⚡</div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- COURSES / EDUCATION -->
+    <!-- COURSES -->
     <section id="courses" class="py-16 bg-white">
       <div class="container mx-auto px-6 md:px-10">
         <div class="text-center max-w-2xl mx-auto">
-          <h2 class="text-2xl md:text-3xl font-bold">Learning & Training</h2>
+          <h2 class="text-2xl md:text-3xl font-bold">Learning & Training 🎓</h2>
           <p class="mt-3 text-slate-600">Instructor-led courses, bootcamps, and practical workshops designed for industry-ready skills.</p>
         </div>
 
         <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           <article class="p-6 border rounded-xl hover:shadow-lg transition">
             <h3 class="font-semibold text-lg">Full-Stack Development</h3>
-            <p class="mt-2 text-slate-600 text-sm">Hands-on training covering modern web stacks, deployments, and best practices.</p>
+            <p class="mt-2 text-slate-600 text-sm">Modern web stacks, deployments, and production best-practices.</p>
           </article>
 
           <article class="p-6 border rounded-xl hover:shadow-lg transition">
-            <h3 class="font-semibold text-lg">AI & Machine Learning</h3>
-            <p class="mt-2 text-slate-600 text-sm">Practical projects in ML, NLP, and deploying AI models for real use-cases.</p>
+            <h3 class="font-semibold text-lg">AI & Machine Learning 🤖</h3>
+            <p class="mt-2 text-slate-600 text-sm">Practical ML projects, NLP, and model deployment for real problems.</p>
           </article>
 
           <article class="p-6 border rounded-xl hover:shadow-lg transition">
-            <h3 class="font-semibold text-lg">Mobile Apps</h3>
-            <p class="mt-2 text-slate-600 text-sm">iOS & Android development with cross-platform tools and UX best practices.</p>
+            <h3 class="font-semibold text-lg">Mobile Apps 📱</h3>
+            <p class="mt-2 text-slate-600 text-sm">Cross-platform apps with great UX and performance.</p>
           </article>
 
           <article class="p-6 border rounded-xl hover:shadow-lg transition">
             <h3 class="font-semibold text-lg">IoT & Robotics</h3>
-            <p class="mt-2 text-slate-600 text-sm">Embedded systems, sensors, and building prototypes for hardware projects.</p>
+            <p class="mt-2 text-slate-600 text-sm">Sensors, prototypes and hardware-integration projects.</p>
           </article>
 
           <article class="p-6 border rounded-xl hover:shadow-lg transition">
             <h3 class="font-semibold text-lg">Data Analytics</h3>
-            <p class="mt-2 text-slate-600 text-sm">From ETL to visualization — make data-driven decisions and dashboards.</p>
+            <p class="mt-2 text-slate-600 text-sm">ETL, dashboards and insight-driven product features.</p>
           </article>
 
           <article class="p-6 border rounded-xl hover:shadow-lg transition">
             <h3 class="font-semibold text-lg">Cybersecurity Essentials</h3>
-            <p class="mt-2 text-slate-600 text-sm">Security basics, hardening, and safe practices for developers and teams.</p>
+            <p class="mt-2 text-slate-600 text-sm">Security basics, testing and safe development workflows.</p>
           </article>
         </div>
       </div>
@@ -157,29 +149,29 @@
     <section id="project-lab" class="py-16 bg-slate-50">
       <div class="container mx-auto px-6 md:px-10">
         <div class="text-center max-w-2xl mx-auto">
-          <h2 class="text-2xl md:text-3xl font-bold">Project Lab — Products & Client Work</h2>
-          <p class="mt-3 text-slate-600">We build real products: prototypes, client apps, and system integrations. Below are a few highlights.</p>
+          <h2 class="text-2xl md:text-3xl font-bold">Project Lab & Client Work 🛠️</h2>
+          <p class="mt-3 text-slate-600">Prototypes, client apps, and system integrations — built with modern best practices.</p>
         </div>
 
         <div class="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
           <div class="bg-white p-6 rounded-xl shadow hover:shadow-2xl transition">
             <h3 class="font-semibold">SmartCampus Portal</h3>
-            <p class="mt-2 text-slate-600 text-sm">Student analytics, attendance, and LMS integration for universities.</p>
+            <p class="mt-2 text-slate-600 text-sm">Student analytics, attendance and LMS integration for universities.</p>
           </div>
           <div class="bg-white p-6 rounded-xl shadow hover:shadow-2xl transition">
-            <h3 class="font-semibold">AI Attendance Tracker</h3>
+            <h3 class="font-semibold">AI Attendance Tracker ⚡</h3>
             <p class="mt-2 text-slate-600 text-sm">Face recognition + attendance logs optimized for classrooms and events.</p>
           </div>
           <div class="bg-white p-6 rounded-xl shadow hover:shadow-2xl transition">
             <h3 class="font-semibold">BytePay (Prototype)</h3>
-            <p class="mt-2 text-slate-600 text-sm">Secure payment integration demo for campus and vendor payments.</p>
+            <p class="mt-2 text-slate-600 text-sm">Secure payment integration demo for campus payments and vendors.</p>
           </div>
         </div>
 
-        <!-- Request a Project Quote form -->
+        <!-- Quote form -->
         <div class="mt-12 max-w-3xl mx-auto bg-white p-6 rounded-xl shadow">
           <h4 class="font-semibold text-lg">Request a Project Quote</h4>
-          <p class="mt-2 text-slate-600 text-sm">Tell us about your idea — we’ll get back with a high-level estimate.</p>
+          <p class="mt-2 text-slate-600 text-sm">Tell us about your idea — we’ll reply with a high-level estimate.</p>
 
           <form id="quoteForm" class="mt-4 grid grid-cols-1 gap-3">
             <input id="q-name" required type="text" placeholder="Your name" class="p-3 border rounded" />
@@ -205,22 +197,75 @@
       </div>
     </section>
 
+    <!-- GALLERY / EVENTS -->
+    <section id="gallery" class="py-16 bg-white">
+      <div class="container mx-auto px-6 md:px-10">
+        <div class="text-center max-w-2xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold">Gallery & Events 📸</h2>
+          <p class="mt-3 text-slate-600">Hackathons, codeathons, workshops and community meetups — highlights below.</p>
+        </div>
+
+        <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <!-- placeholder images — replace with your images in /images/ -->
+          <div class="rounded-lg overflow-hidden">
+            <img src="https://placehold.co/600x400/60a5fa/ffffff?text=Hackathon+2024" alt="Hackathon 2024" class="w-full h-44 object-cover gallery-img cursor-pointer" data-full="https://placehold.co/1200x800/60a5fa/ffffff?text=Hackathon+2024">
+            <div class="p-3 text-sm">Hackathon 2024 — Winners showcase 🏆</div>
+          </div>
+
+          <div class="rounded-lg overflow-hidden">
+            <img src="https://placehold.co/600x400/34d399/ffffff?text=Codeathon" alt="Codeathon" class="w-full h-44 object-cover gallery-img cursor-pointer" data-full="https://placehold.co/1200x800/34d399/ffffff?text=Codeathon">
+            <div class="p-3 text-sm">Codeathon — 48-hour build sprint ⚡</div>
+          </div>
+
+          <div class="rounded-lg overflow-hidden">
+            <img src="https://placehold.co/600x400/fbbf24/ffffff?text=Workshop" alt="Workshop" class="w-full h-44 object-cover gallery-img cursor-pointer" data-full="https://placehold.co/1200x800/fbbf24/ffffff?text=Workshop">
+            <div class="p-3 text-sm">AI Workshop — Hands-on lab 🤖</div>
+          </div>
+
+          <div class="rounded-lg overflow-hidden">
+            <img src="https://placehold.co/600x400/f87171/ffffff?text=Seminar" alt="Seminar" class="w-full h-44 object-cover gallery-img cursor-pointer" data-full="https://placehold.co/1200x800/f87171/ffffff?text=Seminar">
+            <div class="p-3 text-sm">Guest Seminar — Industry talk 🎤</div>
+          </div>
+
+          <div class="rounded-lg overflow-hidden">
+            <img src="https://placehold.co/600x400/9f7aea/ffffff?text=Launch" alt="Product Launch" class="w-full h-44 object-cover gallery-img cursor-pointer" data-full="https://placehold.co/1200x800/9f7aea/ffffff?text=Launch">
+            <div class="p-3 text-sm">Product Launch — BytePay demo ✨</div>
+          </div>
+
+          <div class="rounded-lg overflow-hidden">
+            <img src="https://placehold.co/600x400/60a5fa/ffffff?text=Campus+Meet" alt="Campus Meet" class="w-full h-44 object-cover gallery-img cursor-pointer" data-full="https://placehold.co/1200x800/60a5fa/ffffff?text=Campus+Meet">
+            <div class="p-3 text-sm">Campus Meet — Outreach program 🤝</div>
+          </div>
+
+          <div class="rounded-lg overflow-hidden">
+            <img src="https://placehold.co/600x400/34d399/ffffff?text=Judging+Day" alt="Judging Day" class="w-full h-44 object-cover gallery-img cursor-pointer" data-full="https://placehold.co/1200x800/34d399/ffffff?text=Judging+Day">
+            <div class="p-3 text-sm">Judging Day — Project presentations 🧩</div>
+          </div>
+
+          <div class="rounded-lg overflow-hidden">
+            <img src="https://placehold.co/600x400/fbbf24/ffffff?text=Team+Celebration" alt="Team Celebration" class="w-full h-44 object-cover gallery-img cursor-pointer" data-full="https://placehold.co/1200x800/fbbf24/ffffff?text=Team+Celebration">
+            <div class="p-3 text-sm">Team Celebration — Milestone 🎉</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ABOUT -->
     <section id="about" class="py-16 bg-white">
       <div class="container mx-auto px-6 md:px-10">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           <div>
             <h2 class="text-2xl md:text-3xl font-bold">About Boni Bytes</h2>
-            <p class="mt-4 text-slate-600">Founded in 2024, Boni Bytes started as an edutech initiative and quickly evolved into a full-stack innovation lab. We train learners and build products that solve real problems.</p>
+            <p class="mt-4 text-slate-600">Founded in 2024, Boni Bytes began as an education initiative and evolved into a full-stack innovation lab. We train talent and build practical products that make an impact.</p>
             <ul class="mt-4 space-y-2 text-slate-600">
-              <li>Industry-aligned coursework and internships</li>
+              <li>Industry-aligned coursework & internships</li>
               <li>End-to-end product development</li>
-              <li>AI, Web, Mobile and IoT expertise</li>
+              <li>AI, Web, Mobile & IoT expertise</li>
             </ul>
           </div>
           <div class="rounded-xl bg-[var(--soft-blue)] p-6">
             <h3 class="font-semibold">Founder — Rahulprasad Veeramani</h3>
-            <p class="mt-2 text-slate-700">Entrepreneur and technologist focused on bridging education and industry with projects that deliver impact.</p>
+            <p class="mt-2 text-slate-700">Entrepreneur & technologist focused on bridging education and industry through hands-on projects.</p>
           </div>
         </div>
       </div>
@@ -231,7 +276,7 @@
       <div class="container mx-auto px-6 md:px-10">
         <div class="text-center">
           <h2 class="text-2xl md:text-3xl font-bold">What Clients & Students Say</h2>
-          <p class="mt-3 text-slate-600">Practical results, timely delivery, and strong mentorship.</p>
+          <p class="mt-3 text-slate-600">Results, mentorship, and on-time delivery.</p>
         </div>
 
         <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -240,11 +285,11 @@
             <p class="mt-3 font-semibold">— Dr. S. Kumar, University Admin</p>
           </div>
           <div class="p-6 bg-white rounded-xl shadow">
-            <p class="italic">"The bootcamp prepared our students for internships. Project-based approach works."</p>
+            <p class="italic">"Bootcamp prepared students for internships. Project-based approach works."</p>
             <p class="mt-3 font-semibold">— Priya, Placement Head</p>
           </div>
           <div class="p-6 bg-white rounded-xl shadow">
-            <p class="italic">"Their AI prototype saved hours for manual attendance tracking."</p>
+            <p class="italic">"Their AI prototype saved hours for attendance tracking."</p>
             <p class="mt-3 font-semibold">— Raj, CTO (Startup)</p>
           </div>
         </div>
@@ -260,9 +305,9 @@
             <p class="mt-3 text-slate-600">Questions about courses or projects? Drop a message and we’ll reply shortly.</p>
 
             <div class="mt-6 space-y-3 text-slate-600">
-              <p><strong>Email:</strong> contact@bonibytesedutech.live</p>
-              <p><strong>Location:</strong> (Your city) — Remote-friendly</p>
-              <p><strong>Working hours:</strong> Mon — Sat, 9 AM — 6 PM</p>
+              <p>📧 <strong>Email:</strong> contact@bonibytesedutech.live</p>
+              <p>📍 <strong>Location:</strong> (Your city) — Remote-friendly</p>
+              <p>⏰ <strong>Hours:</strong> Mon — Sat, 9 AM — 6 PM</p>
             </div>
           </div>
 
@@ -314,28 +359,37 @@
     <div id="chatMessages" class="p-3 h-64 overflow-y-auto space-y-2 text-sm bg-white"></div>
 
     <div class="p-3 border-t bg-white flex gap-2">
-      <input id="chatInput" class="flex-1 p-2 border rounded-lg text-sm" placeholder="Ask about courses or projects..." />
+      <input id="chatInput" class="flex-1 p-2 border rounded-lg text-sm" placeholder="Ask about courses, events or projects..." />
       <button id="chatSend" class="px-3 py-2 bg-[var(--brand-blue)] text-white rounded-lg">Send</button>
+    </div>
+  </div>
+
+  <!-- IMAGE MODAL -->
+  <div id="imageModal" class="fixed inset-0 bg-black bg-opacity-70 z-50 hidden items-center justify-center p-4">
+    <div class="bg-white rounded-lg overflow-hidden max-w-4xl w-full">
+      <div class="flex justify-end p-2"><button id="closeImageModal" class="text-xl font-bold">&times;</button></div>
+      <img id="imageModalContent" src="" alt="Event full view" class="w-full h-auto object-contain">
+      <div class="p-4 text-sm text-slate-600" id="imageModalCaption"></div>
     </div>
   </div>
 
   <!-- SCRIPTS -->
   <script>
-    // Populate year
+    // Year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Mobile menu toggle
+    // Mobile menu
     const mobileOpen = document.getElementById('mobile-open');
     const mobileMenu = document.getElementById('mobile-menu');
     mobileOpen?.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
 
-    // Smooth active link highlight on scroll
+    // Active nav on scroll
     const navLinks = document.querySelectorAll('.nav-link');
     const sections = document.querySelectorAll('section[id]');
     function onScroll() {
-      const scrollPos = window.scrollY + 80;
+      const scrollPos = window.scrollY + 120;
       sections.forEach(s => {
-        if (s.offsetTop <= scrollPos && (s.offsetTop + s.offsetHeight) > scrollPos) {
+        if (s.offsetTop <= scrollPos && s.offsetTop + s.offsetHeight > scrollPos) {
           navLinks.forEach(a => a.classList.remove('text-[var(--brand-blue)]','font-semibold'));
           const link = document.querySelector('.nav-link[href="#' + s.id + '"]');
           if (link) link.classList.add('text-[var(--brand-blue)]','font-semibold');
@@ -345,7 +399,7 @@
     window.addEventListener('scroll', onScroll);
     onScroll();
 
-    // Quote form (client-side demo)
+    // Quote form (demo)
     const quoteForm = document.getElementById('quoteForm');
     const quoteMessage = document.getElementById('quoteMessage');
     const quoteReset = document.getElementById('quoteReset');
@@ -355,14 +409,12 @@
       const email = document.getElementById('q-email').value.trim();
       const type = document.getElementById('q-type').value;
       const desc = document.getElementById('q-desc').value.trim();
-      // Basic client-side validation
       if (!name || !email || !type || !desc) {
         quoteMessage.textContent = 'Please fill all fields.';
         quoteMessage.classList.remove('hidden');
         quoteMessage.classList.add('text-red-600');
         return;
       }
-      // Demo response: in production, send to your backend or email service
       quoteMessage.textContent = 'Thanks — your request has been received. We will contact you shortly.';
       quoteMessage.classList.remove('hidden');
       quoteMessage.classList.remove('text-red-600');
@@ -371,19 +423,18 @@
     });
     quoteReset?.addEventListener('click', () => { quoteForm.reset(); quoteMessage.classList.add('hidden'); });
 
-    // Contact form (client-side demo)
+    // Contact form (demo)
     const contactForm = document.getElementById('contactForm');
     const contactStatus = document.getElementById('contactStatus');
     contactForm?.addEventListener('submit', (e) => {
       e.preventDefault();
-      // Demo: show "sent" message
       contactStatus.classList.remove('hidden');
       contactForm.reset();
       setTimeout(() => contactStatus.classList.add('hidden'), 4000);
     });
     document.getElementById('contactReset')?.addEventListener('click', () => contactForm.reset());
 
-    // Chatbot UI logic (dummy AI)
+    // Chatbot (dummy)
     const chatToggle = document.getElementById('chatToggle');
     const chatWindow = document.getElementById('chatWindow');
     const chatClose = document.getElementById('chatClose');
@@ -405,17 +456,24 @@
     }
 
     function botReply(userText) {
-      // Simple dummy responses — adjust or expand as needed
       const lower = userText.toLowerCase();
-      if (lower.includes('course') || lower.includes('learn')) return "We offer Full-Stack, AI, Mobile, IoT and Data courses. Visit the Courses section for details or tell me which skill you want to learn.";
-      if (lower.includes('project') || lower.includes('build')) return "Tell me a little about your project (web, mobile, AI) and your timeline — I can prepare a high-level scope.";
-      if (lower.includes('price') || lower.includes('cost') || lower.includes('quote')) return "Project quotes depend on scope. Use the 'Request a Project Quote' form in the Project Lab and we'll provide an estimate.";
-      if (lower.includes('hello') || lower.includes('hi')) return "Hi! I'm Boni AI — ask me about Courses, Projects, or how to get started.";
-      // Fallback reply
-      return "Thanks for the message. We'll follow up soon — or please fill the Request a Project Quote form for detailed project estimates.";
+      if (lower.includes('course') || lower.includes('learn')) return "We offer Full-Stack, AI, Mobile, IoT and Data courses. Visit the Courses section or ask which skill you want to learn 🎓.";
+      if (lower.includes('project') || lower.includes('build')) return "Tell me a little about your project (web, mobile, AI) and your timeline — I can prepare a high-level scope 🛠️.";
+      if (lower.includes('hackathon') || lower.includes('codeathon')) return "Our hackathons are 24–48 hour sprints with mentorship and prizes. Check the Gallery for past events ⚡.";
+      if (lower.includes('price') || lower.includes('cost') || lower.includes('quote')) return "Project quotes depend on scope. Use the 'Request a Project Quote' form and we'll provide an estimate 💬.";
+      if (lower.includes('hello') || lower.includes('hi')) return "Hi! I'm Boni AI — ask me about Courses, Projects, or upcoming events 🚀.";
+      return "Thanks! We'll follow up soon — or please fill the Request a Project Quote form for detailed project estimates.";
     }
 
-    chatToggle?.addEventListener('click', () => chatWindow.classList.toggle('hidden'));
+    chatToggle?.addEventListener('click', () => {
+      chatWindow.classList.toggle('hidden');
+      if (!chatWindow.classList.contains('hidden')) {
+        // initial message
+        if (chatMessages.children.length === 0) {
+          appendChat('bot', "Hi! I'm Boni AI 🤖 — ask about courses, projects or events. Try: 'Tell me about your AI course' or 'How to request a project quote?'");
+        }
+      }
+    });
     chatClose?.addEventListener('click', () => chatWindow.classList.add('hidden'));
     chatSend?.addEventListener('click', () => {
       const text = chatInput.value.trim();
@@ -423,21 +481,42 @@
       appendChat('user', text);
       chatInput.value = '';
       appendChat('bot', '💭 Thinking...');
-      // Replace last bot "thinking" with reply after delay
       setTimeout(() => {
-        // remove last "thinking"
+        // remove last thinking if present
         const last = chatMessages.lastChild;
         if (last && last.innerText.includes('Thinking')) chatMessages.removeChild(last);
         appendChat('bot', botReply(text));
-      }, 900);
+      }, 850);
     });
     chatInput?.addEventListener('keypress', (e) => { if (e.key === 'Enter') chatSend.click(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { chatWindow.classList.add('hidden'); mobileMenu.classList.add('hidden'); } });
 
-    // Accessibility: close chat with Esc
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        chatWindow.classList.add('hidden');
-        mobileMenu.classList.add('hidden');
+    // Gallery image modal
+    const galleryImgs = document.querySelectorAll('.gallery-img');
+    const imageModal = document.getElementById('imageModal');
+    const imageModalContent = document.getElementById('imageModalContent');
+    const imageModalCaption = document.getElementById('imageModalCaption');
+    const closeImageModal = document.getElementById('closeImageModal');
+
+    galleryImgs.forEach(img => {
+      img.addEventListener('click', (e) => {
+        const full = img.getAttribute('data-full') || img.src;
+        imageModalContent.src = full;
+        imageModalCaption.textContent = img.alt || img.getAttribute('title') || '';
+        imageModal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+    closeImageModal?.addEventListener('click', () => {
+      imageModal.classList.add('hidden');
+      imageModalContent.src = '';
+      document.body.style.overflow = 'auto';
+    });
+    imageModal?.addEventListener('click', (e) => {
+      if (e.target === imageModal) {
+        imageModal.classList.add('hidden');
+        imageModalContent.src = '';
+        document.body.style.overflow = 'auto';
       }
     });
   </script>
