@@ -30,7 +30,7 @@
 <body class="bg-white text-slate-800 antialiased">
 
   <!-- NAVBAR -->
- <!-- Navbar Start -->
+<!-- Navbar Start -->
 <nav class="navbar">
   <div class="logo">MyWebsite</div>
   <div class="menu-toggle" id="mobile-menu">
@@ -68,7 +68,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: linear-gradient(90deg, #ff6f61, #ff8f6d);
+    background-color: #ffffff;
     padding: 15px 30px;
     position: sticky;
     top: 0;
@@ -79,7 +79,7 @@
   .navbar .logo {
     font-size: 1.8rem;
     font-weight: bold;
-    color: #fff;
+    color: #0d47a1; /* Blue color */
     letter-spacing: 1px;
   }
 
@@ -90,7 +90,7 @@
   }
 
   .nav-links li a {
-    color: #fff;
+    color: #0d47a1; /* Blue color */
     text-decoration: none;
     font-weight: 500;
     position: relative;
@@ -102,7 +102,7 @@
     display: block;
     width: 0;
     height: 2px;
-    background: #fff;
+    background: #0d47a1;
     transition: width 0.3s;
     position: absolute;
     bottom: -5px;
@@ -114,18 +114,20 @@
   }
 
   .nav-links li a:hover {
-    color: #fff;
+    color: #1565c0; /* Slightly lighter blue on hover */
   }
 
   .youtube-link {
-    background-color: #FF0000;
+    background-color: #0d47a1;
+    color: #ffffff;
     padding: 5px 12px;
     border-radius: 5px;
     font-weight: bold;
-    transition: transform 0.3s;
+    transition: background-color 0.3s, transform 0.3s;
   }
 
   .youtube-link:hover {
+    background-color: #1565c0;
     transform: scale(1.05);
   }
 
@@ -140,7 +142,7 @@
   .menu-toggle span {
     height: 3px;
     width: 25px;
-    background: #fff;
+    background: #0d47a1;
     border-radius: 3px;
   }
 
@@ -154,17 +156,27 @@
       position: absolute;
       top: 70px;
       right: 0;
-      background: linear-gradient(90deg, #ff6f61, #ff8f6d);
+      background-color: #ffffff;
       flex-direction: column;
-      width: 200px;
       gap: 15px;
+      width: 200px;
       padding: 20px;
       border-radius: 8px 0 0 8px;
       display: none;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     }
 
     .nav-links.active {
       display: flex;
+    }
+
+    .nav-links li a {
+      color: #0d47a1;
+    }
+
+    .youtube-link {
+      background-color: #0d47a1;
+      color: #fff;
     }
   }
 </style>
@@ -177,7 +189,6 @@
     navLinks.classList.toggle('active');
   });
 </script>
-
 
     <!-- HERO -->
     <section id="home" class="min-h-[72vh] flex items-center">
@@ -682,6 +693,7 @@
   </script>
 </body>
 </html>
+
 
 
 
