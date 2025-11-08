@@ -577,6 +577,31 @@
 
   <!-- SCRIPTS -->
   <script>
+  const navbarHeight = document.querySelector('.navbar').offsetHeight;
+
+  document.querySelectorAll('.nav-links a').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const targetID = this.getAttribute('href').substring(1);
+      const targetSection = document.getElementById(targetID);
+      if (targetSection) {
+        const sectionPosition = targetSection.offsetTop - navbarHeight;
+        window.scrollTo({
+          top: sectionPosition,
+          behavior: 'smooth'
+        });
+      }
+
+      // Close mobile menu if open
+      const navLinks = document.getElementById('nav-links');
+      if(navLinks.classList.contains('active')){
+        navLinks.classList.remove('active');
+      }
+    });
+  });
+</script>
+
+  <script>
     // Year
     document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -724,6 +749,7 @@
   </script>
 </body>
 </html>
+
 
 
 
