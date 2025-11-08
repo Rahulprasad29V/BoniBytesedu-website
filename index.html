@@ -30,10 +30,14 @@
 <body class="bg-white text-slate-800 antialiased">
 
   <!-- NAVBAR -->
-  <!-- Navbar Start -->
+ <!-- Navbar Start -->
 <nav class="navbar">
-  <div class="logo">My Website</div>
-  <div class="menu-toggle" id="mobile-menu">&#9776;</div> <!-- Hamburger icon -->
+  <div class="logo">MyWebsite</div>
+  <div class="menu-toggle" id="mobile-menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
   <ul class="nav-links" id="nav-links">
     <li><a href="#home">Home</a></li>
     <li><a href="#courses">Courses</a></li>
@@ -41,13 +45,20 @@
     <li><a href="#gallery">Gallery 📸</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#youtube">YouTube</a></li>
+    <li><a href="#youtube" class="youtube-link">YouTube</a></li>
   </ul>
 </nav>
 <!-- Navbar End -->
 
-<!-- Smooth Scroll -->
 <style>
+  /* Basic Reset */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
   html {
     scroll-behavior: smooth;
   }
@@ -57,61 +68,107 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #333;
-    padding: 10px 20px;
-    position: relative;
+    background: linear-gradient(90deg, #ff6f61, #ff8f6d);
+    padding: 15px 30px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
   }
 
   .navbar .logo {
-    color: white;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #fff;
+    letter-spacing: 1px;
   }
 
   .nav-links {
     list-style: none;
     display: flex;
-    gap: 20px;
+    gap: 25px;
   }
 
   .nav-links li a {
-    color: white;
+    color: #fff;
     text-decoration: none;
-    font-size: 1rem;
+    font-weight: 500;
+    position: relative;
+    transition: color 0.3s;
   }
 
+  .nav-links li a::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #fff;
+    transition: width 0.3s;
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+  }
+
+  .nav-links li a:hover::after {
+    width: 100%;
+  }
+
+  .nav-links li a:hover {
+    color: #fff;
+  }
+
+  .youtube-link {
+    background-color: #FF0000;
+    padding: 5px 12px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: transform 0.3s;
+  }
+
+  .youtube-link:hover {
+    transform: scale(1.05);
+  }
+
+  /* Hamburger Menu */
   .menu-toggle {
     display: none;
-    font-size: 1.5rem;
-    color: white;
+    flex-direction: column;
     cursor: pointer;
+    gap: 5px;
+  }
+
+  .menu-toggle span {
+    height: 3px;
+    width: 25px;
+    background: #fff;
+    border-radius: 3px;
   }
 
   /* Mobile Styles */
   @media screen and (max-width: 768px) {
+    .menu-toggle {
+      display: flex;
+    }
+
     .nav-links {
-      display: none;
-      flex-direction: column;
-      gap: 10px;
-      background-color: #333;
       position: absolute;
-      top: 60px;
+      top: 70px;
       right: 0;
+      background: linear-gradient(90deg, #ff6f61, #ff8f6d);
+      flex-direction: column;
       width: 200px;
+      gap: 15px;
       padding: 20px;
-      border-radius: 5px;
+      border-radius: 8px 0 0 8px;
+      display: none;
     }
 
     .nav-links.active {
       display: flex;
     }
-
-    .menu-toggle {
-      display: block;
-    }
   }
 </style>
 
-<!-- Mobile Menu Toggle Script -->
 <script>
   const mobileMenu = document.getElementById('mobile-menu');
   const navLinks = document.getElementById('nav-links');
@@ -120,6 +177,7 @@
     navLinks.classList.toggle('active');
   });
 </script>
+
 
     <!-- HERO -->
     <section id="home" class="min-h-[72vh] flex items-center">
@@ -624,6 +682,7 @@
   </script>
 </body>
 </html>
+
 
 
 
