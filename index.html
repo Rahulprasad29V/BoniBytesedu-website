@@ -173,7 +173,7 @@
           <h4 class="font-semibold text-lg">Request a Project Quote</h4>
           <p class="mt-2 text-slate-600 text-sm">Tell us about your idea — we’ll reply with a high-level estimate.</p>
 
-          <form id="quoteForm" class="mt-4 grid grid-cols-1 gap-3">
+          <form id="contactForm" action="https://formspree.io/f/xanawjwk" method="POST">
             <input id="q-name" required type="text" placeholder="Your name" class="p-3 border rounded" />
             <input id="q-email" required type="email" placeholder="Email address" class="p-3 border rounded" />
             <select id="q-type" class="p-3 border rounded">
@@ -297,7 +297,7 @@
     </section>
 
     <!-- CONTACT -->
-    <section id="contact" class="py-16 bg-white">
+    <form id="contactForm" action="https://formspree.io/f/xanawjwk" method="POST">
       <div class="container mx-auto px-6 md:px-10">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
           <div>
@@ -522,6 +522,7 @@
   </script>
 </body>
 </html>
+
 
 
 
