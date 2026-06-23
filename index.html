@@ -1,818 +1,475 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <link rel="icon" href="logo.png" type="image/png">
-  <title>Boni Bytes Edutech — Edutech & Projects</title>
-  <meta name="description" content="Boni Bytes blends education and real-world tech projects — training, workshops, hackathons and custom web & mobile solutions." />
-  <meta name="description" content="Boni Bytes Edutech offers online courses, project labs, and tutorials to help students learn coding, technology, and digital skills effectively.">
-  <meta name="keywords" content="Coding courses, Project lab, Online learning, Technology education, Boni Bytes Edutech">
-  <meta name="theme-color" content="#2563EB" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Tailwind CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<title>Boni Bytes Edutech | Online Internships & Website Development</title>
 
-  <style>
-    :root {
-      --brand-blue: #2563EB;
-      --soft-blue: #E9F2FF;
-    }
-    html,body { font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; }
-    .glass { backdrop-filter: blur(6px) saturate(120%); background-color: rgba(255,255,255,0.75); }
-    @keyframes popIn { from { transform: translateY(8px) scale(0.98); opacity: 0 } to { transform: translateY(0) scale(1); opacity: 1 } }
-    .animate-pop { animation: popIn 220ms ease-out; }
-    .msg-user { background:#f1f5f9; color:#0f172a; }
-    .msg-bot { background:var(--soft-blue); color:#0f172a; }
-    .gallery-img { transition: transform .25s ease, box-shadow .25s; }
-    .gallery-img:hover { transform: translateY(-6px) scale(1.02); box-shadow: 0 18px 30px rgba(37,99,235,0.12); }
-  </style>
-</head>
-<body class="bg-white text-slate-800 antialiased">
+<meta name="description"
+content="Boni Bytes Edutech provides Online Internships, Web Development, AI Solutions and Real World Projects for Students and Businesses.">
 
-  <!-- NAVBAR -->
-<!-- Navbar Start -->
-<!-- Navbar Start -->
-<nav class="navbar">
-  <!-- Logo + Brand Name -->
-  <div class="logo">
-    <img src="logo.png" alt="Boni Bytes Edutech Logo" class="logo-img">
-    <span>Boni Bytes Edutech</span>
-  </div>
-
-  <!-- Hamburger for mobile -->
-  <div class="menu-toggle" id="mobile-menu">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-
-  <!-- Menu Links -->
-  <ul class="nav-links" id="nav-links">
-    <li><a href="#home">Home</a></li>
-    <li><a href="#courses">Courses</a></li>
-    <li><a href="#project-lab">Project Lab</a></li>
-    <li><a href="#gallery">Gallery</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#youtube">YouTube</a></li>
-  </ul>
-</nav>
-<!-- Navbar End -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-  html {
-  scroll-behavior: smooth;
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Inter',sans-serif;
 }
 
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
+body{
+background:#ffffff;
+color:#1e293b;
+line-height:1.6;
+}
 
-  html {
-    scroll-behavior: smooth;
-  }
+.container{
+max-width:1200px;
+margin:auto;
+padding:0 20px;
+}
 
-  .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #ffffff;
-    padding: 15px 30px;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  }
+:root{
+--primary:#2563eb;
+--dark:#0f172a;
+--gray:#64748b;
+--light:#f8fafc;
+}
 
-  /* Logo and Brand Name */
-  .logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
+/* NAVBAR */
 
-  .logo-img {
-    height: 40px;
-    width: 40px;
-    object-fit: contain;
-  }
+nav{
+position:fixed;
+top:0;
+width:100%;
+background:white;
+padding:18px 0;
+box-shadow:0 2px 10px rgba(0,0,0,.08);
+z-index:1000;
+}
 
-  .logo span {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #0d47a1;
-  }
+.nav-content{
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
 
-  /* Navbar Links */
-  .nav-links {
-    list-style: none;
-    display: flex;
-    gap: 25px;
-  }
+.logo{
+display:flex;
+align-items:center;
+gap:10px;
+font-size:1.3rem;
+font-weight:800;
+color:var(--dark);
+}
 
-  .nav-links li a {
-    color: #0d47a1;
-    text-decoration: none;
-    font-weight: 500;
-    position: relative;
-    transition: color 0.3s;
-  }
+.logo img{
+width:45px;
+}
 
-  .nav-links li a::after {
-    content: '';
-    display: block;
-    width: 0;
-    height: 2px;
-    background: #0d47a1;
-    transition: width 0.3s;
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-  }
+.nav-links{
+display:flex;
+gap:25px;
+}
 
-  .nav-links li a:hover::after {
-    width: 100%;
-  }
+.nav-links a{
+text-decoration:none;
+color:var(--dark);
+font-weight:600;
+}
 
-  .nav-links li a:hover {
-    color: #1565c0;
-  }
+.nav-links a:hover{
+color:var(--primary);
+}
 
-  .youtube-link {
-    color: #ffffff;
-    padding: 5px 12px;
-    border-radius: 5px;
-    font-weight: bold;
-    transition: background-color 0.3s, transform 0.3s;
-  }
+/* HERO */
 
-  .youtube-link:hover {
-    background-color: #1565c0;
-    transform: scale(1.05);
-  }
+.hero{
+padding-top:120px;
+min-height:100vh;
+display:flex;
+align-items:center;
+background:
+linear-gradient(
+135deg,
+#eff6ff 0%,
+#ffffff 100%
+);
+}
 
-  /* Hamburger Menu */
-  .menu-toggle {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-    gap: 5px;
-  }
+.hero-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:60px;
+align-items:center;
+}
 
-  .menu-toggle span {
-    height: 3px;
-    width: 25px;
-    background: #0d47a1;
-    border-radius: 3px;
-  }
+.badge{
+display:inline-block;
+background:#dbeafe;
+color:#1d4ed8;
+padding:10px 18px;
+border-radius:30px;
+font-size:.9rem;
+font-weight:600;
+}
 
-  /* Mobile Styles */
-  @media screen and (max-width: 768px) {
-    .menu-toggle {
-      display: flex;
-    }
+.hero h1{
+font-size:4rem;
+line-height:1.1;
+font-weight:800;
+margin-top:20px;
+color:var(--dark);
+}
 
-    .nav-links {
-      position: absolute;
-      top: 70px;
-      right: 0;
-      background-color: #ffffff;
-      flex-direction: column;
-      gap: 15px;
-      width: 220px;
-      padding: 20px;
-      border-radius: 8px 0 0 8px;
-      display: none;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    }
+.hero p{
+margin-top:20px;
+font-size:1.1rem;
+color:var(--gray);
+}
 
-    .nav-links.active {
-      display: flex;
-    }
+.buttons{
+margin-top:35px;
+display:flex;
+gap:15px;
+flex-wrap:wrap;
+}
 
-    .nav-links li a {
-      color: #0d47a1;
-    }
+.btn-primary{
+background:var(--primary);
+color:white;
+padding:14px 28px;
+border-radius:10px;
+text-decoration:none;
+font-weight:600;
+}
 
-    .youtube-link {
-      color: #fff;
-    }
-  }
+.btn-primary:hover{
+opacity:.9;
+}
+
+.btn-outline{
+border:2px solid var(--primary);
+color:var(--primary);
+padding:14px 28px;
+border-radius:10px;
+text-decoration:none;
+font-weight:600;
+}
+
+.stats{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:20px;
+margin-top:50px;
+}
+
+.stat{
+background:white;
+padding:20px;
+border-radius:15px;
+text-align:center;
+box-shadow:0 10px 25px rgba(0,0,0,.05);
+}
+
+.stat h3{
+font-size:2rem;
+color:var(--primary);
+}
+
+.hero-image img{
+width:100%;
+max-width:450px;
+display:block;
+margin:auto;
+}
+
+/* SERVICES */
+
+section{
+padding:90px 0;
+}
+
+.section-title{
+text-align:center;
+font-size:2.5rem;
+font-weight:800;
+margin-bottom:15px;
+}
+
+.section-text{
+text-align:center;
+max-width:700px;
+margin:auto;
+color:var(--gray);
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:25px;
+margin-top:50px;
+}
+
+.card{
+background:white;
+padding:30px;
+border-radius:20px;
+border:1px solid #e2e8f0;
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-8px);
+box-shadow:0 15px 40px rgba(37,99,235,.12);
+}
+
+.card h3{
+margin-bottom:10px;
+}
+
+/* ABOUT */
+
+.about{
+background:#f8fafc;
+text-align:center;
+}
+
+.about p{
+max-width:800px;
+margin:20px auto;
+color:var(--gray);
+}
+
+/* CONTACT */
+
+.contact{
+text-align:center;
+}
+
+.contact-box{
+margin-top:40px;
+background:#f8fafc;
+padding:40px;
+border-radius:20px;
+}
+
+.contact-box p{
+margin:10px 0;
+}
+
+/* FOOTER */
+
+footer{
+background:#0f172a;
+color:white;
+text-align:center;
+padding:30px;
+}
+
+/* WHATSAPP */
+
+.whatsapp{
+position:fixed;
+bottom:20px;
+left:20px;
+background:#25d366;
+color:white;
+width:60px;
+height:60px;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:50%;
+font-size:30px;
+text-decoration:none;
+box-shadow:0 10px 25px rgba(0,0,0,.2);
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.hero-grid,
+.cards{
+grid-template-columns:1fr;
+}
+
+.hero h1{
+font-size:2.5rem;
+}
+
+.stats{
+grid-template-columns:1fr;
+}
+
+.nav-links{
+display:none;
+}
+
+}
+
 </style>
+</head>
 
-<script>
-  const mobileMenu = document.getElementById('mobile-menu');
-  const navLinks = document.getElementById('nav-links');
+<body>
 
-  mobileMenu.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-  });
-</script>
+<nav>
+<div class="container nav-content">
 
-<script>
-  const mobileMenu = document.getElementById('mobile-menu');
-  const navLinks = document.getElementById('nav-links');
+<div class="logo">
+<img src="logo.png" alt="Logo">
+<span>Boni Bytes Edutech</span>
+</div>
 
-  mobileMenu.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-  });
-</script>
+<div class="nav-links">
+<a href="#home">Home</a>
+<a href="#services">Services</a>
+<a href="#about">About</a>
+<a href="#contact">Contact</a>
+</div>
 
-    <!-- HERO -->
-    <section id="home" class="min-h-[72vh] flex items-center">
-      <div class="container mx-auto px-6 md:px-10 flex flex-col-reverse md:flex-row items-center gap-10">
-        <div class="md:w-1/2">
-          <h1 class="text-3xl md:text-5xl font-extrabold leading-tight text-slate-900">
-            Empowering Minds & Building the Future 💙
-          </h1>
-          <p class="mt-4 text-slate-600 max-w-xl">
-            Boni Bytes Edutech blends education with hands-on product engineering — training learners and delivering real-world web, mobile and AI projects for businesses, universities, and startups. 🚀🎓
-          </p>
+</div>
+</nav>
 
-          <div class="mt-6 flex flex-wrap gap-3">
-            <a href="#courses" class="inline-flex items-center px-5 py-3 rounded-full border border-[var(--brand-blue)] text-[var(--brand-blue)] font-semibold hover:bg-[var(--brand-blue)] hover:text-white transition">🎓 Learn</a>
-            <a href="#project-lab" class="inline-flex items-center px-5 py-3 rounded-full bg-[var(--brand-blue)] text-white font-semibold hover:opacity-90 transition">🛠️ Build</a>
-          </div>
+<section class="hero" id="home">
 
-          <div class="mt-8 grid grid-cols-2 gap-4 text-sm text-slate-600">
-            <div>
-              <p class="font-semibold text-slate-800">Trusted by</p>
-              <p class="mt-1">Universities • Startups • SMEs</p>
-            </div>
-            <div>
-              <p class="font-semibold text-slate-800">Services</p>
-              <p class="mt-1">Training • Projects • Consulting</p>
-            </div>
-          </div>
-        </div>
+<div class="container hero-grid">
 
-        <div class="md:w-1/2 flex justify-center">
-          <div class="w-[380px] h-[300px] rounded-xl bg-gradient-to-br from-[var(--brand-blue)] to-blue-400 text-white flex items-center justify-center shadow-xl">
-            <div class="text-center px-6">
-              <img src="logo.png" alt="Boni Bytes logo" class="mx-auto h-40 w-50 object-contain mb-3" />
-              <div class="text-2xl font-bold">Boni Bytes Edutech</div>
-              <div class="mt-2 text-sm">Edutech & Project Lab ⚡</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+<div>
 
-    <!-- COURSES -->
-    <section id="courses" class="py-16 bg-white">
-      <div class="container mx-auto px-6 md:px-10">
-        <div class="text-center max-w-2xl mx-auto">
-          <h2 class="text-2xl md:text-3xl font-bold">Learning & Training 🎓</h2>
-          <p class="mt-3 text-slate-600">Instructor-led courses, bootcamps, and practical workshops designed for industry-ready skills.</p>
-        </div>
+<span class="badge">
+Registered Startup • Online Internships • Web Development
+</span>
 
-        <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          <article class="p-6 border rounded-xl hover:shadow-lg transition">
-            <h3 class="font-semibold text-lg">Full-Stack Development</h3>
-            <p class="mt-2 text-slate-600 text-sm">Modern web stacks, deployments, and production best-practices.</p>
-          </article>
+<h1>
+Build Skills.<br>
+Build Websites.<br>
+Build Your Future.
+</h1>
 
-          <article class="p-6 border rounded-xl hover:shadow-lg transition">
-            <h3 class="font-semibold text-lg">AI & Machine Learning 🤖</h3>
-            <p class="mt-2 text-slate-600 text-sm">Practical ML projects, NLP, and model deployment for real problems.</p>
-          </article>
+<p>
+Boni Bytes Edutech provides industry-focused online internships and professional website development services for students, startups, colleges and businesses.
+</p>
 
-          <article class="p-6 border rounded-xl hover:shadow-lg transition">
-            <h3 class="font-semibold text-lg">Mobile Apps 📱</h3>
-            <p class="mt-2 text-slate-600 text-sm">Cross-platform apps with great UX and performance.</p>
-          </article>
+<div class="buttons">
 
-          <article class="p-6 border rounded-xl hover:shadow-lg transition">
-            <h3 class="font-semibold text-lg">IoT & Robotics</h3>
-            <p class="mt-2 text-slate-600 text-sm">Sensors, prototypes and hardware-integration projects.</p>
-          </article>
+<a href="#contact" class="btn-primary">
+Apply Internship
+</a>
 
-          <article class="p-6 border rounded-xl hover:shadow-lg transition">
-            <h3 class="font-semibold text-lg">Data Analytics</h3>
-            <p class="mt-2 text-slate-600 text-sm">ETL, dashboards and insight-driven product features.</p>
-          </article>
+<a href="#services" class="btn-outline">
+Our Services
+</a>
 
-          <article class="p-6 border rounded-xl hover:shadow-lg transition">
-            <h3 class="font-semibold text-lg">Cybersecurity Essentials</h3>
-            <p class="mt-2 text-slate-600 text-sm">Security basics, testing and safe development workflows.</p>
-          </article>
-        </div>
-      </div>
-    </section>
+</div>
 
-     <!-- YouTube Section Start -->
-<section id="youtube" style="padding:50px; background-color:#f9f9f9; text-align:center;">
-  <h2 style="font-size:2rem; margin-bottom:20px;">Check Out Our YouTube Channel</h2>
+<div class="stats">
 
-  <!-- Subscribe Button -->
-  <div style="margin-bottom:30px;">
-    <div class="g-ytsubscribe"
-         data-channelid="UCRxvJXFXXoVJrCh9XugHMpg"
-         data-layout="default"
-         data-count="default">
-    </div>
-  </div>
+<div class="stat">
+<h3>100+</h3>
+<p>Students</p>
+</div>
 
-  <!-- Embed Videos -->
-  <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:20px;">
-    <!-- Video 1 -->
-    <iframe width="300" height="169"
-            src="https://www.youtube.com/embed/DHZDzalUtkg"
-            title="YouTube video player" frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen>
-    </iframe>
+<div class="stat">
+<h3>50+</h3>
+<p>Internships</p>
+</div>
 
-    <!-- Video 2 (placeholder) -->
-    <iframe width="300" height="169"
-            src="https://www.youtube.com/embed/VIDEO_ID_2"
-            title="YouTube video player" frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen>
-    </iframe>
+<div class="stat">
+<h3>20+</h3>
+<p>Projects</p>
+</div>
 
-    <!-- Video 3 (placeholder) -->
-    <iframe width="300" height="169"
-            src="https://www.youtube.com/embed/VIDEO_ID_3"
-            title="YouTube video player" frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen>
-    </iframe>
-  </div>
+</div>
+
+</div>
+
+<div class="hero-image">
+<img src="logo.png" alt="Boni Bytes">
+</div>
+
+</div>
+
 </section>
-<script src="https://apis.google.com/js/platform.js"></script>
 
-<!-- YouTube Section End -->
+<section id="services">
 
+<div class="container">
 
-    <!-- PROJECT LAB -->
-    <section id="project-lab" class="py-16 bg-slate-50">
-      <div class="container mx-auto px-6 md:px-10">
-        <div class="text-center max-w-2xl mx-auto">
-          <h2 class="text-2xl md:text-3xl font-bold">Project Lab & Client Work 🛠️</h2>
-          <p class="mt-3 text-slate-600">Prototypes, client apps, and system integrations — built with modern best practices.</p>
-        </div>
+<h2 class="section-title">Our Services</h2>
 
-        <div class="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div class="bg-white p-6 rounded-xl shadow hover:shadow-2xl transition">
-            <h3 class="font-semibold">SmartCampus Portal</h3>
-            <p class="mt-2 text-slate-600 text-sm">Student analytics, attendance and LMS integration for universities.</p>
-          </div>
-          <div class="bg-white p-6 rounded-xl shadow hover:shadow-2xl transition">
-            <h3 class="font-semibold">AI Attendance Tracker ⚡</h3>
-            <p class="mt-2 text-slate-600 text-sm">Face recognition + attendance logs optimized for classrooms and events.</p>
-          </div>
-          <div class="bg-white p-6 rounded-xl shadow hover:shadow-2xl transition">
-            <h3 class="font-semibold">BytePay (Prototype)</h3>
-            <p class="mt-2 text-slate-600 text-sm">Secure payment integration demo for campus payments and vendors.</p>
-          </div>
-        </div>
+<p class="section-text">
+Helping students gain practical experience and businesses build a strong online presence.
+</p>
 
-        <!-- Quote form -->
-        <div class="mt-12 max-w-3xl mx-auto bg-white p-6 rounded-xl shadow">
-          <h4 class="font-semibold text-lg">Request a Project Quote</h4>
-          <p class="mt-2 text-slate-600 text-sm">Tell us about your idea — we’ll reply with a high-level estimate.</p>
+<div class="cards">
 
-          <form id="quoteForm" class="mt-4 grid grid-cols-1 gap-3">
-            <input id="q-name" required type="text" placeholder="Your name" class="p-3 border rounded" />
-            <input id="q-email" required type="email" placeholder="Email address" class="p-3 border rounded" />
-            <select id="q-type" class="p-3 border rounded">
-              <option value="">Select project type</option>
-              <option>Web app</option>
-              <option>Mobile app</option>
-              <option>AI/ML solution</option>
-              <option>IoT/Hardware</option>
-              <option>Other</option>
-            </select>
-            <textarea id="q-desc" rows="4" placeholder="Brief project description" class="p-3 border rounded"></textarea>
+<div class="card">
+<h3>Online Internships</h3>
+<p>Industry-oriented internships with real-world projects and certificates.</p>
+</div>
 
-            <div class="flex items-center gap-3">
-              <button type="submit" class="inline-flex items-center px-5 py-3 bg-[var(--brand-blue)] text-white rounded-full">Request Quote</button>
-              <button id="quoteReset" type="button" class="px-4 py-2 border rounded">Reset</button>
-            </div>
+<div class="card">
+<h3>Website Development</h3>
+<p>Professional websites for startups, colleges, businesses and entrepreneurs.</p>
+</div>
 
-            <p id="quoteMessage" class="text-sm text-green-600 hidden"></p>
-          </form>
-        </div>
-      </div>
-    </section>
+<div class="card">
+<h3>Project Guidance</h3>
+<p>Academic and industry projects with expert mentorship.</p>
+</div>
 
-    <!-- GALLERY / EVENTS -->
-    <section id="gallery" class="py-16 bg-white">
-      <div class="container mx-auto px-6 md:px-10">
-        <div class="text-center max-w-2xl mx-auto">
-          <h2 class="text-2xl md:text-3xl font-bold">Gallery & Events 📸</h2>
-          <p class="mt-3 text-slate-600">Hackathons, codeathons, workshops and community meetups — highlights below.</p>
-        </div>
+</div>
 
-        <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          <!-- placeholder images — replace with your images in /images/ -->
-          <div class="rounded-lg overflow-hidden">
-            <img src="poster1.jpeg" alt="Hackathon 2024" class="w-full h-44 object-cover gallery-img cursor-pointer">
-            <div class="p-3 text-sm">CodeCrafters'25 1st Prize 🏆</div>
-          </div>
+</div>
 
-          <div class="rounded-lg overflow-hidden">
-            <img src="poster2.jpeg" alt="Codeathon" class="w-full h-44 object-cover gallery-img cursor-pointer">
-            <div class="p-3 text-sm">CodeCrafters'25 2nd Prize ⚡</div>
-          </div>
+</section>
 
-          <div class="rounded-lg overflow-hidden">
-            <img src="poster3.jpeg" alt="Workshop" class="w-full h-44 object-cover gallery-img cursor-pointer">
-            <div class="p-3 text-sm">CodeCrafters'25 3rd Prize 🤖</div>
-          </div>
+<section class="about" id="about">
 
-          <div class="rounded-lg overflow-hidden">
-            <img src="poster4.jpeg" alt="Seminar" class="w-full h-44 object-cover gallery-img cursor-pointer" >
-            <div class="p-3 text-sm">CodeCrafters'25 Team Of Dedication 🎤</div>
-          </div>
+<div class="container">
 
-          <div class="rounded-lg overflow-hidden">
-            <img src="poster5.jpeg" alt="Product Launch" class="w-full h-44 object-cover gallery-img cursor-pointer" >
-            <div class="p-3 text-sm">CodeCrafters'25 Participants And SKP Enggineering College </div>
-          </div>
+<h2 class="section-title">About Us</h2>
 
-          <div class="rounded-lg overflow-hidden">
-            <img src="poster6.jpeg" alt="Campus Meet" class="w-full h-44 object-cover gallery-img cursor-pointer" >
-            <div class="p-3 text-sm">CodeCrafters'25 Participants 🧩</div>
-          </div>
+<p>
+Boni Bytes Edutech is a technology startup focused on bridging the gap between education and industry. We provide online internships, project-based learning, and modern website development services that help students and businesses grow.
+</p>
 
-          <div class="rounded-lg overflow-hidden">
-            <img src="poster7.jpeg" alt="Judging Day" class="w-full h-44 object-cover gallery-img cursor-pointer" ">
-            <div class="p-3 text-sm">CodeCrafters'25 Participants 🧩</div>
-          </div>
+</div>
 
-          <div class="rounded-lg overflow-hidden">
-            <img src="poster8.jpeg" alt="Team Celebration" class="w-full h-44 object-cover gallery-img cursor-pointer"">
-            <div class="p-3 text-sm">CodeCrafters'25 Awards ✨ </div>
-          </div>
-        </div>
-      </div>
-    </section>
+</section>
 
-    <!-- ABOUT -->
-    <section id="about" class="py-16 bg-white">
-      <div class="container mx-auto px-6 md:px-10">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-          <div>
-            <h2 class="text-2xl md:text-3xl font-bold">About Boni Bytes</h2>
-            <p class="mt-4 text-slate-600">Founded in 2024, Boni Bytes began as an education initiative and evolved into a full-stack innovation lab. We train talent and build practical products that make an impact.</p>
-            <ul class="mt-4 space-y-2 text-slate-600">
-              <li>Industry-aligned coursework & internships</li>
-              <li>End-to-end product development</li>
-              <li>AI, Web, Mobile & IoT expertise</li>
-            </ul>
-          </div>
-          <div class="rounded-xl bg-[var(--soft-blue)] p-6">
-            <h3 class="font-semibold">Founder — Rahulprasad Veeramani</h3>
-            <p class="mt-2 text-slate-700">Entrepreneur & technologist focused on bridging education and industry through hands-on projects.</p>
-          </div>
-        </div>
-      </div>
-    </section>
+<section class="contact" id="contact">
 
-    <!-- TESTIMONIALS -->
-    <section id="testimonials" class="py-16 bg-slate-50">
-      <div class="container mx-auto px-6 md:px-10">
-        <div class="text-center">
-          <h2 class="text-2xl md:text-3xl font-bold">What Clients & Students Say</h2>
-          <p class="mt-3 text-slate-600">Results, mentorship, and on-time delivery.</p>
-        </div>
+<div class="container">
 
-        <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div class="p-6 bg-white rounded-xl shadow">
-            <p class="italic">"Boni Bytes delivered our campus portal on time — excellent communication and quality."</p>
-            <p class="mt-3 font-semibold">— Dr. S. Kumar, University Admin</p>
-          </div>
-          <div class="p-6 bg-white rounded-xl shadow">
-            <p class="italic">"Bootcamp prepared students for internships. Project-based approach works."</p>
-            <p class="mt-3 font-semibold">— Priya, Placement Head</p>
-          </div>
-          <div class="p-6 bg-white rounded-xl shadow">
-            <p class="italic">"Their AI prototype saved hours for attendance tracking."</p>
-            <p class="mt-3 font-semibold">— Raj, CTO (Startup)</p>
-          </div>
-        </div>
-      </div>
-    </section>
+<h2 class="section-title">Contact Us</h2>
 
-    <!-- CONTACT -->
-    <section id="contact" class="py-16 bg-white">
-      <div class="container mx-auto px-6 md:px-10">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
-          <div>
-            <h2 class="text-2xl font-bold">Get in touch</h2>
-            <p class="mt-3 text-slate-600">Questions about courses or projects? Drop a message and we’ll reply shortly.</p>
+<div class="contact-box">
 
-            <div class="mt-6 space-y-3 text-slate-600">
-              <p>📧 <strong>Email:</strong> contact@bonibytesedutech.live</p>
-              <p>📍 <strong>Location:</strong> (Your city) — Remote-friendly</p>
-              <p>⏰ <strong>Hours:</strong> Mon — Sat, 9 AM — 6 PM</p>
-            </div>
-          </div>
+<p><strong>Email:</strong> contact@bonibytesedutech.live</p>
 
-          <form id="contactForm" class="bg-slate-50 p-6 rounded-xl shadow-sm">
-            <label class="block mb-2 text-sm">Name</label>
-            <input id="c-name" type="text" required class="w-full p-3 border rounded" />
+<p><strong>Website:</strong> www.bonibytesedutech.live</p>
 
-            <label class="block mt-3 mb-2 text-sm">Email</label>
-            <input id="c-email" type="email" required class="w-full p-3 border rounded" />
+<p><strong>Founder:</strong> Rahulprasad Veeramani</p>
 
-            <label class="block mt-3 mb-2 text-sm">Message</label>
-            <textarea id="c-msg" rows="4" class="w-full p-3 border rounded"></textarea>
+</div>
 
-            <div class="mt-4 flex items-center gap-3">
-              <button type="submit" class="px-5 py-3 bg-[var(--brand-blue)] text-white rounded-full">Send Message</button>
-              <button id="contactReset" type="button" class="px-4 py-2 border rounded">Reset</button>
-            </div>
+</div>
 
-            <p id="contactStatus" class="mt-3 text-sm text-green-600 hidden">Message sent (demo)</p>
-          </form>
-        </div>
-      </div>
-    </section>
-  </main>
+</section>
 
-  <!-- FOOTER -->
-  <footer class="bg-slate-900 text-white py-8">
-    <div class="container mx-auto px-6 md:px-10 text-center">
-      <div class="flex items-center justify-center gap-4 mb-4">
-        <a href="https://www.bing.com/ck/a?!&&p=514a3398f4eacf68a8eaba4ad3234d814df332a4626f66fbd23cc67b1d7954dfJmltdHM9MTc2MjU2MDAwMA&ptn=3&ver=2&hsh=4&fclid=0cc75355-f6bd-6978-0c3f-4681f70f68dc&psq=boni+bytes+edutech&u=a1aHR0cHM6Ly93d3cuaW5zdGFncmFtLmNvbS9ib25pX2J5dGVzX2VkdXRlY2gv" class="text-slate-300 hover:text-white">Instagram</a>
-        <a href="https://www.linkedin.com/company/boni-bytes-edutech-2929" class="text-slate-300 hover:text-white">LinkedIn</a>
-        <a href="#" class="text-slate-300 hover:text-white">GitHub</a>
-      </div>
-      <p class="text-sm">© <span id="year"></span> Boni Bytes Edutech — Edutech & Projects. All rights reserved.</p>
-    </div>
-  </footer>
+<footer>
+© 2026 Boni Bytes Edutech. All Rights Reserved.
+</footer>
 
-  <!-- FLOATING BONI AI CHATBOT (DUMMY) -->
-  <button id="chatToggle" aria-label="Open Boni AI chat" class="fixed bottom-6 right-6 z-50 bg-white border rounded-full p-3 shadow-lg hover:scale-105 transition">
-    <svg class="w-6 h-6 text-[var(--brand-blue)]" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-  </button>
-
-  <div id="chatWindow" class="fixed bottom-20 right-6 z-50 w-80 bg-white rounded-2xl shadow-2xl border overflow-hidden hidden">
-    <div class="bg-[var(--brand-blue)] text-white px-4 py-3 flex items-center justify-between">
-      <div class="font-semibold">Boni AI Assistant</div>
-      <button id="chatClose" aria-label="Close chat" class="text-white text-xl leading-none">&times;</button>
-    </div>
-
-    <div id="chatMessages" class="p-3 h-64 overflow-y-auto space-y-2 text-sm bg-white"></div>
-
-    <div class="p-3 border-t bg-white flex gap-2">
-      <input id="chatInput" class="flex-1 p-2 border rounded-lg text-sm" placeholder="Ask about courses, events or projects..." />
-      <button id="chatSend" class="px-3 py-2 bg-[var(--brand-blue)] text-white rounded-lg">Send</button>
-    </div>
-  </div>
-
-  <!-- IMAGE MODAL -->
-  <div id="imageModal" class="fixed inset-0 bg-black bg-opacity-70 z-50 hidden items-center justify-center p-4">
-    <div class="bg-white rounded-lg overflow-hidden max-w-4xl w-full">
-      <div class="flex justify-end p-2"><button id="closeImageModal" class="text-xl font-bold">&times;</button></div>
-      <img id="imageModalContent" src="" alt="Event full view" class="w-full h-auto object-contain">
-      <div class="p-4 text-sm text-slate-600" id="imageModalCaption"></div>
-    </div>
-  </div>
-
- 
-
-  <!-- SCRIPTS -->
-  <script>
-  const navbarHeight = document.querySelector('.navbar').offsetHeight;
-
-  document.querySelectorAll('.nav-links a').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      e.preventDefault();
-      const targetID = this.getAttribute('href').substring(1);
-      const targetSection = document.getElementById(targetID);
-      if (targetSection) {
-        const sectionPosition = targetSection.offsetTop - navbarHeight;
-        window.scrollTo({
-          top: sectionPosition,
-          behavior: 'smooth'
-        });
-      }
-
-      // Close mobile menu if open
-      const navLinks = document.getElementById('nav-links');
-      if(navLinks.classList.contains('active')){
-        navLinks.classList.remove('active');
-      }
-    });
-  });
-</script>
-
-  <script>
-    // Year
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Mobile menu
-    const mobileOpen = document.getElementById('mobile-open');
-    const mobileMenu = document.getElementById('mobile-menu');
-    mobileOpen?.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
-
-    // Active nav on scroll
-    const navLinks = document.querySelectorAll('.nav-link');
-    const sections = document.querySelectorAll('section[id]');
-    function onScroll() {
-      const scrollPos = window.scrollY + 120;
-      sections.forEach(s => {
-        if (s.offsetTop <= scrollPos && s.offsetTop + s.offsetHeight > scrollPos) {
-          navLinks.forEach(a => a.classList.remove('text-[var(--brand-blue)]','font-semibold'));
-          const link = document.querySelector('.nav-link[href="#' + s.id + '"]');
-          if (link) link.classList.add('text-[var(--brand-blue)]','font-semibold');
-        }
-      });
-    }
-    window.addEventListener('scroll', onScroll);
-    onScroll();
-
-    // Quote form (demo)
-    const quoteForm = document.getElementById('quoteForm');
-    const quoteMessage = document.getElementById('quoteMessage');
-    const quoteReset = document.getElementById('quoteReset');
-    quoteForm?.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const name = document.getElementById('q-name').value.trim();
-      const email = document.getElementById('q-email').value.trim();
-      const type = document.getElementById('q-type').value;
-      const desc = document.getElementById('q-desc').value.trim();
-      if (!name || !email || !type || !desc) {
-        quoteMessage.textContent = 'Please fill all fields.';
-        quoteMessage.classList.remove('hidden');
-        quoteMessage.classList.add('text-red-600');
-        return;
-      }
-      quoteMessage.textContent = 'Thanks — your request has been received. We will contact you shortly.';
-      quoteMessage.classList.remove('hidden');
-      quoteMessage.classList.remove('text-red-600');
-      quoteMessage.classList.add('text-green-600');
-      quoteForm.reset();
-    });
-    quoteReset?.addEventListener('click', () => { quoteForm.reset(); quoteMessage.classList.add('hidden'); });
-
-    // Contact form (demo)
-    const contactForm = document.getElementById('contactForm');
-    const contactStatus = document.getElementById('contactStatus');
-    contactForm?.addEventListener('submit', (e) => {
-      e.preventDefault();
-      contactStatus.classList.remove('hidden');
-      contactForm.reset();
-      setTimeout(() => contactStatus.classList.add('hidden'), 4000);
-    });
-    document.getElementById('contactReset')?.addEventListener('click', () => contactForm.reset());
-
-    // Chatbot (dummy)
-    const chatToggle = document.getElementById('chatToggle');
-    const chatWindow = document.getElementById('chatWindow');
-    const chatClose = document.getElementById('chatClose');
-    const chatSend = document.getElementById('chatSend');
-    const chatInput = document.getElementById('chatInput');
-    const chatMessages = document.getElementById('chatMessages');
-
-    function appendChat(sender, text) {
-      const el = document.createElement('div');
-      el.className = 'p-2 rounded-lg animate-pop max-w-[85%]';
-      if (sender === 'user') {
-        el.classList.add('ml-auto','msg-user');
-      } else {
-        el.classList.add('msg-bot');
-      }
-      el.innerHTML = `<div class="text-xs text-slate-600 mb-1">${sender === 'user' ? 'You' : 'Boni AI'}</div><div>${text}</div>`;
-      chatMessages.appendChild(el);
-      chatMessages.scrollTop = chatMessages.scrollHeight;
-    }
-
-    function botReply(userText) {
-      const lower = userText.toLowerCase();
-      if (lower.includes('course') || lower.includes('learn')) return "We offer Full-Stack, AI, Mobile, IoT and Data courses. Visit the Courses section or ask which skill you want to learn 🎓.";
-      if (lower.includes('project') || lower.includes('build')) return "Tell me a little about your project (web, mobile, AI) and your timeline — I can prepare a high-level scope 🛠️.";
-      if (lower.includes('hackathon') || lower.includes('codeathon')) return "Our hackathons are 24–48 hour sprints with mentorship and prizes. Check the Gallery for past events ⚡.";
-      if (lower.includes('price') || lower.includes('cost') || lower.includes('quote')) return "Project quotes depend on scope. Use the 'Request a Project Quote' form and we'll provide an estimate 💬.";
-      if (lower.includes('hello') || lower.includes('hi')) return "Hi! I'm Boni AI — ask me about Courses, Projects, or upcoming events 🚀.";
-      return "Thanks! We'll follow up soon — or please fill the Request a Project Quote form for detailed project estimates.";
-    }
-
-    chatToggle?.addEventListener('click', () => {
-      chatWindow.classList.toggle('hidden');
-      if (!chatWindow.classList.contains('hidden')) {
-        // initial message
-        if (chatMessages.children.length === 0) {
-          appendChat('bot', "Hi! I'm Boni AI 🤖 — ask about courses, projects or events. Try: 'Tell me about your AI course' or 'How to request a project quote?'");
-        }
-      }
-    });
-    chatClose?.addEventListener('click', () => chatWindow.classList.add('hidden'));
-    chatSend?.addEventListener('click', () => {
-      const text = chatInput.value.trim();
-      if (!text) return;
-      appendChat('user', text);
-      chatInput.value = '';
-      appendChat('bot', '💭 Thinking...');
-      setTimeout(() => {
-        // remove last thinking if present
-        const last = chatMessages.lastChild;
-        if (last && last.innerText.includes('Thinking')) chatMessages.removeChild(last);
-        appendChat('bot', botReply(text));
-      }, 850);
-    });
-    chatInput?.addEventListener('keypress', (e) => { if (e.key === 'Enter') chatSend.click(); });
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { chatWindow.classList.add('hidden'); mobileMenu.classList.add('hidden'); } });
-
-    // Gallery image modal
-    const galleryImgs = document.querySelectorAll('.gallery-img');
-    const imageModal = document.getElementById('imageModal');
-    const imageModalContent = document.getElementById('imageModalContent');
-    const imageModalCaption = document.getElementById('imageModalCaption');
-    const closeImageModal = document.getElementById('closeImageModal');
-
-    galleryImgs.forEach(img => {
-      img.addEventListener('click', (e) => {
-        const full = img.getAttribute('data-full') || img.src;
-        imageModalContent.src = full;
-        imageModalCaption.textContent = img.alt || img.getAttribute('title') || '';
-        imageModal.classList.remove('hidden');
-        document.body.style.overflow = 'hidden';
-      });
-    });
-    closeImageModal?.addEventListener('click', () => {
-      imageModal.classList.add('hidden');
-      imageModalContent.src = '';
-      document.body.style.overflow = 'auto';
-    });
-    imageModal?.addEventListener('click', (e) => {
-      if (e.target === imageModal) {
-        imageModal.classList.add('hidden');
-        imageModalContent.src = '';
-        document.body.style.overflow = 'auto';
-      }
-    });
-  </script>
-  <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "EducationalOrganization",
-  "name": "Boni Bytes Edutech",
-  "url": "https://www.bonibytesedutech.live/",
-  "logo": "https://www.bonibytesedutech.live/logo.png",
-  "sameAs": [
-    "https://www.bing.com/ck/a?!&&p=514a3398f4eacf68a8eaba4ad3234d814df332a4626f66fbd23cc67b1d7954dfJmltdHM9MTc2MjU2MDAwMA&ptn=3&ver=2&hsh=4&fclid=0cc75355-f6bd-6978-0c3f-4681f70f68dc&psq=boni+bytes+edutech&u=a1aHR0cHM6Ly93d3cuaW5zdGFncmFtLmNvbS9ib25pX2J5dGVzX2VkdXRlY2gv",
-    "https://www.linkedin.com/company/boni-bytes-edutech-2929"
-  ],
-  "course": [
-    {
-      "@type": "Course",
-      "name": "Python Programming for Beginners",
-      "description": "Learn Python from scratch with hands-on projects.",
-      "provider": {
-        "@type": "EducationalOrganization",
-        "name": "Boni Bytes Edutech",
-        "sameAs": "https://yourwebsite.com"
-      }
-    },
-    {
-      "@type": "Course",
-      "name": "Web Development Bootcamp",
-      "description": "Learn HTML, CSS, JavaScript, and React with projects.",
-      "provider": {
-        "@type": "EducationalOrganization",
-        "name": "Boni Bytes Edutech",
-        "sameAs": "https://yourwebsite.com"
-      }
-    }
-  ]
-}
-</script>
+<a href="https://wa.me/91YOURNUMBER" class="whatsapp">
+💬
+</a>
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
