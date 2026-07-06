@@ -54,6 +54,7 @@
     <li><a href="#project-lab">Project Lab</a></li>
     <li><a href="#gallery">Gallery</a></li>
     <li><a href="#about">About</a></li>
+    <li><a href="internship.html">Internship</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
@@ -539,8 +540,11 @@
 
   document.querySelectorAll('.nav-links a').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      // Only intercept same-page section links. Normal pages such as internship.html must navigate normally.
+      if (!href || !href.startsWith('#')) return;
       e.preventDefault();
-      const targetID = this.getAttribute('href').substring(1);
+      const targetID = href.substring(1);
       const targetSection = document.getElementById(targetID);
       if (targetSection) {
         const sectionPosition = targetSection.offsetTop - navbarHeight;
