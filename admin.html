@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Admin Dashboard | Boni Bytes Edutech</title>
+
+  <meta
+    name="robots"
+    content="noindex, nofollow"
+  >
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    body {
+      font-family: "Inter", sans-serif;
+    }
+
+    .stat-card {
+      transition: transform 0.2s ease;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-3px);
+    }
+
+    .table-container {
+      overflow-x: auto;
+    }
+
+    th,
+    td {
+      white-space: nowrap;
+    }
+  </style>
+</head>
+
+<body class="bg-slate-100 text-slate-800">
+
+  <!-- HEADER -->
+
+  <header class="bg-slate-900 text-white shadow-lg">
+
+    <div
+      class="max-w-7xl mx-auto px-4 sm:px-6 py-4
+      flex flex-col sm:flex-row gap-4
+      sm:items-center sm:justify-between"
+    >
+
+      <div class="flex items-center gap-3">
+
+        <img
+          src="logo.png"
+          alt="Boni Bytes Edutech"
+          class="w-11 h-11 bg-white rounded-xl object-contain p-1"
+        >
+
+        <div>
+          <h1 class="font-extrabold text-lg">
+            Boni Bytes Edutech
+          </h1>
+
+          <p class="text-slate-400 text-sm">
+            Internship Admin Dashboard
+          </p>
+        </div>
+
+      </div>
+
+
+      <div class="flex gap-3">
+
+        <button
+          onclick="loadRegistrations()"
+          id="refreshBtn"
+          class="bg-blue-600 hover:bg-blue-700
+          px-4 py-2 rounded-lg font-semibold transition"
+        >
+          ↻ Refresh
+        </button>
+
+        <a
+          href="index.html"
+          class="bg-slate-700 hover:bg-slate-600
+          px-4 py-2 rounded-lg font-semibold transition"
+        >
+          Home
+        </a>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <!-- MAIN -->
+
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 py-8">
+
+
+    <!-- TITLE -->
+
+    <div class="mb-8">
+
+      <p class="text-blue-600 font-bold">
+        ADMIN PANEL
+      </p>
+
+      <h2 class="text-3xl font-extrabold mt-1">
+        Internship Registrations
+      </h2>
+
+      <p class="text-slate-500 mt-2">
+        View and manage student registrations.
+      </p>
+
+    </div>
+
+
+    <!-- STATISTICS -->
+
+    <section
+      class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8"
+    >
+
+      <!-- TOTAL -->
+
+      <div
+        class="stat-card bg-white border rounded-2xl p-5 shadow-sm"
+      >
+
+        <div class="flex justify-between items-start">
+
+          <div>
+
+            <p class="text-slate-500 text-sm font-semibold">
+              Total Students
+            </p>
+
+            <h3
+              id="totalCount"
+              class="text-3xl font-extrabold mt-2"
+            >
+              0
+            </h3>
+
+          </div>
+
+          <span class="text-3xl">
+            👥
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <!-- ENGINEERING -->
+
+      <div
+        class="stat-card bg-white border rounded-2xl p-5 shadow-sm"
+      >
+
+        <div class="flex justify-between items-start">
+
+          <div>
+
+            <p class="text-slate-500 text-sm font-semibold">
+              Engineering
+            </p>
+
+            <h3
+              id="engineeringCount"
+              class="text-3xl font-extrabold mt-2"
+            >
+              0
+            </h3>
+
+          </div>
+
+          <span class="text-3xl">
+            ⚙️
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <!-- MBA -->
+
+      <div
+        class="stat-card bg-white border rounded-2xl p-5 shadow-sm"
+      >
+
+        <div class="flex justify-between items-start">
+
+          <div>
+
+            <p class="text-slate-500 text-sm font-semibold">
+              MBA / Management
+            </p>
+
+            <h3
+              id="mbaCount"
+              class="text-3xl font-extrabold mt-2"
+            >
+              0
+            </h3>
+
+          </div>
+
+          <span class="text-3xl">
+            💼
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <!-- ARTS -->
+
+      <div
+        class="stat-card bg-white border rounded-2xl p-5 shadow-sm"
+      >
+
+        <div class="flex justify-between items-start">
+
+          <div>
+
+            <p class="text-slate-500 text-sm font-semibold">
+              Arts & Science
+            </p>
+
+            <h3
+              id="artsCount"
+              class="text-3xl font-extrabold mt-2"
+            >
+              0
+            </h3>
+
+          </div>
+
+          <span class="text-3xl">
+            🎓
+          </span>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- LOADING -->
+
+    <div
+      id="loadingBox"
+      class="bg-blue-50 border border-blue-200
+      text-blue-800 rounded-xl p-5 mb-6"
+    >
+      ⏳ Loading registrations...
+    </div>
+
+
+    <!-- ERROR -->
+
+    <div
+      id="errorBox"
+      class="hidden bg-red-50 border border-red-200
+      text-red-700 rounded-xl p-5 mb-6"
+    >
+
+      <p class="font-bold">
+        Unable to load registrations.
+      </p>
+
+      <p
+        id="errorMessage"
+        class="text-sm mt-1"
+      ></p>
+
+    </div>
+
+
+    <!-- STUDENT TABLE CARD -->
+
+    <section
+      id="dashboardContent"
+      class="hidden bg-white border rounded-2xl shadow-sm"
+    >
+
+
+      <!-- FILTERS -->
+
+      <div class="p-5 border-b">
+
+        <div
+          class="flex flex-col lg:flex-row
+          gap-4 lg:items-center lg:justify-between"
+        >
+
+          <div class="flex flex-col sm:flex-row gap-3 flex-1">
+
+            <!-- SEARCH -->
+
+            <input
+              type="search"
+              id="searchInput"
+              placeholder="🔍 Search name, ID, college..."
+              class="w-full sm:max-w-md px-4 py-3
+              border rounded-xl outline-none
+              focus:border-blue-500
+              focus:ring-2 focus:ring-blue-100"
+            >
+
+
+            <!-- CATEGORY FILTER -->
+
+            <select
+              id="categoryFilter"
+              class="px-4 py-3 border rounded-xl outline-none"
+            >
+
+              <option value="">
+                All Categories
+              </option>
+
+              <option value="Engineering">
+                Engineering
+              </option>
+
+              <option value="MBA / Management">
+                MBA / Management
+              </option>
+
+              <option value="Arts & Science">
+                Arts & Science
+              </option>
+
+            </select>
+
+
+            <!-- MODE FILTER -->
+
+            <select
+              id="modeFilter"
+              class="px-4 py-3 border rounded-xl outline-none"
+            >
+
+              <option value="">
+                All Modes
+              </option>
+
+              <option value="Online">
+                Online
+              </option>
+
+              <option value="Offline">
+                Offline
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <!-- EXPORT -->
+
+          <button
+            onclick="exportCSV()"
+            class="bg-green-600 hover:bg-green-700
+            text-white px-5 py-3 rounded-xl
+            font-bold transition"
+          >
+            📥 Export CSV
+          </button>
+
+        </div>
+
+
+        <p
+          id="resultCount"
+          class="text-sm text-slate-500 mt-4"
+        >
+          Showing 0 students
+        </p>
+
+      </div>
+
+
+      <!-- TABLE -->
+
+      <div class="table-container">
+
+        <table class="w-full text-sm">
+
+          <thead class="bg-slate-50 text-slate-600">
+
+            <tr>
+
+              <th class="text-left px-5 py-4">
+                Registration ID
+              </th>
+
+              <th class="text-left px-5 py-4">
+                Student
+              </th>
+
+              <th class="text-left px-5 py-4">
+                College
+              </th>
+
+              <th class="text-left px-5 py-4">
+                Category
+              </th>
+
+              <th class="text-left px-5 py-4">
+                Course
+              </th>
+
+              <th class="text-left px-5 py-4">
+                Department
+              </th>
+
+              <th class="text-left px-5 py-4">
+                Year
+              </th>
+
+              <th class="text-left px-5 py-4">
+                Domain
+              </th>
+
+              <th class="text-left px-5 py-4">
+                Mode
+              </th>
+
+              <th class="text-left px-5 py-4">
+                WhatsApp
+              </th>
+
+            </tr>
+
+          </thead>
+
+
+          <tbody
+            id="studentTable"
+            class="divide-y"
+          >
+          </tbody>
+
+        </table>
+
+      </div>
+
+
+      <!-- EMPTY MESSAGE -->
+
+      <div
+        id="emptyBox"
+        class="hidden text-center py-12 text-slate-500"
+      >
+
+        <div class="text-4xl mb-3">
+          🔍
+        </div>
+
+        <p class="font-semibold">
+          No students found.
+        </p>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER -->
+
+  <footer class="text-center text-slate-500 py-8 text-sm">
+
+    © <span id="year"></span>
+    Boni Bytes Edutech — Admin Dashboard
+
+  </footer>
+
+
+  <script>
+
+    /* =========================================
+       API CONFIGURATION
+       ========================================= */
+
+    const API_URL =
+      "https://script.google.com/macros/s/AKfycbx1DAi6OWCwFIdK9xh-S4MMUoS1_M4INNtUGudZjvfPBb20Y7yWV4Ka3pJB6IcHgKZe/exec";
+
+
+    /* =========================================
+       VARIABLES
+       ========================================= */
+
+    let allRegistrations = [];
+    let filteredRegistrations = [];
+
+
+    const loadingBox =
+      document.getElementById("loadingBox");
+
+    const errorBox =
+      document.getElementById("errorBox");
+
+    const dashboardContent =
+      document.getElementById("dashboardContent");
+
+    const studentTable =
+      document.getElementById("studentTable");
+
+    const searchInput =
+      document.getElementById("searchInput");
+
+    const categoryFilter =
+      document.getElementById("categoryFilter");
+
+    const modeFilter =
+      document.getElementById("modeFilter");
+
+
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+
+    /* =========================================
+       LOAD DATA
+       ========================================= */
+
+    async function loadRegistrations() {
+
+      loadingBox.classList.remove("hidden");
+      errorBox.classList.add("hidden");
+
+      try {
+
+        const response = await fetch(
+          API_URL + "?time=" + Date.now()
+        );
+
+        if (!response.ok) {
+          throw new Error(
+            "API returned status " + response.status
+          );
+        }
+
+        const data = await response.json();
+
+        if (!data.success) {
+          throw new Error(
+            data.message || "API error"
+          );
+        }
+
+        allRegistrations =
+          data.registrations || [];
+
+        updateStatistics();
+
+        applyFilters();
+
+        loadingBox.classList.add("hidden");
+
+        dashboardContent.classList.remove("hidden");
+
+      } catch (error) {
+
+        loadingBox.classList.add("hidden");
+
+        errorBox.classList.remove("hidden");
+
+        document.getElementById(
+          "errorMessage"
+        ).textContent = error.message;
+
+      }
+
+    }
+
+
+    /* =========================================
+       UPDATE STATISTICS
+       ========================================= */
+
+    function updateStatistics() {
+
+      const engineering =
+        allRegistrations.filter(student =>
+          student["Student Category"] ===
+          "Engineering"
+        ).length;
+
+
+      const mba =
+        allRegistrations.filter(student =>
+          student["Student Category"] ===
+          "MBA / Management"
+        ).length;
+
+
+      const arts =
+        allRegistrations.filter(student =>
+          student["Student Category"] ===
+          "Arts & Science"
+        ).length;
+
+
+      document.getElementById(
+        "totalCount"
+      ).textContent = allRegistrations.length;
+
+
+      document.getElementById(
+        "engineeringCount"
+      ).textContent = engineering;
+
+
+      document.getElementById(
+        "mbaCount"
+      ).textContent = mba;
+
+
+      document.getElementById(
+        "artsCount"
+      ).textContent = arts;
+
+    }
+
+
+    /* =========================================
+       FILTER DATA
+       ========================================= */
+
+    function applyFilters() {
+
+      const search =
+        searchInput.value
+          .toLowerCase()
+          .trim();
+
+      const category =
+        categoryFilter.value;
+
+      const mode =
+        modeFilter.value;
+
+
+      filteredRegistrations =
+        allRegistrations.filter(student => {
+
+          const searchableText =
+            Object.values(student)
+              .join(" ")
+              .toLowerCase();
+
+
+          const matchesSearch =
+            searchableText.includes(search);
+
+
+          const matchesCategory =
+            !category ||
+            student["Student Category"] === category;
+
+
+          const matchesMode =
+            !mode ||
+            student["Mode"] === mode;
+
+
+          return (
+            matchesSearch &&
+            matchesCategory &&
+            matchesMode
+          );
+
+        });
+
+
+      renderTable();
+
+    }
+
+
+    /* =========================================
+       DISPLAY TABLE
+       ========================================= */
+
+    function renderTable() {
+
+      studentTable.innerHTML = "";
+
+
+      document.getElementById(
+        "resultCount"
+      ).textContent =
+        "Showing " +
+        filteredRegistrations.length +
+        " of " +
+        allRegistrations.length +
+        " students";
+
+
+      const emptyBox =
+        document.getElementById("emptyBox");
+
+
+      if (filteredRegistrations.length === 0) {
+
+        emptyBox.classList.remove("hidden");
+
+        return;
+
+      }
+
+
+      emptyBox.classList.add("hidden");
+
+
+      filteredRegistrations.forEach(student => {
+
+        const row =
+          document.createElement("tr");
+
+
+        row.className =
+          "hover:bg-slate-50 transition";
+
+
+        const whatsappNumber =
+          String(
+            student["WhatsApp Number"] || ""
+          ).replace(/\D/g, "");
+
+
+        row.innerHTML = `
+
+          <td class="px-5 py-4">
+
+            <span
+              class="bg-blue-50 text-blue-700
+              px-3 py-2 rounded-lg font-bold"
+            >
+              ${escapeHTML(
+                student["Registration ID"]
+              )}
+            </span>
+
+          </td>
+
+
+          <td class="px-5 py-4">
+
+            <p class="font-bold text-slate-800">
+              ${escapeHTML(
+                student["Full Name"]
+              )}
+            </p>
+
+            <p class="text-slate-500 text-xs mt-1">
+              ${escapeHTML(
+                student["Email"]
+              )}
+            </p>
+
+          </td>
+
+
+          <td class="px-5 py-4">
+            ${escapeHTML(
+              student["College Name"]
+            )}
+          </td>
+
+
+          <td class="px-5 py-4">
+            ${escapeHTML(
+              student["Student Category"]
+            )}
+          </td>
+
+
+          <td class="px-5 py-4">
+            ${escapeHTML(
+              student["Degree / Course"]
+            )}
+          </td>
+
+
+          <td class="px-5 py-4">
+            ${escapeHTML(
+              student["Department / Specialization"]
+            )}
+          </td>
+
+
+          <td class="px-5 py-4">
+            ${escapeHTML(
+              student["Year of Study"]
+            )}
+          </td>
+
+
+          <td class="px-5 py-4">
+
+            <span
+              class="bg-purple-50 text-purple-700
+              px-3 py-2 rounded-lg font-semibold"
+            >
+              ${escapeHTML(
+                student["Internship Domain"]
+              )}
+            </span>
+
+          </td>
+
+
+          <td class="px-5 py-4">
+
+            <span
+              class="bg-slate-100
+              px-3 py-2 rounded-lg font-semibold"
+            >
+              ${escapeHTML(
+                student["Mode"]
+              )}
+            </span>
+
+          </td>
+
+
+          <td class="px-5 py-4">
+
+            <a
+              href="https://wa.me/91${whatsappNumber}"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-green-600 font-bold
+              hover:underline"
+            >
+              WhatsApp
+            </a>
+
+          </td>
+
+        `;
+
+
+        studentTable.appendChild(row);
+
+      });
+
+    }
+
+
+    /* =========================================
+       SECURITY
+       ========================================= */
+
+    function escapeHTML(value) {
+
+      const div =
+        document.createElement("div");
+
+      div.textContent =
+        value == null ? "" : String(value);
+
+      return div.innerHTML;
+
+    }
+
+
+    /* =========================================
+       CSV EXPORT
+       ========================================= */
+
+    function exportCSV() {
+
+      if (filteredRegistrations.length === 0) {
+
+        alert("No registration data to export.");
+
+        return;
+
+      }
+
+
+      const headers =
+        Object.keys(filteredRegistrations[0]);
+
+
+      const rows =
+        filteredRegistrations.map(student =>
+
+          headers.map(header => {
+
+            const value =
+              String(student[header] || "")
+                .replace(/"/g, '""');
+
+            return `"${value}"`;
+
+          }).join(",")
+
+        );
+
+
+      const csv =
+        [
+          headers.join(","),
+          ...rows
+        ].join("\n");
+
+
+      const blob =
+        new Blob(
+          [csv],
+          {
+            type:
+              "text/csv;charset=utf-8;"
+          }
+        );
+
+
+      const link =
+        document.createElement("a");
+
+
+      link.href =
+        URL.createObjectURL(blob);
+
+
+      link.download =
+        "boni-bytes-internship-registrations.csv";
+
+
+      link.click();
+
+
+      URL.revokeObjectURL(link.href);
+
+    }
+
+
+    /* =========================================
+       EVENTS
+       ========================================= */
+
+    searchInput.addEventListener(
+      "input",
+      applyFilters
+    );
+
+
+    categoryFilter.addEventListener(
+      "change",
+      applyFilters
+    );
+
+
+    modeFilter.addEventListener(
+      "change",
+      applyFilters
+    );
+
+
+    /* =========================================
+       START DASHBOARD
+       ========================================= */
+
+    loadRegistrations();
+
+  </script>
+
+</body>
+</html>
