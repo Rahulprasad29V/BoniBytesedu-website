@@ -548,55 +548,63 @@
        LOAD DATA
        ========================================= */
 
-    async function loadRegistrations() {
+   function loadRegistrations() {
 
-      loadingBox.classList.remove("hidden");
-      errorBox.classList.add("hidden");
+  loadingBox.classList.remove("hidden");
+  errorBox.classList.add("hidden");
 
-      try {
+  const oldScript = document.getElementById("registrationApiScript");
 
-        const response = await fetch(
-          API_URL + "?time=" + Date.now()
-        );
+  if (oldScript) {
+    oldScript.remove();
+  }
 
-        if (!response.ok) {
-          throw new Error(
-            "API returned status " + response.status
-          );
-        }
+  const script = document.createElement("script");
 
-        const data = await response.json();
+  script.id = "registrationApiScript";
 
-        if (!data.success) {
-          throw new Error(
-            data.message || "API error"
-          );
-        }
+  script.src =
+    API_URL +
+    "?callback=receiveRegistrations&time=" +
+    Date.now();
 
-        allRegistrations =
-          data.registrations || [];
+  script.onerror = function () {
 
-        updateStatistics();
+    loadingBox.classList.add("hidden");
+    errorBox.classList.remove("hidden");
 
-        applyFilters();
+    document.getElementById("errorMessage").textContent =
+      "Could not connect to registration API.";
 
-        loadingBox.classList.add("hidden");
+  };
 
-        dashboardContent.classList.remove("hidden");
+  document.body.appendChild(script);
+}
 
-      } catch (error) {
 
-        loadingBox.classList.add("hidden");
+function receiveRegistrations(data) {
 
-        errorBox.classList.remove("hidden");
+  if (!data.success) {
 
-        document.getElementById(
-          "errorMessage"
-        ).textContent = error.message;
+    loadingBox.classList.add("hidden");
+    errorBox.classList.remove("hidden");
 
-      }
+    document.getElementById("errorMessage").textContent =
+      data.message || "API error";
 
-    }
+    return;
+  }
+
+  allRegistrations = data.registrations || [];
+
+  updateStatistics();
+
+  applyFilters();
+
+  loadingBox.classList.add("hidden");
+
+  dashboardContent.classList.remove("hidden");
+}
 
 
     /* =========================================
