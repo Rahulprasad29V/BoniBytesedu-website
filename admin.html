@@ -501,7 +501,9 @@
 
 
   <script>
-
+if (sessionStorage.getItem("bbeAdminLoggedIn") !== "true") {
+  window.location.replace("admin-login.html");
+}
     /* =========================================
        API CONFIGURATION
        ========================================= */
