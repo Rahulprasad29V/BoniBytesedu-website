@@ -5,30 +5,53 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Admin Login | Boni Bytes Edutech Internship Dashboard</title>
-  <meta name="description" content="Official Boni Bytes Edutech admin login for authorized administrators managing internship registrations, attendance, projects and certificates.">
+
+  <meta
+    name="description"
+    content="Official Boni Bytes Edutech admin login for authorized administrators managing internship registrations, attendance, projects and certificates."
+  >
+
   <meta name="robots" content="index, follow">
   <meta name="googlebot" content="index, follow">
-  <link rel="canonical" href="https://www.bonibytesedutech.live/admin-login.html">
-  <link rel="icon" href="logo.png" type="image/png">
+
+  <link
+    rel="canonical"
+    href="https://www.bonibytesedutech.live/admin-login.html"
+  >
+
+  <link
+    rel="icon"
+    href="logo.png"
+    type="image/png"
+  >
 
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Boni Bytes Edutech">
   <meta property="og:title" content="Admin Login | Boni Bytes Edutech">
-  <meta property="og:description" content="Official administrator access to the Boni Bytes Edutech internship management dashboard.">
-  <meta property="og:url" content="https://www.bonibytesedutech.live/admin-login.html">
-  <meta property="og:image" content="https://www.bonibytesedutech.live/logo.png">
+  <meta
+    property="og:description"
+    content="Official administrator access to the Boni Bytes Edutech internship management dashboard."
+  >
+  <meta
+    property="og:url"
+    content="https://www.bonibytesedutech.live/admin-login.html"
+  >
+  <meta
+    property="og:image"
+    content="https://www.bonibytesedutech.live/logo.png"
+  >
 
   <script type="application/ld+json">
   {
-    "@context":"https://schema.org",
-    "@type":"WebPage",
-    "name":"Boni Bytes Edutech Admin Login",
-    "url":"https://www.bonibytesedutech.live/admin-login.html",
-    "description":"Official administrator login page for the Boni Bytes Edutech internship management dashboard.",
-    "isPartOf":{
-      "@type":"WebSite",
-      "name":"Boni Bytes Edutech",
-      "url":"https://www.bonibytesedutech.live/"
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Boni Bytes Edutech Admin Login",
+    "url": "https://www.bonibytesedutech.live/admin-login.html",
+    "description": "Official administrator login page for the Boni Bytes Edutech internship management dashboard.",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "Boni Bytes Edutech",
+      "url": "https://www.bonibytesedutech.live/"
     }
   }
   </script>
@@ -41,6 +64,13 @@
   <div class="w-full max-w-md bg-white rounded-2xl shadow-xl p-8">
 
     <div class="text-center mb-8">
+
+      <img
+        src="logo.png"
+        alt="Boni Bytes Edutech"
+        class="w-16 h-16 object-contain mx-auto mb-4"
+      >
+
       <h1 class="text-3xl font-bold text-slate-900">
         Admin Login
       </h1>
@@ -48,12 +78,18 @@
       <p class="text-slate-500 mt-2">
         Boni Bytes Edutech Internship Dashboard
       </p>
+
     </div>
+
 
     <form id="loginForm" class="space-y-5">
 
       <div>
-        <label class="block text-sm font-semibold text-slate-700 mb-2">
+
+        <label
+          for="username"
+          class="block text-sm font-semibold text-slate-700 mb-2"
+        >
           Username
         </label>
 
@@ -65,10 +101,16 @@
           class="w-full px-4 py-3 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
           placeholder="Enter username"
         >
+
       </div>
 
+
       <div>
-        <label class="block text-sm font-semibold text-slate-700 mb-2">
+
+        <label
+          for="password"
+          class="block text-sm font-semibold text-slate-700 mb-2"
+        >
           Password
         </label>
 
@@ -80,70 +122,291 @@
           class="w-full px-4 py-3 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
           placeholder="Enter password"
         >
+
       </div>
+
 
       <div
         id="errorMessage"
         class="hidden bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-xl text-sm"
       >
-        Incorrect username or password.
       </div>
+
 
       <button
         type="submit"
-        class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl transition"
+        id="loginButton"
+        class="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 disabled:cursor-not-allowed text-white font-bold py-3 rounded-xl transition"
       >
         Login to Dashboard
       </button>
 
     </form>
 
+
     <div class="text-center mt-7 pt-6 border-t">
-      <a href="index.html" class="text-sm font-semibold text-slate-500 hover:text-blue-600">
+
+      <a
+        href="index.html"
+        class="text-sm font-semibold text-slate-500 hover:text-blue-600"
+      >
         ← Back to Boni Bytes Edutech
       </a>
+
     </div>
 
   </div>
 
-  <script>
-    const ADMIN_USERNAME = "admin";
-    const ADMIN_PASSWORD = "admin123";
 
-    document
-      .getElementById("loginForm")
-      .addEventListener("submit", function(event) {
+  <script>
+
+    /* =========================================
+       API CONFIGURATION
+       ========================================= */
+
+    const API_URL =
+      "https://script.google.com/macros/s/AKfycbx1DAi6OWCwFIdK9xh-S4MMUoS1_M4INNtUGudZjvfPBb20Y7yWV4Ka3pJB6lcHgKZe/exec";
+
+
+    /* =========================================
+       PAGE ELEMENTS
+       ========================================= */
+
+    const loginForm =
+      document.getElementById("loginForm");
+
+    const usernameInput =
+      document.getElementById("username");
+
+    const passwordInput =
+      document.getElementById("password");
+
+    const loginButton =
+      document.getElementById("loginButton");
+
+    const errorMessage =
+      document.getElementById("errorMessage");
+
+
+    /* =========================================
+       CLEAR OLD LOGIN DATA
+       ========================================= */
+
+    sessionStorage.removeItem(
+      "bbeAdminLoggedIn"
+    );
+
+    sessionStorage.removeItem(
+      "bbeAdminToken"
+    );
+
+
+    /* =========================================
+       LOGIN FORM
+       ========================================= */
+
+    loginForm.addEventListener(
+      "submit",
+      async function(event) {
 
         event.preventDefault();
 
+        hideError();
+
+
         const username =
-          document.getElementById("username").value;
+          usernameInput.value.trim();
 
         const password =
-          document.getElementById("password").value;
+          passwordInput.value;
 
-        const errorMessage =
-          document.getElementById("errorMessage");
 
-        if (
-          username === ADMIN_USERNAME &&
-          password === ADMIN_PASSWORD
-        ) {
+        if (!username || !password) {
+
+          showError(
+            "Please enter your username and password."
+          );
+
+          return;
+
+        }
+
+
+        setLoading(true);
+
+
+        try {
+
+          const formData =
+            new URLSearchParams();
+
+          formData.append(
+            "action",
+            "adminLogin"
+          );
+
+          formData.append(
+            "username",
+            username
+          );
+
+          formData.append(
+            "password",
+            password
+          );
+
+
+          const response =
+            await fetch(
+              API_URL,
+              {
+                method: "POST",
+
+                headers: {
+                  "Content-Type":
+                    "application/x-www-form-urlencoded;charset=UTF-8"
+                },
+
+                body:
+                  formData.toString()
+              }
+            );
+
+
+          if (!response.ok) {
+
+            throw new Error(
+              "Server returned status " +
+              response.status
+            );
+
+          }
+
+
+          const data =
+            await response.json();
+
+
+          if (
+            !data.success ||
+            !data.token
+          ) {
+
+            throw new Error(
+              data.message ||
+              "Login failed."
+            );
+
+          }
+
+
+          /* Save temporary server session */
+
+          sessionStorage.setItem(
+            "bbeAdminToken",
+            data.token
+          );
+
+
+          /*
+             Temporary compatibility with the
+             current admin.html.
+
+             We will replace this old flag in the
+             next security step.
+          */
 
           sessionStorage.setItem(
             "bbeAdminLoggedIn",
             "true"
           );
 
-          window.location.href = "admin.html";
 
-        } else {
+          window.location.replace(
+            "admin.html"
+          );
 
-          errorMessage.classList.remove("hidden");
+
+        } catch (error) {
+
+          console.error(
+            "Admin login error:",
+            error
+          );
+
+
+          showError(
+
+            error.message ===
+            "Failed to fetch"
+
+              ? "Could not connect to the login server."
+
+              : error.message
+
+          );
+
+        } finally {
+
+          setLoading(false);
 
         }
 
-      });
+      }
+    );
+
+
+    /* =========================================
+       SHOW ERROR
+       ========================================= */
+
+    function showError(message) {
+
+      errorMessage.textContent =
+        message;
+
+      errorMessage.classList.remove(
+        "hidden"
+      );
+
+    }
+
+
+    /* =========================================
+       HIDE ERROR
+       ========================================= */
+
+    function hideError() {
+
+      errorMessage.textContent = "";
+
+      errorMessage.classList.add(
+        "hidden"
+      );
+
+    }
+
+
+    /* =========================================
+       LOADING BUTTON
+       ========================================= */
+
+    function setLoading(isLoading) {
+
+      loginButton.disabled =
+        isLoading;
+
+
+      loginButton.textContent =
+
+        isLoading
+
+          ? "Checking credentials..."
+
+          : "Login to Dashboard";
+
+    }
+
   </script>
 
 </body>
