@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>
+    Student Login | Boni Bytes Edutech
+  </title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+
+<body class="min-h-screen bg-slate-100">
+
+  <div class="min-h-screen flex">
+
+    <!-- LEFT SIDE -->
+
+    <div
+      class="
+        hidden lg:flex
+        lg:w-1/2
+        bg-slate-950
+        text-white
+        p-16
+        flex-col
+        justify-between
+      "
+    >
+
+      <div>
+
+        <div class="flex items-center gap-4">
+
+          <div
+            class="
+              w-14 h-14
+              bg-white
+              rounded-2xl
+              flex items-center
+              justify-center
+              text-blue-600
+              font-black
+            "
+          >
+            BBE
+          </div>
+
+          <div>
+
+            <h1 class="text-2xl font-extrabold">
+              Boni Bytes Edutech
+            </h1>
+
+            <p class="text-slate-400">
+              Student Portal
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div>
+
+        <p
+          class="
+            text-blue-400
+            font-bold
+            tracking-wider
+          "
+        >
+          INTERNSHIP MANAGEMENT SYSTEM
+        </p>
+
+        <h2
+          class="
+            text-5xl
+            font-black
+            leading-tight
+            mt-5
+          "
+        >
+          Your internship journey,
+          all in one place.
+        </h2>
+
+        <p
+          class="
+            text-slate-400
+            text-lg
+            mt-6
+            max-w-xl
+          "
+        >
+          View your profile, attendance,
+          assigned projects and certificates.
+        </p>
+
+      </div>
+
+
+      <p class="text-slate-500 text-sm">
+        © 2026 Boni Bytes Edutech
+      </p>
+
+    </div>
+
+
+    <!-- RIGHT SIDE -->
+
+    <div
+      class="
+        w-full
+        lg:w-1/2
+        flex
+        items-center
+        justify-center
+        p-6
+      "
+    >
+
+      <div class="w-full max-w-md">
+
+
+        <!-- MOBILE LOGO -->
+
+        <div
+          class="
+            lg:hidden
+            text-center
+            mb-8
+          "
+        >
+
+          <div
+            class="
+              inline-flex
+              w-16 h-16
+              bg-slate-950
+              text-white
+              rounded-2xl
+              items-center
+              justify-center
+              font-black
+            "
+          >
+            BBE
+          </div>
+
+          <h1
+            class="
+              text-xl
+              font-extrabold
+              mt-3
+            "
+          >
+            Boni Bytes Edutech
+          </h1>
+
+        </div>
+
+
+        <!-- LOGIN CARD -->
+
+        <div
+          class="
+            bg-white
+            border
+            border-slate-200
+            rounded-3xl
+            shadow-xl
+            p-8
+          "
+        >
+
+          <p
+            class="
+              text-blue-600
+              font-bold
+              text-sm
+            "
+          >
+            STUDENT PORTAL
+          </p>
+
+          <h2
+            class="
+              text-3xl
+              font-black
+              text-slate-900
+              mt-2
+            "
+          >
+            Welcome back 👋
+          </h2>
+
+          <p
+            class="
+              text-slate-500
+              mt-2
+            "
+          >
+            Login using your internship
+            registration details.
+          </p>
+
+
+          <!-- ERROR BOX -->
+
+          <div
+            id="errorBox"
+            class="
+              hidden
+              bg-red-50
+              border
+              border-red-200
+              text-red-700
+              rounded-xl
+              p-4
+              mt-6
+              text-sm
+            "
+          >
+          </div>
+
+
+          <!-- LOGIN FORM -->
+
+          <form
+            id="loginForm"
+            class="mt-7 space-y-5"
+          >
+
+
+            <!-- REGISTRATION ID -->
+
+            <div>
+
+              <label
+                class="
+                  block
+                  text-sm
+                  font-bold
+                  text-slate-700
+                  mb-2
+                "
+              >
+                Registration ID
+              </label>
+
+              <input
+                id="registrationId"
+                type="text"
+                required
+                placeholder="Example: BBE-INT-0001"
+                autocomplete="username"
+                class="
+                  w-full
+                  px-4
+                  py-3
+                  border
+                  border-slate-300
+                  rounded-xl
+                  outline-none
+                  focus:ring-2
+                  focus:ring-blue-500
+                  uppercase
+                "
+              >
+
+            </div>
+
+
+            <!-- EMAIL -->
+
+            <div>
+
+              <label
+                class="
+                  block
+                  text-sm
+                  font-bold
+                  text-slate-700
+                  mb-2
+                "
+              >
+                Registered Email
+              </label>
+
+              <input
+                id="email"
+                type="email"
+                required
+                placeholder="student@email.com"
+                autocomplete="email"
+                class="
+                  w-full
+                  px-4
+                  py-3
+                  border
+                  border-slate-300
+                  rounded-xl
+                  outline-none
+                  focus:ring-2
+                  focus:ring-blue-500
+                "
+              >
+
+            </div>
+
+
+            <!-- LOGIN BUTTON -->
+
+            <button
+              id="loginButton"
+              type="submit"
+              class="
+                w-full
+                bg-blue-600
+                hover:bg-blue-700
+                disabled:bg-blue-400
+                text-white
+                font-bold
+                py-3
+                rounded-xl
+                transition
+              "
+            >
+              Login to Student Portal
+            </button>
+
+          </form>
+
+
+          <!-- BACK TO WEBSITE -->
+
+          <div
+            class="
+              text-center
+              mt-7
+              pt-6
+              border-t
+            "
+          >
+
+            <a
+              href="index.html"
+              class="
+                text-sm
+                font-semibold
+                text-slate-500
+                hover:text-blue-600
+              "
+            >
+              ← Back to Boni Bytes Edutech
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+  <script>
+
+    /* ==========================================
+       API CONFIGURATION
+       ========================================== */
+
+    const API_URL =
+      "https://script.google.com/macros/s/AKfycbx1DAi6OWCwFIdK9xh-S4MMUoS1_M4INNtUGudZjvfPBb20Y7yWV4Ka3pJB6lcHgKZe/exec";
+
+
+    /* ==========================================
+       ALREADY LOGGED IN
+       ========================================== */
+
+    if (
+      sessionStorage.getItem(
+        "bbeStudentLoggedIn"
+      ) === "true"
+    ) {
+
+      window.location.replace(
+        "student-dashboard.html"
+      );
+
+    }
+
+
+    /* ==========================================
+       ELEMENTS
+       ========================================== */
+
+    const loginForm =
+      document.getElementById("loginForm");
+
+    const loginButton =
+      document.getElementById("loginButton");
+
+    const errorBox =
+      document.getElementById("errorBox");
+
+
+    /* ==========================================
+       LOGIN
+       ========================================== */
+
+    loginForm.addEventListener(
+      "submit",
+      async function(event) {
+
+        event.preventDefault();
+
+
+        errorBox.classList.add("hidden");
+
+
+        const registrationId =
+          document
+            .getElementById("registrationId")
+            .value
+            .trim()
+            .toUpperCase();
+
+
+        const email =
+          document
+            .getElementById("email")
+            .value
+            .trim()
+            .toLowerCase();
+
+
+        if (!registrationId || !email) {
+
+          showError(
+            "Please enter your Registration ID and email."
+          );
+
+          return;
+
+        }
+
+
+        loginButton.disabled = true;
+
+        loginButton.textContent =
+          "Checking details...";
+
+
+        try {
+
+          const params =
+            new URLSearchParams({
+
+              action: "studentLogin",
+
+              registrationId:
+                registrationId,
+
+              email:
+                email,
+
+              time:
+                Date.now()
+
+            });
+
+
+          const response =
+            await fetch(
+
+              API_URL +
+              "?" +
+              params.toString()
+
+            );
+
+
+          if (!response.ok) {
+
+            throw new Error(
+              "Unable to connect to server."
+            );
+
+          }
+
+
+          const data =
+            await response.json();
+
+
+          if (!data.success) {
+
+            throw new Error(
+
+              data.message ||
+              "Login failed."
+
+            );
+
+          }
+
+
+          /* SAVE LOGIN SESSION */
+
+          sessionStorage.setItem(
+            "bbeStudentLoggedIn",
+            "true"
+          );
+
+
+          sessionStorage.setItem(
+            "bbeStudentRegistrationId",
+            registrationId
+          );
+
+
+          sessionStorage.setItem(
+            "bbeStudentEmail",
+            email
+          );
+
+
+          sessionStorage.setItem(
+            "bbeStudentData",
+            JSON.stringify(
+              data.student
+            )
+          );
+
+
+          /* GO TO DASHBOARD */
+
+          window.location.replace(
+            "student-dashboard.html"
+          );
+
+
+        } catch (error) {
+
+          showError(
+            error.message ||
+            "Unable to login."
+          );
+
+        } finally {
+
+          loginButton.disabled = false;
+
+          loginButton.textContent =
+            "Login to Student Portal";
+
+        }
+
+      }
+    );
+
+
+    /* ==========================================
+       SHOW ERROR
+       ========================================== */
+
+    function showError(message) {
+
+      errorBox.textContent =
+        message;
+
+      errorBox.classList.remove(
+        "hidden"
+      );
+
+    }
+
+  </script>
+
+</body>
+
+</html>
