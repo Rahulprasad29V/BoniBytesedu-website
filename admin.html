@@ -2,1008 +2,166 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
-
-  <title>Admin Dashboard | Boni Bytes Edutech</title>
-
-  <meta
-    name="robots"
-    content="noindex, nofollow"
-  >
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel | Boni Bytes Edutech</title>
+  <meta name="robots" content="noindex, nofollow">
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet"
-  >
-
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    body {
-      font-family: "Inter", sans-serif;
-    }
-
-    .stat-card {
-      transition: transform 0.2s ease;
-    }
-
-    .stat-card:hover {
-      transform: translateY(-3px);
-    }
-
-    .table-container {
-      overflow-x: auto;
-    }
-
-    th,
-    td {
-      white-space: nowrap;
-    }
+    body{font-family:Inter,sans-serif}
+    .nav-btn{transition:.2s}
+    .nav-btn.active{background:#2563eb;color:white}
+    .stat-card{transition:.2s}
+    .stat-card:hover{transform:translateY(-2px)}
+    th,td{white-space:nowrap}
   </style>
 </head>
-
 <body class="bg-slate-100 text-slate-800">
 
-  <!-- HEADER -->
-
-  <header class="bg-slate-900 text-white shadow-lg">
-
-    <div
-      class="max-w-7xl mx-auto px-4 sm:px-6 py-4
-      flex flex-col sm:flex-row gap-4
-      sm:items-center sm:justify-between"
-    >
-
-      <div class="flex items-center gap-3">
-
-        <img
-          src="logo.png"
-          alt="Boni Bytes Edutech"
-          class="w-11 h-11 bg-white rounded-xl object-contain p-1"
-        >
-
-        <div>
-          <h1 class="font-extrabold text-lg">
-            Boni Bytes Edutech
-          </h1>
-
-          <p class="text-slate-400 text-sm">
-            Internship Admin Dashboard
-          </p>
-        </div>
-
-      </div>
-
-
-      <div class="flex gap-3">
-
-        <button
-          onclick="loadRegistrations()"
-          id="refreshBtn"
-          class="bg-blue-600 hover:bg-blue-700
-          px-4 py-2 rounded-lg font-semibold transition"
-        >
-          ↻ Refresh
-        </button>
-
-        <a
-          href="index.html"
-          class="bg-slate-700 hover:bg-slate-600
-          px-4 py-2 rounded-lg font-semibold transition"
-        >
-          Home
-        </a>
-
-      </div>
-
-    </div>
-
-  </header>
-
-
-  <!-- MAIN -->
-
-  <main class="max-w-7xl mx-auto px-4 sm:px-6 py-8">
-
-
-    <!-- TITLE -->
-
-    <div class="mb-8">
-
-      <p class="text-blue-600 font-bold">
-        ADMIN PANEL
-      </p>
-
-      <h2 class="text-3xl font-extrabold mt-1">
-        Internship Registrations
-      </h2>
-
-      <p class="text-slate-500 mt-2">
-        View and manage student registrations.
-      </p>
-
-    </div>
-
-
-    <!-- STATISTICS -->
-
-    <section
-      class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8"
-    >
-
-      <!-- TOTAL -->
-
-      <div
-        class="stat-card bg-white border rounded-2xl p-5 shadow-sm"
-      >
-
-        <div class="flex justify-between items-start">
-
-          <div>
-
-            <p class="text-slate-500 text-sm font-semibold">
-              Total Students
-            </p>
-
-            <h3
-              id="totalCount"
-              class="text-3xl font-extrabold mt-2"
-            >
-              0
-            </h3>
-
-          </div>
-
-          <span class="text-3xl">
-            👥
-          </span>
-
-        </div>
-
-      </div>
-
-
-      <!-- ENGINEERING -->
-
-      <div
-        class="stat-card bg-white border rounded-2xl p-5 shadow-sm"
-      >
-
-        <div class="flex justify-between items-start">
-
-          <div>
-
-            <p class="text-slate-500 text-sm font-semibold">
-              Engineering
-            </p>
-
-            <h3
-              id="engineeringCount"
-              class="text-3xl font-extrabold mt-2"
-            >
-              0
-            </h3>
-
-          </div>
-
-          <span class="text-3xl">
-            ⚙️
-          </span>
-
-        </div>
-
-      </div>
-
-
-      <!-- MBA -->
-
-      <div
-        class="stat-card bg-white border rounded-2xl p-5 shadow-sm"
-      >
-
-        <div class="flex justify-between items-start">
-
-          <div>
-
-            <p class="text-slate-500 text-sm font-semibold">
-              MBA / Management
-            </p>
-
-            <h3
-              id="mbaCount"
-              class="text-3xl font-extrabold mt-2"
-            >
-              0
-            </h3>
-
-          </div>
-
-          <span class="text-3xl">
-            💼
-          </span>
-
-        </div>
-
-      </div>
-
-
-      <!-- ARTS -->
-
-      <div
-        class="stat-card bg-white border rounded-2xl p-5 shadow-sm"
-      >
-
-        <div class="flex justify-between items-start">
-
-          <div>
-
-            <p class="text-slate-500 text-sm font-semibold">
-              Arts & Science
-            </p>
-
-            <h3
-              id="artsCount"
-              class="text-3xl font-extrabold mt-2"
-            >
-              0
-            </h3>
-
-          </div>
-
-          <span class="text-3xl">
-            🎓
-          </span>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- LOADING -->
-
-    <div
-      id="loadingBox"
-      class="bg-blue-50 border border-blue-200
-      text-blue-800 rounded-xl p-5 mb-6"
-    >
-      ⏳ Loading registrations...
-    </div>
-
-
-    <!-- ERROR -->
-
-    <div
-      id="errorBox"
-      class="hidden bg-red-50 border border-red-200
-      text-red-700 rounded-xl p-5 mb-6"
-    >
-
-      <p class="font-bold">
-        Unable to load registrations.
-      </p>
-
-      <p
-        id="errorMessage"
-        class="text-sm mt-1"
-      ></p>
-
-    </div>
-
-
-    <!-- STUDENT TABLE CARD -->
-
-    <section
-      id="dashboardContent"
-      class="hidden bg-white border rounded-2xl shadow-sm"
-    >
-
-
-      <!-- FILTERS -->
-
-      <div class="p-5 border-b">
-
-        <div
-          class="flex flex-col lg:flex-row
-          gap-4 lg:items-center lg:justify-between"
-        >
-
-          <div class="flex flex-col sm:flex-row gap-3 flex-1">
-
-            <!-- SEARCH -->
-
-            <input
-              type="search"
-              id="searchInput"
-              placeholder="🔍 Search name, ID, college..."
-              class="w-full sm:max-w-md px-4 py-3
-              border rounded-xl outline-none
-              focus:border-blue-500
-              focus:ring-2 focus:ring-blue-100"
-            >
-
-
-            <!-- CATEGORY FILTER -->
-
-            <select
-              id="categoryFilter"
-              class="px-4 py-3 border rounded-xl outline-none"
-            >
-
-              <option value="">
-                All Categories
-              </option>
-
-              <option value="Engineering">
-                Engineering
-              </option>
-
-              <option value="MBA / Management">
-                MBA / Management
-              </option>
-
-              <option value="Arts & Science">
-                Arts & Science
-              </option>
-
-            </select>
-
-
-            <!-- MODE FILTER -->
-
-            <select
-              id="modeFilter"
-              class="px-4 py-3 border rounded-xl outline-none"
-            >
-
-              <option value="">
-                All Modes
-              </option>
-
-              <option value="Online">
-                Online
-              </option>
-
-              <option value="Offline">
-                Offline
-              </option>
-
-            </select>
-
-          </div>
-
-
-          <!-- EXPORT -->
-
-          <button
-            onclick="exportCSV()"
-            class="bg-green-600 hover:bg-green-700
-            text-white px-5 py-3 rounded-xl
-            font-bold transition"
-          >
-            📥 Export CSV
-          </button>
-
-        </div>
-
-
-        <p
-          id="resultCount"
-          class="text-sm text-slate-500 mt-4"
-        >
-          Showing 0 students
-        </p>
-
-      </div>
-
-
-      <!-- TABLE -->
-
-      <div class="table-container">
-
-        <table class="w-full text-sm">
-
-          <thead class="bg-slate-50 text-slate-600">
-
-            <tr>
-
-              <th class="text-left px-5 py-4">
-                Registration ID
-              </th>
-
-              <th class="text-left px-5 py-4">
-                Student
-              </th>
-
-              <th class="text-left px-5 py-4">
-                College
-              </th>
-
-              <th class="text-left px-5 py-4">
-                Category
-              </th>
-
-              <th class="text-left px-5 py-4">
-                Course
-              </th>
-
-              <th class="text-left px-5 py-4">
-                Department
-              </th>
-
-              <th class="text-left px-5 py-4">
-                Year
-              </th>
-
-              <th class="text-left px-5 py-4">
-                Domain
-              </th>
-
-              <th class="text-left px-5 py-4">
-                Mode
-              </th>
-
-              <th class="text-left px-5 py-4">
-                WhatsApp
-              </th>
-
-            </tr>
-
-          </thead>
-
-
-          <tbody
-            id="studentTable"
-            class="divide-y"
-          >
-          </tbody>
-
-        </table>
-
-      </div>
-
-
-      <!-- EMPTY MESSAGE -->
-
-      <div
-        id="emptyBox"
-        class="hidden text-center py-12 text-slate-500"
-      >
-
-        <div class="text-4xl mb-3">
-          🔍
-        </div>
-
-        <p class="font-semibold">
-          No students found.
-        </p>
-
-      </div>
-
-    </section>
-
-  </main>
-
-
-  <!-- FOOTER -->
-
-  <footer class="text-center text-slate-500 py-8 text-sm">
-
-    © <span id="year"></span>
-    Boni Bytes Edutech — Admin Dashboard
-
-  </footer>
-
-
-  <script>
+<script>
 if (sessionStorage.getItem("bbeAdminLoggedIn") !== "true") {
   window.location.replace("admin-login.html");
 }
-    /* =========================================
-       API CONFIGURATION
-       ========================================= */
-
-    const API_URL = "https://script.google.com/macros/s/AKfycbx1DAi6OWCwFIdK9xh-S4MMUoS1_M4INNtUGudZjvfPBb20Y7yWV4Ka3pJB6lcHgKZe/exec";
-
-
-    /* =========================================
-       VARIABLES
-       ========================================= */
-
-    let allRegistrations = [];
-    let filteredRegistrations = [];
-
-
-    const loadingBox =
-      document.getElementById("loadingBox");
-
-    const errorBox =
-      document.getElementById("errorBox");
-
-    const dashboardContent =
-      document.getElementById("dashboardContent");
-
-    const studentTable =
-      document.getElementById("studentTable");
-
-    const searchInput =
-      document.getElementById("searchInput");
-
-    const categoryFilter =
-      document.getElementById("categoryFilter");
-
-    const modeFilter =
-      document.getElementById("modeFilter");
-
-
-    document.getElementById("year").textContent =
-      new Date().getFullYear();
-
-
-    /* =========================================
-       LOAD DATA
-       ========================================= */
-
-   function loadRegistrations() {
-
-  loadingBox.classList.remove("hidden");
-  errorBox.classList.add("hidden");
-
-  const oldScript = document.getElementById("registrationApiScript");
-
-  if (oldScript) {
-    oldScript.remove();
-  }
-
-  const script = document.createElement("script");
-
-  script.id = "registrationApiScript";
-
-  script.src =
-    API_URL +
-    "?callback=receiveRegistrations&time=" +
-    Date.now();
-
-  script.onerror = function () {
-
-    loadingBox.classList.add("hidden");
-    errorBox.classList.remove("hidden");
-
-    document.getElementById("errorMessage").textContent =
-      "Could not connect to registration API.";
-
-  };
-
-  document.body.appendChild(script);
-}
-
-
-function receiveRegistrations(data) {
-
-  if (!data.success) {
-
-    loadingBox.classList.add("hidden");
-    errorBox.classList.remove("hidden");
-
-    document.getElementById("errorMessage").textContent =
-      data.message || "API error";
-
-    return;
-  }
-
-  allRegistrations = data.registrations || [];
-
-  updateStatistics();
-
-  applyFilters();
-
-  loadingBox.classList.add("hidden");
-
-  dashboardContent.classList.remove("hidden");
-}
-
-
-    /* =========================================
-       UPDATE STATISTICS
-       ========================================= */
-
-    function updateStatistics() {
-
-      const engineering =
-        allRegistrations.filter(student =>
-          student["Student Category"] ===
-          "Engineering"
-        ).length;
-
-
-      const mba =
-        allRegistrations.filter(student =>
-          student["Student Category"] ===
-          "MBA / Management"
-        ).length;
-
-
-      const arts =
-        allRegistrations.filter(student =>
-          student["Student Category"] ===
-          "Arts & Science"
-        ).length;
-
-
-      document.getElementById(
-        "totalCount"
-      ).textContent = allRegistrations.length;
-
-
-      document.getElementById(
-        "engineeringCount"
-      ).textContent = engineering;
-
-
-      document.getElementById(
-        "mbaCount"
-      ).textContent = mba;
-
-
-      document.getElementById(
-        "artsCount"
-      ).textContent = arts;
-
-    }
-
-
-    /* =========================================
-       FILTER DATA
-       ========================================= */
-
-    function applyFilters() {
-
-      const search =
-        searchInput.value
-          .toLowerCase()
-          .trim();
-
-      const category =
-        categoryFilter.value;
-
-      const mode =
-        modeFilter.value;
-
-
-      filteredRegistrations =
-        allRegistrations.filter(student => {
-
-          const searchableText =
-            Object.values(student)
-              .join(" ")
-              .toLowerCase();
-
-
-          const matchesSearch =
-            searchableText.includes(search);
-
-
-          const matchesCategory =
-            !category ||
-            student["Student Category"] === category;
-
-
-          const matchesMode =
-            !mode ||
-            student["Mode"] === mode;
-
-
-          return (
-            matchesSearch &&
-            matchesCategory &&
-            matchesMode
-          );
-
-        });
-
-
-      renderTable();
-
-    }
-
-
-    /* =========================================
-       DISPLAY TABLE
-       ========================================= */
-
-    function renderTable() {
-
-      studentTable.innerHTML = "";
-
-
-      document.getElementById(
-        "resultCount"
-      ).textContent =
-        "Showing " +
-        filteredRegistrations.length +
-        " of " +
-        allRegistrations.length +
-        " students";
-
-
-      const emptyBox =
-        document.getElementById("emptyBox");
-
-
-      if (filteredRegistrations.length === 0) {
-
-        emptyBox.classList.remove("hidden");
-
-        return;
-
-      }
-
-
-      emptyBox.classList.add("hidden");
-
-
-      filteredRegistrations.forEach(student => {
-
-        const row =
-          document.createElement("tr");
-
-
-        row.className =
-          "hover:bg-slate-50 transition";
-
-
-        const whatsappNumber =
-          String(
-            student["WhatsApp Number"] || ""
-          ).replace(/\D/g, "");
-
-
-        row.innerHTML = `
-
-          <td class="px-5 py-4">
-
-            <span
-              class="bg-blue-50 text-blue-700
-              px-3 py-2 rounded-lg font-bold"
-            >
-              ${escapeHTML(
-                student["Registration ID"]
-              )}
-            </span>
-
-          </td>
-
-
-          <td class="px-5 py-4">
-
-            <p class="font-bold text-slate-800">
-              ${escapeHTML(
-                student["Full Name"]
-              )}
-            </p>
-
-            <p class="text-slate-500 text-xs mt-1">
-              ${escapeHTML(
-                student["Email"]
-              )}
-            </p>
-
-          </td>
-
-
-          <td class="px-5 py-4">
-            ${escapeHTML(
-              student["College Name"]
-            )}
-          </td>
-
-
-          <td class="px-5 py-4">
-            ${escapeHTML(
-              student["Student Category"]
-            )}
-          </td>
-
-
-          <td class="px-5 py-4">
-            ${escapeHTML(
-              student["Degree / Course"]
-            )}
-          </td>
-
-
-          <td class="px-5 py-4">
-            ${escapeHTML(
-              student["Department / Specialization"]
-            )}
-          </td>
-
-
-          <td class="px-5 py-4">
-            ${escapeHTML(
-              student["Year of Study"]
-            )}
-          </td>
-
-
-          <td class="px-5 py-4">
-
-            <span
-              class="bg-purple-50 text-purple-700
-              px-3 py-2 rounded-lg font-semibold"
-            >
-              ${escapeHTML(
-                student["Internship Domain"]
-              )}
-            </span>
-
-          </td>
-
-
-          <td class="px-5 py-4">
-
-            <span
-              class="bg-slate-100
-              px-3 py-2 rounded-lg font-semibold"
-            >
-              ${escapeHTML(
-                student["Mode"]
-              )}
-            </span>
-
-          </td>
-
-
-          <td class="px-5 py-4">
-
-            <a
-              href="https://wa.me/91${whatsappNumber}"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="text-green-600 font-bold
-              hover:underline"
-            >
-              WhatsApp
-            </a>
-
-          </td>
-
-        `;
-
-
-        studentTable.appendChild(row);
-
-      });
-
-    }
-
-
-    /* =========================================
-       SECURITY
-       ========================================= */
-
-    function escapeHTML(value) {
-
-      const div =
-        document.createElement("div");
-
-      div.textContent =
-        value == null ? "" : String(value);
-
-      return div.innerHTML;
-
-    }
-
-
-    /* =========================================
-       CSV EXPORT
-       ========================================= */
-
-    function exportCSV() {
-
-      if (filteredRegistrations.length === 0) {
-
-        alert("No registration data to export.");
-
-        return;
-
-      }
-
-
-      const headers =
-        Object.keys(filteredRegistrations[0]);
-
-
-      const rows =
-        filteredRegistrations.map(student =>
-
-          headers.map(header => {
-
-            const value =
-              String(student[header] || "")
-                .replace(/"/g, '""');
-
-            return `"${value}"`;
-
-          }).join(",")
-
-        );
-
-
-      const csv =
-        [
-          headers.join(","),
-          ...rows
-        ].join("\n");
-
-
-      const blob =
-        new Blob(
-          [csv],
-          {
-            type:
-              "text/csv;charset=utf-8;"
-          }
-        );
-
-
-      const link =
-        document.createElement("a");
-
-
-      link.href =
-        URL.createObjectURL(blob);
-
-
-      link.download =
-        "boni-bytes-internship-registrations.csv";
-
-
-      link.click();
-
-
-      URL.revokeObjectURL(link.href);
-
-    }
-
-
-    /* =========================================
-       EVENTS
-       ========================================= */
-
-    searchInput.addEventListener(
-      "input",
-      applyFilters
-    );
-
-
-    categoryFilter.addEventListener(
-      "change",
-      applyFilters
-    );
-
-
-    modeFilter.addEventListener(
-      "change",
-      applyFilters
-    );
-
-
-    /* =========================================
-       START DASHBOARD
-       ========================================= */
-
-    loadRegistrations();
-
-  </script>
-
+</script>
+
+<div id="overlay" onclick="closeSidebar()" class="hidden fixed inset-0 bg-slate-950/60 z-40 lg:hidden"></div>
+
+<div class="min-h-screen flex">
+  <aside id="sidebar" class="fixed lg:sticky top-0 left-0 z-50 h-screen w-72 bg-slate-950 text-white -translate-x-full lg:translate-x-0 transition-transform flex flex-col">
+    <div class="p-5 border-b border-slate-800 flex items-center gap-3">
+      <img src="logo.png" alt="Boni Bytes Edutech" class="w-12 h-12 bg-white rounded-xl p-1 object-contain">
+      <div>
+        <h1 class="font-extrabold">Boni Bytes Edutech</h1>
+        <p class="text-xs text-slate-400">ADMIN PANEL</p>
+      </div>
+    </div>
+
+    <nav class="p-4 space-y-2 flex-1 overflow-y-auto">
+      <button class="nav-btn active w-full text-left px-4 py-3 rounded-xl" data-section="dashboard" onclick="showSection('dashboard')">▣ &nbsp; Dashboard</button>
+      <button class="nav-btn w-full text-left px-4 py-3 rounded-xl text-slate-300 hover:bg-slate-800" data-section="students" onclick="showSection('students')">♟ &nbsp; Students</button>
+      <button class="nav-btn w-full text-left px-4 py-3 rounded-xl text-slate-300 hover:bg-slate-800" data-section="internships" onclick="showSection('internships')">▤ &nbsp; Internships</button>
+      <button class="nav-btn w-full text-left px-4 py-3 rounded-xl text-slate-300 hover:bg-slate-800" data-section="attendance" onclick="showSection('attendance')">✓ &nbsp; Attendance</button>
+      <button class="nav-btn w-full text-left px-4 py-3 rounded-xl text-slate-300 hover:bg-slate-800" data-section="projects" onclick="showSection('projects')">◇ &nbsp; Projects</button>
+      <button class="nav-btn w-full text-left px-4 py-3 rounded-xl text-slate-300 hover:bg-slate-800" data-section="certificates" onclick="showSection('certificates')">▧ &nbsp; Certificates</button>
+      <button class="nav-btn w-full text-left px-4 py-3 rounded-xl text-slate-300 hover:bg-slate-800" data-section="reports" onclick="showSection('reports')">▥ &nbsp; Reports</button>
+      <button class="nav-btn w-full text-left px-4 py-3 rounded-xl text-slate-300 hover:bg-slate-800" data-section="settings" onclick="showSection('settings')">⚙ &nbsp; Settings</button>
+    </nav>
+
+    <div class="p-4 border-t border-slate-800">
+      <button onclick="logout()" class="w-full text-left px-4 py-3 rounded-xl text-red-300 hover:bg-red-500/10">↪ &nbsp; Logout</button>
+    </div>
+  </aside>
+
+  <div class="flex-1 min-w-0">
+    <header class="sticky top-0 z-30 bg-white border-b">
+      <div class="px-4 sm:px-6 py-4 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <button onclick="openSidebar()" class="lg:hidden w-10 h-10 border rounded-xl">☰</button>
+          <div>
+            <h2 id="pageTitle" class="font-extrabold text-xl">Dashboard</h2>
+            <p class="text-sm text-slate-500">Internship Management System</p>
+          </div>
+        </div>
+        <div class="flex gap-2">
+          <button onclick="loadRegistrations()" class="px-4 py-2 border rounded-xl font-semibold">↻ Refresh</button>
+          <a href="index.html" class="hidden sm:block px-4 py-2 bg-slate-900 text-white rounded-xl font-semibold">Website</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="p-4 sm:p-6">
+      <div id="loadingBox" class="bg-blue-50 border border-blue-200 text-blue-800 rounded-xl p-4 mb-5">⏳ Loading registrations...</div>
+      <div id="errorBox" class="hidden bg-red-50 border border-red-200 text-red-700 rounded-xl p-4 mb-5">
+        <p class="font-bold">Unable to load registrations.</p>
+        <p id="errorMessage" class="text-sm mt-1"></p>
+      </div>
+
+      <section id="section-dashboard" class="admin-section">
+        <div class="mb-6">
+          <p class="text-blue-600 font-bold text-sm">OVERVIEW</p>
+          <h3 class="text-3xl font-extrabold mt-1">Welcome back 👋</h3>
+          <p class="text-slate-500 mt-2">Live overview of your internship registrations.</p>
+        </div>
+
+        <div class="grid grid-cols-2 xl:grid-cols-4 gap-4 mb-6">
+          <div class="stat-card bg-white border rounded-2xl p-5"><p class="text-sm text-slate-500 font-semibold">Total Students</p><div class="flex justify-between items-end mt-3"><h4 id="totalCount" class="text-3xl font-extrabold">0</h4><span class="text-3xl">👥</span></div></div>
+          <div class="stat-card bg-white border rounded-2xl p-5"><p class="text-sm text-slate-500 font-semibold">Engineering</p><div class="flex justify-between items-end mt-3"><h4 id="engineeringCount" class="text-3xl font-extrabold">0</h4><span class="text-3xl">⚙️</span></div></div>
+          <div class="stat-card bg-white border rounded-2xl p-5"><p class="text-sm text-slate-500 font-semibold">MBA / Management</p><div class="flex justify-between items-end mt-3"><h4 id="mbaCount" class="text-3xl font-extrabold">0</h4><span class="text-3xl">💼</span></div></div>
+          <div class="stat-card bg-white border rounded-2xl p-5"><p class="text-sm text-slate-500 font-semibold">Arts & Science</p><div class="flex justify-between items-end mt-3"><h4 id="artsCount" class="text-3xl font-extrabold">0</h4><span class="text-3xl">🎓</span></div></div>
+        </div>
+
+        <div class="grid xl:grid-cols-3 gap-6">
+          <div class="xl:col-span-2 bg-white border rounded-2xl overflow-hidden">
+            <div class="p-5 border-b flex justify-between items-center">
+              <div><h4 class="font-extrabold text-lg">Recent Registrations</h4><p class="text-sm text-slate-500">Latest students from Google Sheets</p></div>
+              <button onclick="showSection('students')" class="text-blue-600 font-bold">View all →</button>
+            </div>
+            <div class="overflow-x-auto"><table class="w-full text-sm"><thead class="bg-slate-50 text-slate-500"><tr><th class="text-left px-5 py-3">ID</th><th class="text-left px-5 py-3">Student</th><th class="text-left px-5 py-3">Domain</th><th class="text-left px-5 py-3">Mode</th></tr></thead><tbody id="recentTable" class="divide-y"></tbody></table></div>
+          </div>
+          <div class="bg-white border rounded-2xl p-5">
+            <h4 class="font-extrabold text-lg">Quick Actions</h4>
+            <div class="mt-4 space-y-3">
+              <button onclick="showSection('students')" class="w-full text-left p-4 rounded-xl bg-blue-50 text-blue-700 font-bold">👥 Manage Students</button>
+              <button onclick="exportCSV()" class="w-full text-left p-4 rounded-xl bg-green-50 text-green-700 font-bold">📥 Export Registrations</button>
+              <button onclick="loadRegistrations()" class="w-full text-left p-4 rounded-xl bg-slate-100 font-bold">↻ Refresh Data</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="section-students" class="admin-section hidden">
+        <div class="mb-6"><p class="text-blue-600 font-bold text-sm">STUDENT MANAGEMENT</p><h3 class="text-3xl font-extrabold mt-1">Students</h3><p class="text-slate-500 mt-2">Search, filter and contact registered students.</p></div>
+        <div class="bg-white border rounded-2xl overflow-hidden">
+          <div class="p-5 border-b">
+            <div class="flex flex-col xl:flex-row gap-3 xl:justify-between">
+              <div class="flex flex-col md:flex-row gap-3 flex-1">
+                <input id="searchInput" type="search" placeholder="🔍 Search name, ID, college..." class="w-full md:max-w-md px-4 py-3 border rounded-xl">
+                <select id="categoryFilter" class="px-4 py-3 border rounded-xl"><option value="">All Categories</option><option>Engineering</option><option>MBA / Management</option><option>Arts & Science</option></select>
+                <select id="modeFilter" class="px-4 py-3 border rounded-xl"><option value="">All Modes</option><option>Online</option><option>Offline</option></select>
+              </div>
+              <button onclick="exportCSV()" class="bg-green-600 text-white px-5 py-3 rounded-xl font-bold">📥 Export CSV</button>
+            </div>
+            <p id="resultCount" class="text-sm text-slate-500 mt-4">Showing 0 students</p>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+              <thead class="bg-slate-50 text-slate-600"><tr><th class="text-left px-5 py-4">Registration ID</th><th class="text-left px-5 py-4">Student</th><th class="text-left px-5 py-4">College</th><th class="text-left px-5 py-4">Category</th><th class="text-left px-5 py-4">Course</th><th class="text-left px-5 py-4">Department</th><th class="text-left px-5 py-4">Year</th><th class="text-left px-5 py-4">Domain</th><th class="text-left px-5 py-4">Mode</th><th class="text-left px-5 py-4">Contact</th></tr></thead>
+              <tbody id="studentTable" class="divide-y"></tbody>
+            </table>
+          </div>
+          <div id="emptyBox" class="hidden text-center py-12 text-slate-500">🔍 No students found.</div>
+        </div>
+      </section>
+
+      <section id="section-internships" class="admin-section hidden"><div class="bg-white border rounded-2xl p-8"><h3 class="text-2xl font-extrabold">Internships</h3><p class="text-slate-500 mt-2">Next module: domains, batches, dates, mentors and capacity.</p></div></section>
+      <section id="section-attendance" class="admin-section hidden"><div class="bg-white border rounded-2xl p-8"><h3 class="text-2xl font-extrabold">Attendance</h3><p class="text-slate-500 mt-2">Next module: daily attendance and percentage tracking.</p></div></section>
+      <section id="section-projects" class="admin-section hidden"><div class="bg-white border rounded-2xl p-8"><h3 class="text-2xl font-extrabold">Projects</h3><p class="text-slate-500 mt-2">Next module: project assignment and submission tracking.</p></div></section>
+      <section id="section-certificates" class="admin-section hidden"><div class="bg-white border rounded-2xl p-8"><h3 class="text-2xl font-extrabold">Certificates</h3><p class="text-slate-500 mt-2">Next module: completion, project and attendance certificates.</p></div></section>
+      <section id="section-reports" class="admin-section hidden"><div class="bg-white border rounded-2xl p-8"><h3 class="text-2xl font-extrabold">Reports</h3><p class="text-slate-500 mt-2">Export registration data and view reports.</p><button onclick="exportCSV()" class="mt-5 bg-green-600 text-white px-5 py-3 rounded-xl font-bold">📥 Export CSV</button></div></section>
+      <section id="section-settings" class="admin-section hidden"><div class="bg-white border rounded-2xl p-8"><h3 class="text-2xl font-extrabold">Settings</h3><p class="text-slate-500 mt-2">Admin and company settings will be added here.</p></div></section>
+    </main>
+  </div>
+</div>
+
+<script>
+const API_URL="https://script.google.com/macros/s/AKfycbx1DAi6OWCwFIdK9xh-S4MMUoS1_M4INNtUGudZjvfPBb20Y7yWV4Ka3pJB6lcHgKZe/exec";
+let allRegistrations=[],filteredRegistrations=[];
+const loadingBox=document.getElementById("loadingBox"),errorBox=document.getElementById("errorBox"),studentTable=document.getElementById("studentTable"),recentTable=document.getElementById("recentTable"),searchInput=document.getElementById("searchInput"),categoryFilter=document.getElementById("categoryFilter"),modeFilter=document.getElementById("modeFilter");
+
+function openSidebar(){document.getElementById("sidebar").classList.remove("-translate-x-full");document.getElementById("overlay").classList.remove("hidden")}
+function closeSidebar(){document.getElementById("sidebar").classList.add("-translate-x-full");document.getElementById("overlay").classList.add("hidden")}
+function showSection(name){document.querySelectorAll(".admin-section").forEach(x=>x.classList.add("hidden"));document.getElementById("section-"+name).classList.remove("hidden");document.querySelectorAll(".nav-btn").forEach(x=>x.classList.remove("active"));document.querySelector(`[data-section="${name}"]`).classList.add("active");document.getElementById("pageTitle").textContent=name.charAt(0).toUpperCase()+name.slice(1);closeSidebar()}
+function logout(){sessionStorage.removeItem("bbeAdminLoggedIn");window.location.replace("admin-login.html")}
+
+function loadRegistrations(){loadingBox.classList.remove("hidden");errorBox.classList.add("hidden");const old=document.getElementById("registrationApiScript");if(old)old.remove();const s=document.createElement("script");s.id="registrationApiScript";s.src=API_URL+"?callback=receiveRegistrations&time="+Date.now();s.onerror=()=>{loadingBox.classList.add("hidden");errorBox.classList.remove("hidden");document.getElementById("errorMessage").textContent="Could not connect to registration API."};document.body.appendChild(s)}
+function receiveRegistrations(data){if(!data.success){loadingBox.classList.add("hidden");errorBox.classList.remove("hidden");document.getElementById("errorMessage").textContent=data.message||"API error";return}allRegistrations=data.registrations||[];updateStatistics();applyFilters();renderRecent();loadingBox.classList.add("hidden")}
+function updateStatistics(){document.getElementById("totalCount").textContent=allRegistrations.length;document.getElementById("engineeringCount").textContent=allRegistrations.filter(s=>s["Student Category"]==="Engineering").length;document.getElementById("mbaCount").textContent=allRegistrations.filter(s=>s["Student Category"]==="MBA / Management").length;document.getElementById("artsCount").textContent=allRegistrations.filter(s=>s["Student Category"]==="Arts & Science").length}
+function applyFilters(){const q=searchInput.value.toLowerCase().trim(),c=categoryFilter.value,m=modeFilter.value;filteredRegistrations=allRegistrations.filter(s=>Object.values(s).join(" ").toLowerCase().includes(q)&&(!c||s["Student Category"]===c)&&(!m||s["Mode"]===m));renderTable()}
+function renderRecent(){recentTable.innerHTML="";allRegistrations.slice().reverse().slice(0,5).forEach(s=>{const tr=document.createElement("tr");tr.innerHTML=`<td class="px-5 py-4 font-bold text-blue-700">${escapeHTML(s["Registration ID"])}</td><td class="px-5 py-4"><p class="font-bold">${escapeHTML(s["Full Name"])}</p><p class="text-xs text-slate-500">${escapeHTML(s["College Name"])}</p></td><td class="px-5 py-4">${escapeHTML(s["Internship Domain"])}</td><td class="px-5 py-4">${escapeHTML(s["Mode"])}</td>`;recentTable.appendChild(tr)})}
+function renderTable(){studentTable.innerHTML="";document.getElementById("resultCount").textContent=`Showing ${filteredRegistrations.length} of ${allRegistrations.length} students`;const empty=document.getElementById("emptyBox");if(!filteredRegistrations.length){empty.classList.remove("hidden");return}empty.classList.add("hidden");filteredRegistrations.forEach(s=>{const phone=String(s["WhatsApp Number"]||"").replace(/\D/g,"");const tr=document.createElement("tr");tr.className="hover:bg-slate-50";tr.innerHTML=`<td class="px-5 py-4"><span class="bg-blue-50 text-blue-700 px-3 py-2 rounded-lg font-bold">${escapeHTML(s["Registration ID"])}</span></td><td class="px-5 py-4"><p class="font-bold">${escapeHTML(s["Full Name"])}</p><p class="text-xs text-slate-500 mt-1">${escapeHTML(s["Email"])}</p></td><td class="px-5 py-4">${escapeHTML(s["College Name"])}</td><td class="px-5 py-4">${escapeHTML(s["Student Category"])}</td><td class="px-5 py-4">${escapeHTML(s["Degree / Course"])}</td><td class="px-5 py-4">${escapeHTML(s["Department / Specialization"])}</td><td class="px-5 py-4">${escapeHTML(s["Year of Study"])}</td><td class="px-5 py-4">${escapeHTML(s["Internship Domain"])}</td><td class="px-5 py-4">${escapeHTML(s["Mode"])}</td><td class="px-5 py-4"><a href="https://wa.me/91${phone}" target="_blank" rel="noopener noreferrer" class="text-green-600 font-bold">WhatsApp</a></td>`;studentTable.appendChild(tr)})}
+function escapeHTML(v){const d=document.createElement("div");d.textContent=v==null?"":String(v);return d.innerHTML}
+function exportCSV(){const data=filteredRegistrations.length?filteredRegistrations:allRegistrations;if(!data.length){alert("No registration data to export.");return}const headers=Object.keys(data[0]);const rows=data.map(s=>headers.map(h=>`"${String(s[h]||"").replace(/"/g,'""')}"`).join(","));const blob=new Blob([[headers.join(","),...rows].join("\n")],{type:"text/csv;charset=utf-8;"});const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="boni-bytes-internship-registrations.csv";a.click();URL.revokeObjectURL(a.href)}
+searchInput.addEventListener("input",applyFilters);categoryFilter.addEventListener("change",applyFilters);modeFilter.addEventListener("change",applyFilters);loadRegistrations();
+</script>
 </body>
 </html>
-
-
-
