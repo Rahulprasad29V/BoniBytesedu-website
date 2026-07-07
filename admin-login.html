@@ -4,7 +4,34 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Admin Login | Boni Bytes Edutech</title>
+  <title>Admin Login | Boni Bytes Edutech Internship Dashboard</title>
+  <meta name="description" content="Official Boni Bytes Edutech admin login for authorized administrators managing internship registrations, attendance, projects and certificates.">
+  <meta name="robots" content="index, follow">
+  <meta name="googlebot" content="index, follow">
+  <link rel="canonical" href="https://www.bonibytesedutech.live/admin-login.html">
+  <link rel="icon" href="logo.png" type="image/png">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Boni Bytes Edutech">
+  <meta property="og:title" content="Admin Login | Boni Bytes Edutech">
+  <meta property="og:description" content="Official administrator access to the Boni Bytes Edutech internship management dashboard.">
+  <meta property="og:url" content="https://www.bonibytesedutech.live/admin-login.html">
+  <meta property="og:image" content="https://www.bonibytesedutech.live/logo.png">
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebPage",
+    "name":"Boni Bytes Edutech Admin Login",
+    "url":"https://www.bonibytesedutech.live/admin-login.html",
+    "description":"Official administrator login page for the Boni Bytes Edutech internship management dashboard.",
+    "isPartOf":{
+      "@type":"WebSite",
+      "name":"Boni Bytes Edutech",
+      "url":"https://www.bonibytesedutech.live/"
+    }
+  }
+  </script>
 
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
@@ -71,11 +98,15 @@
 
     </form>
 
+    <div class="text-center mt-7 pt-6 border-t">
+      <a href="index.html" class="text-sm font-semibold text-slate-500 hover:text-blue-600">
+        ← Back to Boni Bytes Edutech
+      </a>
+    </div>
+
   </div>
 
-
   <script>
-
     const ADMIN_USERNAME = "admin";
     const ADMIN_PASSWORD = "admin123";
 
@@ -93,7 +124,6 @@
 
         const errorMessage =
           document.getElementById("errorMessage");
-
 
         if (
           username === ADMIN_USERNAME &&
@@ -114,7 +144,6 @@
         }
 
       });
-
   </script>
 
 </body>
