@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Dashboard | Boni Bytes Edutech</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-100 text-slate-900">
+
+<div id="mobileOverlay" onclick="closeSidebar()" class="hidden fixed inset-0 bg-black/50 z-30 lg:hidden"></div>
+
+<div class="min-h-screen flex">
+  <aside id="sidebar" class="fixed lg:static inset-y-0 left-0 z-40 w-72 bg-slate-950 text-white -translate-x-full lg:translate-x-0 transition-transform duration-300 flex flex-col">
+    <div class="p-6 border-b border-slate-800">
+      <div class="flex items-center gap-3">
+        <div class="w-12 h-12 bg-white text-blue-600 rounded-xl flex items-center justify-center font-black">BBE</div>
+        <div><h1 class="font-extrabold">Boni Bytes Edutech</h1><p class="text-xs text-slate-400">Student Portal</p></div>
+      </div>
+    </div>
+
+    <nav class="p-4 space-y-2 flex-1">
+      <button onclick="showSection('dashboard')" class="nav-btn w-full text-left px-4 py-3 rounded-xl hover:bg-slate-800 font-semibold" data-section="dashboard">🏠 Dashboard</button>
+      <button onclick="showSection('profile')" class="nav-btn w-full text-left px-4 py-3 rounded-xl hover:bg-slate-800 font-semibold" data-section="profile">👤 My Profile</button>
+      <button onclick="showSection('attendance')" class="nav-btn w-full text-left px-4 py-3 rounded-xl hover:bg-slate-800 font-semibold" data-section="attendance">📅 Attendance</button>
+      <button onclick="showSection('projects')" class="nav-btn w-full text-left px-4 py-3 rounded-xl hover:bg-slate-800 font-semibold" data-section="projects">📁 My Projects</button>
+      <button onclick="showSection('certificates')" class="nav-btn w-full text-left px-4 py-3 rounded-xl hover:bg-slate-800 font-semibold" data-section="certificates">🎓 Certificates</button>
+    </nav>
+
+    <div class="p-4 border-t border-slate-800">
+      <button onclick="logout()" class="w-full px-4 py-3 rounded-xl bg-red-500/10 text-red-300 hover:bg-red-500/20 font-bold">↪ Logout</button>
+    </div>
+  </aside>
+
+  <main class="flex-1 min-w-0">
+    <header class="sticky top-0 z-20 bg-white/95 backdrop-blur border-b px-4 sm:px-6 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <button onclick="openSidebar()" class="lg:hidden w-10 h-10 border rounded-xl">☰</button>
+        <div><p class="text-xs text-blue-600 font-bold">STUDENT PORTAL</p><h2 id="pageTitle" class="text-xl font-extrabold">Dashboard</h2></div>
+      </div>
+      <div class="text-right"><p id="headerName" class="font-bold text-sm">Student</p><p id="headerId" class="text-xs text-slate-500"></p></div>
+    </header>
+
+    <div class="p-4 sm:p-6 lg:p-8 max-w-7xl mx-auto">
+      <div id="errorBox" class="hidden mb-6 bg-red-50 border border-red-200 text-red-700 p-4 rounded-xl"></div>
+
+      <section id="section-dashboard" class="portal-section">
+        <div class="bg-gradient-to-r from-blue-600 to-indigo-700 text-white rounded-3xl p-7 sm:p-9 mb-6">
+          <p class="font-bold text-blue-100">WELCOME BACK</p>
+          <h3 class="text-3xl sm:text-4xl font-black mt-2">Hello, <span id="welcomeName">Student</span> 👋</h3>
+          <p class="text-blue-100 mt-3">Track your internship, attendance, projects and certificates in one place.</p>
+        </div>
+
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+          <div class="bg-white border rounded-2xl p-5"><p class="text-sm text-slate-500 font-semibold">Attendance</p><h4 id="dashAttendance" class="text-3xl font-black mt-3">0%</h4></div>
+          <div class="bg-white border rounded-2xl p-5"><p class="text-sm text-slate-500 font-semibold">Projects</p><h4 id="dashProjects" class="text-3xl font-black mt-3">0</h4></div>
+          <div class="bg-white border rounded-2xl p-5"><p class="text-sm text-slate-500 font-semibold">Approved</p><h4 id="dashApproved" class="text-3xl font-black mt-3 text-green-600">0</h4></div>
+          <div class="bg-white border rounded-2xl p-5"><p class="text-sm text-slate-500 font-semibold">Certificates</p><h4 id="dashCertificates" class="text-3xl font-black mt-3 text-blue-600">0</h4></div>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-6">
+          <div class="bg-white border rounded-2xl p-6"><h4 class="text-lg font-extrabold">My Internship</h4><div id="internshipSummary" class="mt-5 grid grid-cols-2 gap-4"></div></div>
+          <div class="bg-white border rounded-2xl p-6"><h4 class="text-lg font-extrabold">Project Progress</h4><div id="projectSummary" class="mt-5 text-slate-500">No projects assigned yet.</div></div>
+        </div>
+      </section>
+
+      <section id="section-profile" class="portal-section hidden">
+        <div class="mb-6"><p class="text-blue-600 font-bold text-sm">MY DETAILS</p><h3 class="text-3xl font-extrabold mt-1">My Profile</h3></div>
+        <div class="bg-white border rounded-2xl p-6 sm:p-8">
+          <div class="flex flex-col sm:flex-row gap-5 items-start sm:items-center mb-8">
+            <div id="profileInitial" class="w-20 h-20 rounded-2xl bg-blue-100 text-blue-700 flex items-center justify-center text-3xl font-black">S</div>
+            <div><h4 id="profileName" class="text-2xl font-black">Student</h4><p id="profileId" class="text-blue-600 font-bold mt-1"></p></div>
+          </div>
+          <div id="profileGrid" class="grid md:grid-cols-2 gap-4"></div>
+        </div>
+      </section>
+
+      <section id="section-attendance" class="portal-section hidden">
+        <div class="mb-6"><p class="text-blue-600 font-bold text-sm">MY ATTENDANCE</p><h3 class="text-3xl font-extrabold mt-1">Attendance</h3></div>
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+          <div class="bg-white border rounded-2xl p-5"><p class="text-sm text-slate-500">Total Days</p><h4 id="attTotal" class="text-3xl font-black mt-3">0</h4></div>
+          <div class="bg-white border rounded-2xl p-5"><p class="text-sm text-slate-500">Present</p><h4 id="attPresent" class="text-3xl font-black mt-3 text-green-600">0</h4></div>
+          <div class="bg-white border rounded-2xl p-5"><p class="text-sm text-slate-500">Absent</p><h4 id="attAbsent" class="text-3xl font-black mt-3 text-red-600">0</h4></div>
+          <div class="bg-white border rounded-2xl p-5"><p class="text-sm text-slate-500">Percentage</p><h4 id="attRate" class="text-3xl font-black mt-3">0%</h4></div>
+        </div>
+        <div class="bg-white border rounded-2xl overflow-hidden"><div class="p-5 border-b"><h4 class="font-extrabold">Attendance History</h4></div><div class="overflow-x-auto"><table class="w-full text-sm"><thead class="bg-slate-50"><tr><th class="text-left p-4">Date</th><th class="text-left p-4">Batch</th><th class="text-left p-4">Status</th><th class="text-left p-4">Remarks</th></tr></thead><tbody id="attendanceTable" class="divide-y"></tbody></table></div><div id="attendanceEmpty" class="hidden text-center p-10 text-slate-500">No attendance records yet.</div></div>
+      </section>
+
+      <section id="section-projects" class="portal-section hidden">
+        <div class="mb-6"><p class="text-blue-600 font-bold text-sm">MY WORK</p><h3 class="text-3xl font-extrabold mt-1">My Projects</h3></div>
+        <div id="projectCards" class="grid lg:grid-cols-2 gap-5"></div>
+        <div id="projectEmpty" class="hidden bg-white border rounded-2xl p-12 text-center text-slate-500">No projects assigned yet.</div>
+      </section>
+
+      <section id="section-certificates" class="portal-section hidden">
+        <div class="mb-6"><p class="text-blue-600 font-bold text-sm">MY ACHIEVEMENTS</p><h3 class="text-3xl font-extrabold mt-1">Certificates</h3></div>
+        <div id="certificateCards" class="grid lg:grid-cols-2 gap-5"></div>
+        <div id="certificateEmpty" class="hidden bg-white border rounded-2xl p-12 text-center text-slate-500">No certificates issued yet.</div>
+      </section>
+    </div>
+  </main>
+</div>
+
+<script>
+const API_URL = "https://script.google.com/macros/s/AKfycbx1DAi6OWCwFIdK9xh-S4MMUoS1_M4INNtUGudZjvfPBb20Y7yWV4Ka3pJB6lcHgKZe/exec";
+
+if (sessionStorage.getItem("bbeStudentLoggedIn") !== "true") {
+  window.location.replace("student-login.html");
+}
+
+const registrationId = sessionStorage.getItem("bbeStudentRegistrationId") || "";
+const studentEmail = sessionStorage.getItem("bbeStudentEmail") || "";
+let student = {};
+let myAttendance = [];
+let myProjects = [];
+let myCertificates = [];
+
+try { student = JSON.parse(sessionStorage.getItem("bbeStudentData") || "{}"); } catch(e) {}
+
+if (!registrationId) logout();
+
+document.addEventListener("DOMContentLoaded", function() {
+  renderProfile();
+  loadAllStudentData();
+  showSection("dashboard");
+});
+
+function renderProfile() {
+  const name = student.fullName || "Student";
+  document.getElementById("headerName").textContent = name;
+  document.getElementById("headerId").textContent = registrationId;
+  document.getElementById("welcomeName").textContent = name.split(" ")[0] || name;
+  document.getElementById("profileName").textContent = name;
+  document.getElementById("profileId").textContent = registrationId;
+  document.getElementById("profileInitial").textContent = name.charAt(0).toUpperCase() || "S";
+
+  const items = [
+    ["Email", student.email], ["WhatsApp", student.whatsapp],
+    ["College", student.college], ["Category", student.studentCategory],
+    ["Course", student.course], ["Department", student.department],
+    ["Year of Study", student.year], ["Internship Domain", student.domain],
+    ["Mode", student.mode]
+  ];
+  document.getElementById("profileGrid").innerHTML = items.map(([label,value]) =>
+    `<div class="bg-slate-50 rounded-xl p-4"><p class="text-xs text-slate-500 font-bold uppercase">${esc(label)}</p><p class="font-bold mt-2">${esc(value || "—")}</p></div>`
+  ).join("");
+
+  document.getElementById("internshipSummary").innerHTML = [
+    ["Domain", student.domain], ["Mode", student.mode],
+    ["Course", student.course], ["Year", student.year]
+  ].map(([l,v]) => `<div><p class="text-xs text-slate-500 font-bold uppercase">${esc(l)}</p><p class="font-bold mt-1">${esc(v || "—")}</p></div>`).join("");
+}
+
+function loadAllStudentData() {
+  loadJSONP("attendance", "studentAttendanceCallback", data => {
+    myAttendance = (data.attendance || []).filter(x => sameStudent(x["Registration ID"]));
+    renderAttendance();
+  });
+  loadJSONP("projects", "studentProjectsCallback", data => {
+    myProjects = (data.projects || []).filter(x => sameStudent(x["Registration ID"]));
+    renderProjects();
+  });
+  loadJSONP("certificates", "studentCertificatesCallback", data => {
+    myCertificates = (data.certificates || []).filter(x => sameStudent(x["Registration ID"]));
+    renderCertificates();
+  });
+}
+
+function sameStudent(id) {
+  return String(id || "").trim().toUpperCase() === registrationId.trim().toUpperCase();
+}
+
+function loadJSONP(action, callbackName, handler) {
+  window[callbackName] = function(data) {
+    if (data && data.success) handler(data);
+    else showError((data && data.message) || "Could not load " + action + ".");
+  };
+  const old = document.getElementById(callbackName + "Script");
+  if (old) old.remove();
+  const script = document.createElement("script");
+  script.id = callbackName + "Script";
+  script.src = API_URL + "?action=" + encodeURIComponent(action) + "&callback=" + callbackName + "&time=" + Date.now();
+  script.onerror = () => showError("Could not connect to " + action + " data.");
+  document.body.appendChild(script);
+}
+
+function renderAttendance() {
+  const present = myAttendance.filter(x => x["Status"] === "Present").length;
+  const absent = myAttendance.filter(x => x["Status"] === "Absent").length;
+  const rate = myAttendance.length ? Math.round(present / myAttendance.length * 100) : 0;
+  document.getElementById("attTotal").textContent = myAttendance.length;
+  document.getElementById("attPresent").textContent = present;
+  document.getElementById("attAbsent").textContent = absent;
+  document.getElementById("attRate").textContent = rate + "%";
+  document.getElementById("dashAttendance").textContent = rate + "%";
+  const table = document.getElementById("attendanceTable");
+  table.innerHTML = myAttendance.slice().reverse().map(x => {
+    const cls = x["Status"] === "Present" ? "bg-green-50 text-green-700" : x["Status"] === "Absent" ? "bg-red-50 text-red-700" : "bg-amber-50 text-amber-700";
+    return `<tr><td class="p-4">${esc(x["Date"])}</td><td class="p-4">${esc(x["Batch Name"] || "—")}</td><td class="p-4"><span class="${cls} px-3 py-2 rounded-lg font-bold">${esc(x["Status"])}</span></td><td class="p-4">${esc(x["Remarks"] || "—")}</td></tr>`;
+  }).join("");
+  document.getElementById("attendanceEmpty").classList.toggle("hidden", myAttendance.length > 0);
+}
+
+function renderProjects() {
+  document.getElementById("dashProjects").textContent = myProjects.length;
+  document.getElementById("dashApproved").textContent = myProjects.filter(x => x["Status"] === "Approved").length;
+  const box = document.getElementById("projectCards");
+  box.innerHTML = myProjects.map(x => {
+    const link = x["Submission Link"] ? `<a href="${safeUrl(x["Submission Link"])}" target="_blank" class="inline-block mt-4 text-blue-600 font-bold">Open Submission ↗</a>` : "";
+    return `<article class="bg-white border rounded-2xl p-6"><div class="flex justify-between gap-3"><div><p class="text-xs text-blue-600 font-bold">${esc(x["Project ID"])}</p><h4 class="text-xl font-black mt-1">${esc(x["Project Title"])}</h4></div><span class="h-fit bg-slate-100 px-3 py-2 rounded-lg text-sm font-bold">${esc(x["Status"])}</span></div><p class="text-slate-600 mt-4">${esc(x["Description"] || "No description.")}</p><div class="mt-5 grid grid-cols-2 gap-4 text-sm"><div><p class="text-slate-500">Deadline</p><p class="font-bold mt-1">${esc(x["Deadline"] || "—")}</p></div><div><p class="text-slate-500">Mentor Remarks</p><p class="font-bold mt-1">${esc(x["Mentor Remarks"] || "—")}</p></div></div>${link}</article>`;
+  }).join("");
+  document.getElementById("projectEmpty").classList.toggle("hidden", myProjects.length > 0);
+  document.getElementById("projectSummary").innerHTML = myProjects.length ? `<p class="text-3xl font-black">${myProjects.length}</p><p class="text-slate-500 mt-1">project${myProjects.length === 1 ? "" : "s"} assigned</p>` : "No projects assigned yet.";
+}
+
+function renderCertificates() {
+  document.getElementById("dashCertificates").textContent = myCertificates.length;
+  const box = document.getElementById("certificateCards");
+  box.innerHTML = myCertificates.map(x => {
+    const link = x["Certificate URL"] ? `<a href="${safeUrl(x["Certificate URL"])}" target="_blank" class="inline-block mt-5 bg-blue-600 text-white px-4 py-3 rounded-xl font-bold">View Certificate ↗</a>` : "";
+    return `<article class="bg-white border rounded-2xl p-6"><div class="text-4xl">🎓</div><p class="text-xs text-blue-600 font-bold mt-4">${esc(x["Certificate ID"])}</p><h4 class="text-xl font-black mt-1">${esc(x["Certificate Type"])}</h4><p class="text-slate-500 mt-2">${esc(x["Internship Domain"] || student.domain || "")}</p><div class="mt-5 flex justify-between text-sm"><span>Issue Date: <b>${esc(x["Issue Date"] || "—")}</b></span><span class="font-bold text-green-600">${esc(x["Status"])}</span></div>${link}</article>`;
+  }).join("");
+  document.getElementById("certificateEmpty").classList.toggle("hidden", myCertificates.length > 0);
+}
+
+function showSection(name) {
+  document.querySelectorAll(".portal-section").forEach(x => x.classList.add("hidden"));
+  document.getElementById("section-" + name).classList.remove("hidden");
+  document.querySelectorAll(".nav-btn").forEach(x => x.classList.remove("bg-blue-600"));
+  const active = document.querySelector(`[data-section="${name}"]`);
+  if (active) active.classList.add("bg-blue-600");
+  document.getElementById("pageTitle").textContent = ({dashboard:"Dashboard",profile:"My Profile",attendance:"Attendance",projects:"My Projects",certificates:"Certificates"})[name];
+  closeSidebar();
+}
+
+function openSidebar() { document.getElementById("sidebar").classList.remove("-translate-x-full"); document.getElementById("mobileOverlay").classList.remove("hidden"); }
+function closeSidebar() { document.getElementById("sidebar").classList.add("-translate-x-full"); document.getElementById("mobileOverlay").classList.add("hidden"); }
+
+function logout() {
+  ["bbeStudentLoggedIn","bbeStudentRegistrationId","bbeStudentEmail","bbeStudentData"].forEach(k => sessionStorage.removeItem(k));
+  window.location.replace("student-login.html");
+}
+
+function showError(message) {
+  const box = document.getElementById("errorBox");
+  box.textContent = message;
+  box.classList.remove("hidden");
+}
+
+function esc(v) {
+  return String(v ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]));
+}
+function safeUrl(v) {
+  const s = String(v || "");
+  return /^https?:\/\//i.test(s) ? esc(s) : "#";
+}
+</script>
+</body>
+</html>
