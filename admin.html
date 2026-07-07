@@ -133,7 +133,41 @@ if (sessionStorage.getItem("bbeAdminLoggedIn") !== "true") {
         </div>
       </section>
 
-      <section id="section-internships" class="admin-section hidden"><div class="bg-white border rounded-2xl p-8"><h3 class="text-2xl font-extrabold">Internships</h3><p class="text-slate-500 mt-2">Next module: domains, batches, dates, mentors and capacity.</p></div></section>
+      <section id="section-internships" class="admin-section hidden">
+  <div class="mb-6 flex flex-col sm:flex-row gap-4 sm:items-end sm:justify-between">
+    <div>
+      <p class="text-blue-600 font-bold text-sm">INTERNSHIP MANAGEMENT</p>
+      <h3 class="text-3xl font-extrabold mt-1">Internships</h3>
+      <p class="text-slate-500 mt-2">Create and manage internship batches.</p>
+    </div>
+    <button onclick="openInternshipModal()" class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-3 rounded-xl font-bold">＋ Add Internship</button>
+  </div>
+
+  <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+    <div class="bg-white border rounded-2xl p-5"><p class="text-sm text-slate-500 font-semibold">Total Batches</p><h4 id="internshipTotal" class="text-3xl font-extrabold mt-3">0</h4></div>
+    <div class="bg-white border rounded-2xl p-5"><p class="text-sm text-slate-500 font-semibold">Open</p><h4 id="internshipOpen" class="text-3xl font-extrabold mt-3 text-green-600">0</h4></div>
+    <div class="bg-white border rounded-2xl p-5"><p class="text-sm text-slate-500 font-semibold">Closed</p><h4 id="internshipClosed" class="text-3xl font-extrabold mt-3 text-red-600">0</h4></div>
+    <div class="bg-white border rounded-2xl p-5"><p class="text-sm text-slate-500 font-semibold">Total Capacity</p><h4 id="internshipCapacity" class="text-3xl font-extrabold mt-3">0</h4></div>
+  </div>
+
+  <div id="internshipLoading" class="hidden bg-blue-50 border border-blue-200 text-blue-700 p-4 rounded-xl mb-5">⏳ Loading internships...</div>
+
+  <div class="bg-white border rounded-2xl overflow-hidden">
+    <div class="p-5 border-b flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between">
+      <div><h4 class="font-extrabold text-lg">All Internship Batches</h4><p id="internshipResultCount" class="text-sm text-slate-500">0 internships</p></div>
+      <button onclick="loadInternships()" class="px-4 py-2 border rounded-xl font-semibold">↻ Refresh</button>
+    </div>
+    <div class="overflow-x-auto">
+      <table class="w-full text-sm">
+        <thead class="bg-slate-50 text-slate-600"><tr>
+          <th class="text-left px-5 py-4">ID</th><th class="text-left px-5 py-4">Internship</th><th class="text-left px-5 py-4">Batch</th><th class="text-left px-5 py-4">Dates</th><th class="text-left px-5 py-4">Mode</th><th class="text-left px-5 py-4">Mentor</th><th class="text-left px-5 py-4">Capacity</th><th class="text-left px-5 py-4">Status</th><th class="text-left px-5 py-4">Actions</th>
+        </tr></thead>
+        <tbody id="internshipTable" class="divide-y"></tbody>
+      </table>
+    </div>
+    <div id="internshipEmpty" class="hidden text-center py-12 text-slate-500">No internships created yet.</div>
+  </div>
+</section>
       <section id="section-attendance" class="admin-section hidden"><div class="bg-white border rounded-2xl p-8"><h3 class="text-2xl font-extrabold">Attendance</h3><p class="text-slate-500 mt-2">Next module: daily attendance and percentage tracking.</p></div></section>
       <section id="section-projects" class="admin-section hidden"><div class="bg-white border rounded-2xl p-8"><h3 class="text-2xl font-extrabold">Projects</h3><p class="text-slate-500 mt-2">Next module: project assignment and submission tracking.</p></div></section>
       <section id="section-certificates" class="admin-section hidden"><div class="bg-white border rounded-2xl p-8"><h3 class="text-2xl font-extrabold">Certificates</h3><p class="text-slate-500 mt-2">Next module: completion, project and attendance certificates.</p></div></section>
@@ -143,14 +177,45 @@ if (sessionStorage.getItem("bbeAdminLoggedIn") !== "true") {
   </div>
 </div>
 
+<div id="internshipModal" class="hidden fixed inset-0 z-[100] bg-slate-950/60 p-4 overflow-y-auto">
+  <div class="min-h-full flex items-center justify-center">
+    <div class="bg-white w-full max-w-3xl rounded-2xl shadow-2xl">
+      <div class="p-5 border-b flex items-center justify-between">
+        <div><h3 id="internshipModalTitle" class="text-xl font-extrabold">Add Internship</h3><p class="text-sm text-slate-500">Enter the batch details below.</p></div>
+        <button onclick="closeInternshipModal()" class="w-10 h-10 rounded-xl border text-xl">×</button>
+      </div>
+      <form id="internshipForm" class="p-5">
+        <input type="hidden" id="internshipId" name="internshipId">
+        <div class="grid md:grid-cols-2 gap-4">
+          <div><label class="block text-sm font-bold mb-2">Internship Name *</label><input id="internshipName" name="internshipName" required class="w-full px-4 py-3 border rounded-xl" placeholder="Python Programming Internship"></div>
+          <div><label class="block text-sm font-bold mb-2">Domain *</label><input id="internshipDomain" name="domain" required class="w-full px-4 py-3 border rounded-xl" placeholder="Web Development"></div>
+          <div><label class="block text-sm font-bold mb-2">Batch Name</label><input id="batchName" name="batchName" class="w-full px-4 py-3 border rounded-xl" placeholder="July 2026 Batch"></div>
+          <div><label class="block text-sm font-bold mb-2">Mode</label><select id="internshipMode" name="mode" class="w-full px-4 py-3 border rounded-xl"><option>Online</option><option>Offline</option><option>Hybrid</option></select></div>
+          <div><label class="block text-sm font-bold mb-2">Start Date</label><input id="startDate" name="startDate" type="date" class="w-full px-4 py-3 border rounded-xl"></div>
+          <div><label class="block text-sm font-bold mb-2">End Date</label><input id="endDate" name="endDate" type="date" class="w-full px-4 py-3 border rounded-xl"></div>
+          <div><label class="block text-sm font-bold mb-2">Duration</label><input id="duration" name="duration" class="w-full px-4 py-3 border rounded-xl" placeholder="4 Weeks"></div>
+          <div><label class="block text-sm font-bold mb-2">Mentor</label><input id="mentor" name="mentor" class="w-full px-4 py-3 border rounded-xl" placeholder="Mentor name"></div>
+          <div><label class="block text-sm font-bold mb-2">Capacity</label><input id="capacity" name="capacity" type="number" min="1" class="w-full px-4 py-3 border rounded-xl" placeholder="30"></div>
+          <div><label class="block text-sm font-bold mb-2">Status</label><select id="internshipStatus" name="status" class="w-full px-4 py-3 border rounded-xl"><option>Open</option><option>Closed</option></select></div>
+        </div>
+        <div id="internshipFormMessage" class="hidden mt-4 p-4 rounded-xl"></div>
+        <div class="mt-6 flex flex-col-reverse sm:flex-row gap-3 sm:justify-end">
+          <button type="button" onclick="closeInternshipModal()" class="px-5 py-3 border rounded-xl font-bold">Cancel</button>
+          <button id="saveInternshipBtn" type="submit" class="px-5 py-3 bg-blue-600 text-white rounded-xl font-bold">Save Internship</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
 <script>
 const API_URL="https://script.google.com/macros/s/AKfycbx1DAi6OWCwFIdK9xh-S4MMUoS1_M4INNtUGudZjvfPBb20Y7yWV4Ka3pJB6lcHgKZe/exec";
-let allRegistrations=[],filteredRegistrations=[];
+let allRegistrations=[],filteredRegistrations=[],allInternships=[];
 const loadingBox=document.getElementById("loadingBox"),errorBox=document.getElementById("errorBox"),studentTable=document.getElementById("studentTable"),recentTable=document.getElementById("recentTable"),searchInput=document.getElementById("searchInput"),categoryFilter=document.getElementById("categoryFilter"),modeFilter=document.getElementById("modeFilter");
 
 function openSidebar(){document.getElementById("sidebar").classList.remove("-translate-x-full");document.getElementById("overlay").classList.remove("hidden")}
 function closeSidebar(){document.getElementById("sidebar").classList.add("-translate-x-full");document.getElementById("overlay").classList.add("hidden")}
-function showSection(name){document.querySelectorAll(".admin-section").forEach(x=>x.classList.add("hidden"));document.getElementById("section-"+name).classList.remove("hidden");document.querySelectorAll(".nav-btn").forEach(x=>x.classList.remove("active"));document.querySelector(`[data-section="${name}"]`).classList.add("active");document.getElementById("pageTitle").textContent=name.charAt(0).toUpperCase()+name.slice(1);closeSidebar()}
+function showSection(name){if(name==="internships")loadInternships();document.querySelectorAll(".admin-section").forEach(x=>x.classList.add("hidden"));document.getElementById("section-"+name).classList.remove("hidden");document.querySelectorAll(".nav-btn").forEach(x=>x.classList.remove("active"));document.querySelector(`[data-section="${name}"]`).classList.add("active");document.getElementById("pageTitle").textContent=name.charAt(0).toUpperCase()+name.slice(1);closeSidebar()}
 function logout(){sessionStorage.removeItem("bbeAdminLoggedIn");window.location.replace("admin-login.html")}
 
 function loadRegistrations(){loadingBox.classList.remove("hidden");errorBox.classList.add("hidden");const old=document.getElementById("registrationApiScript");if(old)old.remove();const s=document.createElement("script");s.id="registrationApiScript";s.src=API_URL+"?callback=receiveRegistrations&time="+Date.now();s.onerror=()=>{loadingBox.classList.add("hidden");errorBox.classList.remove("hidden");document.getElementById("errorMessage").textContent="Could not connect to registration API."};document.body.appendChild(s)}
@@ -161,6 +226,95 @@ function renderRecent(){recentTable.innerHTML="";allRegistrations.slice().revers
 function renderTable(){studentTable.innerHTML="";document.getElementById("resultCount").textContent=`Showing ${filteredRegistrations.length} of ${allRegistrations.length} students`;const empty=document.getElementById("emptyBox");if(!filteredRegistrations.length){empty.classList.remove("hidden");return}empty.classList.add("hidden");filteredRegistrations.forEach(s=>{const phone=String(s["WhatsApp Number"]||"").replace(/\D/g,"");const tr=document.createElement("tr");tr.className="hover:bg-slate-50";tr.innerHTML=`<td class="px-5 py-4"><span class="bg-blue-50 text-blue-700 px-3 py-2 rounded-lg font-bold">${escapeHTML(s["Registration ID"])}</span></td><td class="px-5 py-4"><p class="font-bold">${escapeHTML(s["Full Name"])}</p><p class="text-xs text-slate-500 mt-1">${escapeHTML(s["Email"])}</p></td><td class="px-5 py-4">${escapeHTML(s["College Name"])}</td><td class="px-5 py-4">${escapeHTML(s["Student Category"])}</td><td class="px-5 py-4">${escapeHTML(s["Degree / Course"])}</td><td class="px-5 py-4">${escapeHTML(s["Department / Specialization"])}</td><td class="px-5 py-4">${escapeHTML(s["Year of Study"])}</td><td class="px-5 py-4">${escapeHTML(s["Internship Domain"])}</td><td class="px-5 py-4">${escapeHTML(s["Mode"])}</td><td class="px-5 py-4"><a href="https://wa.me/91${phone}" target="_blank" rel="noopener noreferrer" class="text-green-600 font-bold">WhatsApp</a></td>`;studentTable.appendChild(tr)})}
 function escapeHTML(v){const d=document.createElement("div");d.textContent=v==null?"":String(v);return d.innerHTML}
 function exportCSV(){const data=filteredRegistrations.length?filteredRegistrations:allRegistrations;if(!data.length){alert("No registration data to export.");return}const headers=Object.keys(data[0]);const rows=data.map(s=>headers.map(h=>`"${String(s[h]||"").replace(/"/g,'""')}"`).join(","));const blob=new Blob([[headers.join(","),...rows].join("\n")],{type:"text/csv;charset=utf-8;"});const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="boni-bytes-internship-registrations.csv";a.click();URL.revokeObjectURL(a.href)}
+
+function loadInternships(){
+  document.getElementById("internshipLoading").classList.remove("hidden");
+  const old=document.getElementById("internshipApiScript");if(old)old.remove();
+  window.receiveInternships=function(data){
+    document.getElementById("internshipLoading").classList.add("hidden");
+    if(!data.success){alert(data.message||"Could not load internships.");return}
+    allInternships=data.internships||[];renderInternships();
+  };
+  const s=document.createElement("script");s.id="internshipApiScript";
+  s.src=API_URL+"?action=internships&callback=receiveInternships&time="+Date.now();
+  s.onerror=()=>{document.getElementById("internshipLoading").classList.add("hidden");alert("Could not connect to internship API.")};
+  document.body.appendChild(s);
+}
+
+function renderInternships(){
+  const table=document.getElementById("internshipTable"),empty=document.getElementById("internshipEmpty");
+  table.innerHTML="";
+  document.getElementById("internshipTotal").textContent=allInternships.length;
+  document.getElementById("internshipOpen").textContent=allInternships.filter(x=>x["Status"]==="Open").length;
+  document.getElementById("internshipClosed").textContent=allInternships.filter(x=>x["Status"]==="Closed").length;
+  document.getElementById("internshipCapacity").textContent=allInternships.reduce((n,x)=>n+(Number(x["Capacity"])||0),0);
+  document.getElementById("internshipResultCount").textContent=allInternships.length+" internships";
+  if(!allInternships.length){empty.classList.remove("hidden");return}
+  empty.classList.add("hidden");
+  allInternships.forEach((x,index)=>{
+    const status=x["Status"]==="Open"?"bg-green-50 text-green-700":"bg-red-50 text-red-700";
+    const tr=document.createElement("tr");tr.className="hover:bg-slate-50";
+    tr.innerHTML=`<td class="px-5 py-4 font-bold text-blue-700">${escapeHTML(x["Internship ID"])}</td>
+    <td class="px-5 py-4"><p class="font-bold">${escapeHTML(x["Internship Name"])}</p><p class="text-xs text-slate-500">${escapeHTML(x["Domain"])}</p></td>
+    <td class="px-5 py-4">${escapeHTML(x["Batch Name"])}</td>
+    <td class="px-5 py-4"><p>${escapeHTML(x["Start Date"])}</p><p class="text-xs text-slate-500">to ${escapeHTML(x["End Date"])}</p></td>
+    <td class="px-5 py-4">${escapeHTML(x["Mode"])}</td><td class="px-5 py-4">${escapeHTML(x["Mentor"])}</td>
+    <td class="px-5 py-4">${escapeHTML(x["Capacity"])}</td>
+    <td class="px-5 py-4"><span class="${status} px-3 py-2 rounded-lg font-bold">${escapeHTML(x["Status"])}</span></td>
+    <td class="px-5 py-4"><div class="flex gap-2"><button onclick="editInternship(${index})" class="px-3 py-2 bg-blue-50 text-blue-700 rounded-lg font-bold">Edit</button><button onclick="deleteInternship(${index})" class="px-3 py-2 bg-red-50 text-red-700 rounded-lg font-bold">Delete</button></div></td>`;
+    table.appendChild(tr);
+  });
+}
+
+function openInternshipModal(){
+  document.getElementById("internshipForm").reset();
+  document.getElementById("internshipId").value="";
+  document.getElementById("internshipModalTitle").textContent="Add Internship";
+  document.getElementById("internshipFormMessage").classList.add("hidden");
+  document.getElementById("internshipModal").classList.remove("hidden");
+}
+function closeInternshipModal(){document.getElementById("internshipModal").classList.add("hidden")}
+
+function editInternship(index){
+  const x=allInternships[index];
+  document.getElementById("internshipId").value=x["Internship ID"]||"";
+  document.getElementById("internshipName").value=x["Internship Name"]||"";
+  document.getElementById("internshipDomain").value=x["Domain"]||"";
+  document.getElementById("batchName").value=x["Batch Name"]||"";
+  document.getElementById("startDate").value=x["Start Date"]||"";
+  document.getElementById("endDate").value=x["End Date"]||"";
+  document.getElementById("internshipMode").value=x["Mode"]||"Online";
+  document.getElementById("duration").value=x["Duration"]||"";
+  document.getElementById("mentor").value=x["Mentor"]||"";
+  document.getElementById("capacity").value=x["Capacity"]||"";
+  document.getElementById("internshipStatus").value=x["Status"]||"Open";
+  document.getElementById("internshipModalTitle").textContent="Edit Internship";
+  document.getElementById("internshipModal").classList.remove("hidden");
+}
+
+document.getElementById("internshipForm").addEventListener("submit",async function(e){
+  e.preventDefault();
+  const btn=document.getElementById("saveInternshipBtn"),msg=document.getElementById("internshipFormMessage");
+  btn.disabled=true;btn.textContent="Saving...";
+  const formData=new FormData(this);
+  formData.append("action",document.getElementById("internshipId").value?"updateInternship":"addInternship");
+  try{
+    await fetch(API_URL,{method:"POST",body:formData,mode:"no-cors"});
+    msg.className="mt-4 p-4 rounded-xl bg-green-50 text-green-700";msg.textContent="Saved successfully.";msg.classList.remove("hidden");
+    setTimeout(()=>{closeInternshipModal();loadInternships()},700);
+  }catch(err){
+    msg.className="mt-4 p-4 rounded-xl bg-red-50 text-red-700";msg.textContent="Could not save internship.";msg.classList.remove("hidden");
+  }finally{btn.disabled=false;btn.textContent="Save Internship"}
+});
+
+async function deleteInternship(index){
+  const x=allInternships[index];
+  if(!confirm("Delete "+(x["Internship Name"]||"this internship")+"?"))return;
+  const fd=new FormData();fd.append("action","deleteInternship");fd.append("internshipId",x["Internship ID"]);
+  try{await fetch(API_URL,{method:"POST",body:fd,mode:"no-cors"});setTimeout(loadInternships,700)}
+  catch(err){alert("Could not delete internship.")}
+}
+
 searchInput.addEventListener("input",applyFilters);categoryFilter.addEventListener("change",applyFilters);modeFilter.addEventListener("change",applyFilters);loadRegistrations();
 </script>
 </body>
