@@ -168,7 +168,23 @@ if (sessionStorage.getItem("bbeAdminLoggedIn") !== "true") {
     <div id="internshipEmpty" class="hidden text-center py-12 text-slate-500">No internships created yet.</div>
   </div>
 </section>
-      <section id="section-attendance" class="admin-section hidden"><div class="bg-white border rounded-2xl p-8"><h3 class="text-2xl font-extrabold">Attendance</h3><p class="text-slate-500 mt-2">Next module: daily attendance and percentage tracking.</p></div></section>
+      <section id="section-attendance" class="admin-section hidden">
+  <div class="mb-6 flex flex-col sm:flex-row gap-4 sm:items-end sm:justify-between">
+    <div><p class="text-blue-600 font-bold text-sm">ATTENDANCE MANAGEMENT</p><h3 class="text-3xl font-extrabold mt-1">Attendance</h3><p class="text-slate-500 mt-2">Mark and manage daily student attendance.</p></div>
+    <button onclick="openAttendanceModal()" class="bg-blue-600 text-white px-5 py-3 rounded-xl font-bold">＋ Mark Attendance</button>
+  </div>
+  <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+    <div class="bg-white border rounded-2xl p-5"><p class="text-sm text-slate-500 font-semibold">Total Records</p><h4 id="attendanceTotal" class="text-3xl font-extrabold mt-3">0</h4></div>
+    <div class="bg-white border rounded-2xl p-5"><p class="text-sm text-slate-500 font-semibold">Present</p><h4 id="attendancePresent" class="text-3xl font-extrabold mt-3 text-green-600">0</h4></div>
+    <div class="bg-white border rounded-2xl p-5"><p class="text-sm text-slate-500 font-semibold">Absent</p><h4 id="attendanceAbsent" class="text-3xl font-extrabold mt-3 text-red-600">0</h4></div>
+    <div class="bg-white border rounded-2xl p-5"><p class="text-sm text-slate-500 font-semibold">Attendance Rate</p><h4 id="attendanceRate" class="text-3xl font-extrabold mt-3">0%</h4></div>
+  </div>
+  <div class="bg-white border rounded-2xl overflow-hidden">
+    <div class="p-5 border-b flex justify-between items-center"><div><h4 class="font-extrabold text-lg">Attendance Records</h4><p id="attendanceCount" class="text-sm text-slate-500">0 records</p></div><button onclick="loadAttendance()" class="px-4 py-2 border rounded-xl font-semibold">↻ Refresh</button></div>
+    <div class="overflow-x-auto"><table class="w-full text-sm"><thead class="bg-slate-50"><tr><th class="text-left px-5 py-4">Date</th><th class="text-left px-5 py-4">Student</th><th class="text-left px-5 py-4">Registration ID</th><th class="text-left px-5 py-4">Batch</th><th class="text-left px-5 py-4">Status</th><th class="text-left px-5 py-4">Remarks</th><th class="text-left px-5 py-4">Action</th></tr></thead><tbody id="attendanceTable" class="divide-y"></tbody></table></div>
+    <div id="attendanceEmpty" class="hidden text-center py-12 text-slate-500">No attendance records yet.</div>
+  </div>
+</section>
       <section id="section-projects" class="admin-section hidden"><div class="bg-white border rounded-2xl p-8"><h3 class="text-2xl font-extrabold">Projects</h3><p class="text-slate-500 mt-2">Next module: project assignment and submission tracking.</p></div></section>
       <section id="section-certificates" class="admin-section hidden"><div class="bg-white border rounded-2xl p-8"><h3 class="text-2xl font-extrabold">Certificates</h3><p class="text-slate-500 mt-2">Next module: completion, project and attendance certificates.</p></div></section>
       <section id="section-reports" class="admin-section hidden"><div class="bg-white border rounded-2xl p-8"><h3 class="text-2xl font-extrabold">Reports</h3><p class="text-slate-500 mt-2">Export registration data and view reports.</p><button onclick="exportCSV()" class="mt-5 bg-green-600 text-white px-5 py-3 rounded-xl font-bold">📥 Export CSV</button></div></section>
@@ -208,14 +224,65 @@ if (sessionStorage.getItem("bbeAdminLoggedIn") !== "true") {
   </div>
 </div>
 
+
+<div id="attendanceModal" class="hidden fixed inset-0 z-[110] bg-slate-950/60 p-4 overflow-y-auto">
+ <div class="min-h-full flex items-center justify-center"><div class="bg-white w-full max-w-2xl rounded-2xl">
+  <div class="p-5 border-b flex justify-between"><div><h3 class="text-xl font-extrabold">Mark Attendance</h3><p class="text-sm text-slate-500">Save a daily attendance record.</p></div><button onclick="closeModal('attendanceModal')" class="w-10 h-10 border rounded-xl">×</button></div>
+  <form id="attendanceForm" class="p-5 grid md:grid-cols-2 gap-4">
+   <div class="md:col-span-2"><label class="block text-sm font-bold mb-2">Student *</label><select id="attendanceStudent" required class="w-full px-4 py-3 border rounded-xl"></select></div>
+   <div><label class="block text-sm font-bold mb-2">Date *</label><input id="attendanceDate" type="date" required class="w-full px-4 py-3 border rounded-xl"></div>
+   <div><label class="block text-sm font-bold mb-2">Status</label><select id="attendanceStatus" class="w-full px-4 py-3 border rounded-xl"><option>Present</option><option>Absent</option><option>Late</option><option>Leave</option></select></div>
+   <div class="md:col-span-2"><label class="block text-sm font-bold mb-2">Internship Batch</label><select id="attendanceBatch" class="w-full px-4 py-3 border rounded-xl"></select></div>
+   <div class="md:col-span-2"><label class="block text-sm font-bold mb-2">Remarks</label><input id="attendanceRemarks" class="w-full px-4 py-3 border rounded-xl" placeholder="Optional remarks"></div>
+   <div class="md:col-span-2 flex justify-end gap-3 mt-2"><button type="button" onclick="closeModal('attendanceModal')" class="px-5 py-3 border rounded-xl font-bold">Cancel</button><button class="px-5 py-3 bg-blue-600 text-white rounded-xl font-bold">Save Attendance</button></div>
+  </form>
+ </div></div>
+</div>
+
+<div id="projectModal" class="hidden fixed inset-0 z-[110] bg-slate-950/60 p-4 overflow-y-auto">
+ <div class="min-h-full flex items-center justify-center"><div class="bg-white w-full max-w-3xl rounded-2xl">
+  <div class="p-5 border-b flex justify-between"><div><h3 id="projectModalTitle" class="text-xl font-extrabold">Assign Project</h3><p class="text-sm text-slate-500">Create or update a student project.</p></div><button onclick="closeModal('projectModal')" class="w-10 h-10 border rounded-xl">×</button></div>
+  <form id="projectForm" class="p-5 grid md:grid-cols-2 gap-4">
+   <input type="hidden" id="projectId">
+   <div class="md:col-span-2"><label class="block text-sm font-bold mb-2">Student *</label><select id="projectStudent" required class="w-full px-4 py-3 border rounded-xl"></select></div>
+   <div class="md:col-span-2"><label class="block text-sm font-bold mb-2">Project Title *</label><input id="projectTitle" required class="w-full px-4 py-3 border rounded-xl"></div>
+   <div class="md:col-span-2"><label class="block text-sm font-bold mb-2">Description</label><textarea id="projectDescription" rows="3" class="w-full px-4 py-3 border rounded-xl"></textarea></div>
+   <div><label class="block text-sm font-bold mb-2">Deadline</label><input id="projectDeadline" type="date" class="w-full px-4 py-3 border rounded-xl"></div>
+   <div><label class="block text-sm font-bold mb-2">Status</label><select id="projectStatus" class="w-full px-4 py-3 border rounded-xl"><option>Not Started</option><option>In Progress</option><option>Submitted</option><option>Approved</option><option>Needs Changes</option></select></div>
+   <div class="md:col-span-2"><label class="block text-sm font-bold mb-2">Submission Link</label><input id="projectSubmission" type="url" class="w-full px-4 py-3 border rounded-xl" placeholder="https://..."></div>
+   <div class="md:col-span-2"><label class="block text-sm font-bold mb-2">Mentor Remarks</label><input id="projectRemarks" class="w-full px-4 py-3 border rounded-xl"></div>
+   <div class="md:col-span-2 flex justify-end gap-3"><button type="button" onclick="closeModal('projectModal')" class="px-5 py-3 border rounded-xl font-bold">Cancel</button><button class="px-5 py-3 bg-blue-600 text-white rounded-xl font-bold">Save Project</button></div>
+  </form>
+ </div></div>
+</div>
+
+<div id="certificateModal" class="hidden fixed inset-0 z-[110] bg-slate-950/60 p-4 overflow-y-auto">
+ <div class="min-h-full flex items-center justify-center"><div class="bg-white w-full max-w-2xl rounded-2xl">
+  <div class="p-5 border-b flex justify-between"><div><h3 class="text-xl font-extrabold">Issue Certificate</h3><p class="text-sm text-slate-500">Create a certificate record for a student.</p></div><button onclick="closeModal('certificateModal')" class="w-10 h-10 border rounded-xl">×</button></div>
+  <form id="certificateForm" class="p-5 grid md:grid-cols-2 gap-4">
+   <div class="md:col-span-2"><label class="block text-sm font-bold mb-2">Student *</label><select id="certificateStudent" required class="w-full px-4 py-3 border rounded-xl"></select></div>
+   <div><label class="block text-sm font-bold mb-2">Certificate Type *</label><select id="certificateType" required class="w-full px-4 py-3 border rounded-xl"><option>Internship Completion</option><option>Project Completion</option><option>Attendance</option><option>Participation</option></select></div>
+   <div><label class="block text-sm font-bold mb-2">Issue Date</label><input id="certificateDate" type="date" class="w-full px-4 py-3 border rounded-xl"></div>
+   <div><label class="block text-sm font-bold mb-2">Internship Domain</label><input id="certificateDomain" class="w-full px-4 py-3 border rounded-xl"></div>
+   <div><label class="block text-sm font-bold mb-2">Status</label><select id="certificateStatus" class="w-full px-4 py-3 border rounded-xl"><option>Issued</option><option>Pending</option><option>Revoked</option></select></div>
+   <div class="md:col-span-2"><label class="block text-sm font-bold mb-2">Certificate URL</label><input id="certificateUrl" type="url" class="w-full px-4 py-3 border rounded-xl" placeholder="Optional Google Drive or website link"></div>
+   <div class="md:col-span-2 flex justify-end gap-3"><button type="button" onclick="closeModal('certificateModal')" class="px-5 py-3 border rounded-xl font-bold">Cancel</button><button class="px-5 py-3 bg-blue-600 text-white rounded-xl font-bold">Issue Certificate</button></div>
+  </form>
+ </div></div>
+</div>
+
 <script>
 const API_URL="https://script.google.com/macros/s/AKfycbx1DAi6OWCwFIdK9xh-S4MMUoS1_M4INNtUGudZjvfPBb20Y7yWV4Ka3pJB6lcHgKZe/exec";
-let allRegistrations=[],filteredRegistrations=[],allInternships=[];
+let allRegistrations=[],filteredRegistrations=[],allInternships=[],allAttendance=[],allProjects=[],allCertificates=[];
 const loadingBox=document.getElementById("loadingBox"),errorBox=document.getElementById("errorBox"),studentTable=document.getElementById("studentTable"),recentTable=document.getElementById("recentTable"),searchInput=document.getElementById("searchInput"),categoryFilter=document.getElementById("categoryFilter"),modeFilter=document.getElementById("modeFilter");
 
 function openSidebar(){document.getElementById("sidebar").classList.remove("-translate-x-full");document.getElementById("overlay").classList.remove("hidden")}
 function closeSidebar(){document.getElementById("sidebar").classList.add("-translate-x-full");document.getElementById("overlay").classList.add("hidden")}
-function showSection(name){if(name==="internships")loadInternships();document.querySelectorAll(".admin-section").forEach(x=>x.classList.add("hidden"));document.getElementById("section-"+name).classList.remove("hidden");document.querySelectorAll(".nav-btn").forEach(x=>x.classList.remove("active"));document.querySelector(`[data-section="${name}"]`).classList.add("active");document.getElementById("pageTitle").textContent=name.charAt(0).toUpperCase()+name.slice(1);closeSidebar()}
+function showSection(name){
+  if(name==="internships")loadInternships();
+  if(name==="attendance")loadAttendance();
+  if(name==="projects")loadProjects();
+  if(name==="certificates")loadCertificates();document.querySelectorAll(".admin-section").forEach(x=>x.classList.add("hidden"));document.getElementById("section-"+name).classList.remove("hidden");document.querySelectorAll(".nav-btn").forEach(x=>x.classList.remove("active"));document.querySelector(`[data-section="${name}"]`).classList.add("active");document.getElementById("pageTitle").textContent=name.charAt(0).toUpperCase()+name.slice(1);closeSidebar()}
 function logout(){sessionStorage.removeItem("bbeAdminLoggedIn");window.location.replace("admin-login.html")}
 
 function loadRegistrations(){loadingBox.classList.remove("hidden");errorBox.classList.add("hidden");const old=document.getElementById("registrationApiScript");if(old)old.remove();const s=document.createElement("script");s.id="registrationApiScript";s.src=API_URL+"?callback=receiveRegistrations&time="+Date.now();s.onerror=()=>{loadingBox.classList.add("hidden");errorBox.classList.remove("hidden");document.getElementById("errorMessage").textContent="Could not connect to registration API."};document.body.appendChild(s)}
@@ -314,6 +381,63 @@ async function deleteInternship(index){
   try{await fetch(API_URL,{method:"POST",body:fd,mode:"no-cors"});setTimeout(loadInternships,700)}
   catch(err){alert("Could not delete internship.")}
 }
+
+
+function closeModal(id){document.getElementById(id).classList.add("hidden")}
+function fillStudentSelect(id){
+ const select=document.getElementById(id);select.innerHTML='<option value="">Select Student</option>';
+ allRegistrations.forEach(s=>{const o=document.createElement("option");o.value=s["Registration ID"];o.textContent=s["Registration ID"]+" — "+s["Full Name"];o.dataset.name=s["Full Name"]||"";o.dataset.domain=s["Internship Domain"]||"";select.appendChild(o)})
+}
+function postAction(data,done){
+ const fd=new FormData();Object.keys(data).forEach(k=>fd.append(k,data[k]??""));
+ fetch(API_URL,{method:"POST",body:fd,mode:"no-cors"}).then(()=>setTimeout(done,700)).catch(()=>alert("Could not save data."))
+}
+function jsonp(action,callbackName,handler){
+ window[callbackName]=handler;
+ const old=document.getElementById(callbackName+"Script");if(old)old.remove();
+ const s=document.createElement("script");s.id=callbackName+"Script";s.src=API_URL+"?action="+action+"&callback="+callbackName+"&time="+Date.now();s.onerror=()=>alert("Could not connect to "+action+" API.");document.body.appendChild(s)
+}
+
+/* ATTENDANCE */
+function openAttendanceModal(){
+ fillStudentSelect("attendanceStudent");
+ const b=document.getElementById("attendanceBatch");b.innerHTML='<option value="">No Batch</option>';
+ allInternships.forEach(x=>{const o=document.createElement("option");o.value=x["Internship ID"];o.textContent=(x["Batch Name"]||x["Internship Name"])+" — "+x["Internship ID"];o.dataset.batch=x["Batch Name"]||"";b.appendChild(o)});
+ document.getElementById("attendanceDate").value=new Date().toISOString().slice(0,10);
+ document.getElementById("attendanceForm").reset();document.getElementById("attendanceDate").value=new Date().toISOString().slice(0,10);
+ document.getElementById("attendanceModal").classList.remove("hidden")
+}
+function loadAttendance(){jsonp("attendance","receiveAttendance",data=>{if(!data.success){alert(data.message);return}allAttendance=data.attendance||[];renderAttendance()})}
+function renderAttendance(){
+ const t=document.getElementById("attendanceTable");t.innerHTML="";
+ const present=allAttendance.filter(x=>x["Status"]==="Present").length,absent=allAttendance.filter(x=>x["Status"]==="Absent").length;
+ document.getElementById("attendanceTotal").textContent=allAttendance.length;document.getElementById("attendancePresent").textContent=present;document.getElementById("attendanceAbsent").textContent=absent;document.getElementById("attendanceRate").textContent=(allAttendance.length?Math.round(present/allAttendance.length*100):0)+"%";document.getElementById("attendanceCount").textContent=allAttendance.length+" records";
+ document.getElementById("attendanceEmpty").classList.toggle("hidden",allAttendance.length>0);
+ allAttendance.slice().reverse().forEach((x,i)=>{const real=allAttendance.length-1-i;const cls=x["Status"]==="Present"?"bg-green-50 text-green-700":x["Status"]==="Absent"?"bg-red-50 text-red-700":"bg-amber-50 text-amber-700";const tr=document.createElement("tr");tr.innerHTML=`<td class="px-5 py-4">${escapeHTML(x["Date"])}</td><td class="px-5 py-4 font-bold">${escapeHTML(x["Student Name"])}</td><td class="px-5 py-4">${escapeHTML(x["Registration ID"])}</td><td class="px-5 py-4">${escapeHTML(x["Batch Name"])}</td><td class="px-5 py-4"><span class="${cls} px-3 py-2 rounded-lg font-bold">${escapeHTML(x["Status"])}</span></td><td class="px-5 py-4">${escapeHTML(x["Remarks"])}</td><td class="px-5 py-4"><button onclick="deleteAttendance(${real})" class="text-red-600 font-bold">Delete</button></td>`;t.appendChild(tr)})
+}
+document.getElementById("attendanceForm").addEventListener("submit",e=>{e.preventDefault();const s=document.getElementById("attendanceStudent"),so=s.options[s.selectedIndex],b=document.getElementById("attendanceBatch"),bo=b.options[b.selectedIndex];postAction({action:"saveAttendance",registrationId:s.value,studentName:so.dataset.name||"",date:document.getElementById("attendanceDate").value,status:document.getElementById("attendanceStatus").value,internshipId:b.value,batchName:bo?.dataset.batch||"",remarks:document.getElementById("attendanceRemarks").value},()=>{closeModal("attendanceModal");loadAttendance()})})
+function deleteAttendance(i){if(confirm("Delete this attendance record?"))postAction({action:"deleteAttendance",attendanceId:allAttendance[i]["Attendance ID"]},loadAttendance)}
+
+/* PROJECTS */
+function openProjectModal(){document.getElementById("projectForm").reset();document.getElementById("projectId").value="";fillStudentSelect("projectStudent");document.getElementById("projectModalTitle").textContent="Assign Project";document.getElementById("projectModal").classList.remove("hidden")}
+function loadProjects(){jsonp("projects","receiveProjects",data=>{if(!data.success){alert(data.message);return}allProjects=data.projects||[];renderProjects()})}
+function renderProjects(){
+ const t=document.getElementById("projectTable");t.innerHTML="";document.getElementById("projectTotal").textContent=allProjects.length;document.getElementById("projectProgress").textContent=allProjects.filter(x=>x["Status"]==="In Progress").length;document.getElementById("projectSubmitted").textContent=allProjects.filter(x=>x["Status"]==="Submitted").length;document.getElementById("projectApproved").textContent=allProjects.filter(x=>x["Status"]==="Approved").length;document.getElementById("projectCount").textContent=allProjects.length+" projects";document.getElementById("projectEmpty").classList.toggle("hidden",allProjects.length>0);
+ allProjects.forEach((x,i)=>{const link=x["Submission Link"]?`<a class="text-blue-600 font-bold" target="_blank" href="${escapeHTML(x["Submission Link"])}">Open</a>`:"—";const tr=document.createElement("tr");tr.innerHTML=`<td class="px-5 py-4 font-bold text-blue-700">${escapeHTML(x["Project ID"])}</td><td class="px-5 py-4"><p class="font-bold">${escapeHTML(x["Student Name"])}</p><p class="text-xs text-slate-500">${escapeHTML(x["Registration ID"])}</p></td><td class="px-5 py-4"><p class="font-bold">${escapeHTML(x["Project Title"])}</p></td><td class="px-5 py-4">${escapeHTML(x["Deadline"])}</td><td class="px-5 py-4">${escapeHTML(x["Status"])}</td><td class="px-5 py-4">${link}</td><td class="px-5 py-4"><div class="flex gap-2"><button onclick="editProject(${i})" class="text-blue-600 font-bold">Edit</button><button onclick="deleteProject(${i})" class="text-red-600 font-bold">Delete</button></div></td>`;t.appendChild(tr)})
+}
+function editProject(i){const x=allProjects[i];fillStudentSelect("projectStudent");document.getElementById("projectId").value=x["Project ID"]||"";document.getElementById("projectStudent").value=x["Registration ID"]||"";document.getElementById("projectTitle").value=x["Project Title"]||"";document.getElementById("projectDescription").value=x["Description"]||"";document.getElementById("projectDeadline").value=x["Deadline"]||"";document.getElementById("projectStatus").value=x["Status"]||"Not Started";document.getElementById("projectSubmission").value=x["Submission Link"]||"";document.getElementById("projectRemarks").value=x["Mentor Remarks"]||"";document.getElementById("projectModalTitle").textContent="Edit Project";document.getElementById("projectModal").classList.remove("hidden")}
+document.getElementById("projectForm").addEventListener("submit",e=>{e.preventDefault();const s=document.getElementById("projectStudent"),o=s.options[s.selectedIndex],id=document.getElementById("projectId").value;postAction({action:id?"updateProject":"addProject",projectId:id,registrationId:s.value,studentName:o.dataset.name||"",projectTitle:document.getElementById("projectTitle").value,description:document.getElementById("projectDescription").value,deadline:document.getElementById("projectDeadline").value,status:document.getElementById("projectStatus").value,submissionLink:document.getElementById("projectSubmission").value,mentorRemarks:document.getElementById("projectRemarks").value},()=>{closeModal("projectModal");loadProjects()})})
+function deleteProject(i){if(confirm("Delete this project?"))postAction({action:"deleteProject",projectId:allProjects[i]["Project ID"]},loadProjects)}
+
+/* CERTIFICATES */
+function openCertificateModal(){document.getElementById("certificateForm").reset();fillStudentSelect("certificateStudent");document.getElementById("certificateDate").value=new Date().toISOString().slice(0,10);document.getElementById("certificateModal").classList.remove("hidden")}
+function loadCertificates(){jsonp("certificates","receiveCertificates",data=>{if(!data.success){alert(data.message);return}allCertificates=data.certificates||[];renderCertificates()})}
+function renderCertificates(){
+ const t=document.getElementById("certificateTable");t.innerHTML="";document.getElementById("certificateTotal").textContent=allCertificates.length;document.getElementById("certificateCompletion").textContent=allCertificates.filter(x=>x["Certificate Type"]==="Internship Completion").length;document.getElementById("certificateProject").textContent=allCertificates.filter(x=>x["Certificate Type"]==="Project Completion").length;document.getElementById("certificateIssued").textContent=allCertificates.filter(x=>x["Status"]==="Issued").length;document.getElementById("certificateCount").textContent=allCertificates.length+" certificates";document.getElementById("certificateEmpty").classList.toggle("hidden",allCertificates.length>0);
+ allCertificates.forEach((x,i)=>{const tr=document.createElement("tr");tr.innerHTML=`<td class="px-5 py-4 font-bold text-blue-700">${escapeHTML(x["Certificate ID"])}</td><td class="px-5 py-4"><p class="font-bold">${escapeHTML(x["Student Name"])}</p><p class="text-xs text-slate-500">${escapeHTML(x["Registration ID"])}</p></td><td class="px-5 py-4">${escapeHTML(x["Certificate Type"])}</td><td class="px-5 py-4">${escapeHTML(x["Internship Domain"])}</td><td class="px-5 py-4">${escapeHTML(x["Issue Date"])}</td><td class="px-5 py-4">${escapeHTML(x["Status"])}</td><td class="px-5 py-4"><button onclick="deleteCertificate(${i})" class="text-red-600 font-bold">Delete</button></td>`;t.appendChild(tr)})
+}
+document.getElementById("certificateForm").addEventListener("submit",e=>{e.preventDefault();const s=document.getElementById("certificateStudent"),o=s.options[s.selectedIndex];postAction({action:"addCertificate",registrationId:s.value,studentName:o.dataset.name||"",certificateType:document.getElementById("certificateType").value,internshipDomain:document.getElementById("certificateDomain").value||o.dataset.domain||"",issueDate:document.getElementById("certificateDate").value,status:document.getElementById("certificateStatus").value,certificateUrl:document.getElementById("certificateUrl").value},()=>{closeModal("certificateModal");loadCertificates()})})
+function deleteCertificate(i){if(confirm("Delete this certificate record?"))postAction({action:"deleteCertificate",certificateId:allCertificates[i]["Certificate ID"]},loadCertificates)}
 
 searchInput.addEventListener("input",applyFilters);categoryFilter.addEventListener("change",applyFilters);modeFilter.addEventListener("change",applyFilters);loadRegistrations();
 </script>
