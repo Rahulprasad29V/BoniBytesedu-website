@@ -3,124 +3,78 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Blog | Boni Bytes Edutech</title>
-<meta name="description" content="Read AI, Programming, Career, Internship and Web Development articles from Boni Bytes Edutech.">
+<title>Boni Bytes Blog</title>
+<meta name="description" content="Explore AI, programming, career, internships and web development articles from Boni Bytes Edutech.">
 <script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-<style>
-body{font-family:Inter,sans-serif}
-.card{transition:.25s}
-.card:hover{transform:translateY(-6px);box-shadow:0 15px 35px rgba(37,99,235,.15)}
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>body{font-family:Poppins,sans-serif}</style>
 </head>
-<body class="bg-slate-50 text-slate-800">
+<body class="bg-slate-100">
 
-<nav class="bg-white shadow sticky top-0">
-<div class="max-w-7xl mx-auto px-5 py-4 flex justify-between items-center">
-<a href="index.html" class="text-2xl font-extrabold text-blue-700">Boni Bytes Edutech</a>
-<div class="space-x-5 font-semibold">
-<a href="index.html">Home</a>
-<a href="blog.html" class="text-blue-700">Blog</a>
-<a href="contact.html">Contact</a>
+<header class="bg-slate-900 text-white py-16">
+<div class="max-w-6xl mx-auto px-6">
+<h1 class="text-5xl font-bold">Boni Bytes Blog</h1>
+<p class="mt-4 text-lg text-slate-300">AI • Programming • Careers • Marketing • Web Development</p>
+
+<div class="mt-8">
+<input id="search" type="text" placeholder="Search articles..."
+class="w-full md:w-96 rounded-lg px-4 py-3 text-black">
 </div>
 </div>
-</nav>
+</header>
 
-<section class="bg-gradient-to-r from-blue-700 to-indigo-700 text-white">
-<div class="max-w-7xl mx-auto px-5 py-16 text-center">
-<h1 class="text-5xl font-extrabold">Boni Bytes Blog</h1>
-<p class="mt-4 text-lg">AI • Programming • Careers • Internships • Technology</p>
-<div class="mt-8 max-w-xl mx-auto">
-<input class="w-full rounded-full px-6 py-4 text-black" placeholder="Search articles...">
-</div>
-</div>
-</section>
-
-<section class="max-w-7xl mx-auto px-5 py-12">
-<h2 class="text-3xl font-bold mb-8">Featured Articles</h2>
-
-<div class="grid md:grid-cols-3 gap-8">
-
-<div class="card bg-white rounded-2xl overflow-hidden">
-<img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=900" class="w-full h-52 object-cover">
-<div class="p-6">
-<span class="inline-block bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm">AI</span>
-<h3 class="text-xl font-bold mt-4">Top 10 AI Tools Every Student Should Use</h3>
-<p class="mt-3 text-slate-600">Learn practical skills with easy explanations and real-world examples.</p>
-<a href="blog/ai-tools.html" class="inline-block mt-5 bg-blue-600 text-white px-5 py-2 rounded-full">Read Article</a>
+<div class="max-w-6xl mx-auto my-8">
+<div class="bg-white border-2 border-dashed rounded-xl shadow p-5 text-center">
+📢 Top AdSense Banner
 </div>
 </div>
 
-<div class="card bg-white rounded-2xl overflow-hidden">
-<img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=900" class="w-full h-52 object-cover">
-<div class="p-6">
-<span class="inline-block bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm">Programming</span>
-<h3 class="text-xl font-bold mt-4">Best Python Projects for Beginners</h3>
-<p class="mt-3 text-slate-600">Learn practical skills with easy explanations and real-world examples.</p>
-<a href="blog/python-projects.html" class="inline-block mt-5 bg-blue-600 text-white px-5 py-2 rounded-full">Read Article</a>
-</div>
-</div>
+<main class="max-w-6xl mx-auto px-6">
+<div id="grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-<div class="card bg-white rounded-2xl overflow-hidden">
-<img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=900" class="w-full h-52 object-cover">
-<div class="p-6">
-<span class="inline-block bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm">Career</span>
-<h3 class="text-xl font-bold mt-4">How to Create an ATS Resume</h3>
-<p class="mt-3 text-slate-600">Learn practical skills with easy explanations and real-world examples.</p>
-<a href="blog/resume-guide.html" class="inline-block mt-5 bg-blue-600 text-white px-5 py-2 rounded-full">Read Article</a>
-</div>
-</div>
+<script>
+const posts=[
+["AI Tools","ai-tools.html","Discover the best AI tools for productivity."],
+["Python Projects","python-projects.html","Hands-on Python project ideas."],
+["HTML & CSS Roadmap","html-css-roadmap.html","Learn frontend development."],
+["Website Development","website-development.html","Become a full-stack developer."],
+["Resume Guide","resume-guide.html","Create an ATS-friendly resume."],
+["Internship Guide","internship-guide.html","Find and succeed in internships."],
+["Digital Marketing","digital-marketing.html","SEO, social media and analytics."],
+["ChatGPT Guide","chatgpt-guide.html","Learn practical ChatGPT skills."],
+["AI Career Roadmap","ai-career-roadmap.html","Roadmap to becoming an AI engineer."]
+];
 
-<div class="card bg-white rounded-2xl overflow-hidden">
-<img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=900" class="w-full h-52 object-cover">
-<div class="p-6">
-<span class="inline-block bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm">Internship</span>
-<h3 class="text-xl font-bold mt-4">Free Internship Guide</h3>
-<p class="mt-3 text-slate-600">Learn practical skills with easy explanations and real-world examples.</p>
-<a href="blog/internship-guide.html" class="inline-block mt-5 bg-blue-600 text-white px-5 py-2 rounded-full">Read Article</a>
-</div>
-</div>
+const grid=document.currentScript.parentElement;
+posts.forEach(p=>{
+const card=document.createElement("a");
+card.href=p[1];
+card.className="block bg-white rounded-2xl shadow hover:shadow-xl transition p-6";
+card.innerHTML=`
+<div class="inline-block bg-blue-600 text-white text-xs px-3 py-1 rounded-full">Article</div>
+<h2 class="text-2xl font-bold mt-4">${p[0]}</h2>
+<p class="text-slate-600 mt-3">${p[2]}</p>
+<div class="mt-6 text-blue-600 font-semibold">Read Article →</div>`;
+grid.appendChild(card);
+});
 
-<div class="card bg-white rounded-2xl overflow-hidden">
-<img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=900" class="w-full h-52 object-cover">
-<div class="p-6">
-<span class="inline-block bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm">Web</span>
-<h3 class="text-xl font-bold mt-4">Website Development Roadmap</h3>
-<p class="mt-3 text-slate-600">Learn practical skills with easy explanations and real-world examples.</p>
-<a href="blog/website-development.html" class="inline-block mt-5 bg-blue-600 text-white px-5 py-2 rounded-full">Read Article</a>
-</div>
-</div>
-
-<div class="card bg-white rounded-2xl overflow-hidden">
-<img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=900" class="w-full h-52 object-cover">
-<div class="p-6">
-<span class="inline-block bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm">AI</span>
-<h3 class="text-xl font-bold mt-4">ChatGPT Tips for Students</h3>
-<p class="mt-3 text-slate-600">Learn practical skills with easy explanations and real-world examples.</p>
-<a href="blog/chatgpt-guide.html" class="inline-block mt-5 bg-blue-600 text-white px-5 py-2 rounded-full">Read Article</a>
-</div>
-</div>
+document.getElementById("search").addEventListener("input",e=>{
+const q=e.target.value.toLowerCase();
+[...grid.children].forEach(c=>{
+c.style.display=c.innerText.toLowerCase().includes(q)?"block":"none";
+});
+});
+</script>
 
 </div>
 
-<div class="my-12 p-8 bg-white rounded-2xl border text-center">
-<h3 class="text-2xl font-bold">Advertisement</h3>
-<p class="text-slate-500 mt-2">Paste your Google AdSense code here after approval.</p>
+<div class="bg-white border-2 border-dashed rounded-xl shadow p-5 text-center my-10">
+📢 Bottom AdSense Banner
 </div>
+</main>
 
-<div class="bg-blue-700 text-white rounded-3xl p-10 text-center">
-<h2 class="text-3xl font-bold">Subscribe to Our Newsletter</h2>
-<p class="mt-3">Get AI, career and programming articles every week.</p>
-<div class="mt-6 flex max-w-lg mx-auto gap-3">
-<input class="flex-1 rounded-full px-5 py-3 text-black" placeholder="Enter your email">
-<button class="bg-white text-blue-700 px-6 py-3 rounded-full font-bold">Subscribe</button>
-</div>
-</div>
-
-</section>
-
-<footer class="bg-slate-900 text-white text-center py-8">
-<p>© 2026 Boni Bytes Edutech. All Rights Reserved.</p>
+<footer class="bg-slate-900 text-white text-center py-8 mt-10">
+© 2026 Boni Bytes Edutech
 </footer>
 
 </body>
