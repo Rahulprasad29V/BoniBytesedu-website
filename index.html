@@ -136,20 +136,7 @@ body{font-family:Inter,sans-serif}.card{transition:.25s}.card:hover{transform:tr
 <p class="text-blue-600 font-bold">CONTACT</p><h2 class="text-3xl md:text-4xl font-extrabold mt-2">Start a Conversation</h2><p class="mt-4 text-slate-600">For internships, student programs, college collaborations, websites and digital services, contact our team on WhatsApp.</p>
 <a href="https://wa.me/919585996109?text=Hi%20Boni%20Bytes%20Edutech,%20I%20would%20like%20to%20know%20more." target="_blank" class="mt-7 inline-block bg-green-500 text-white px-7 py-4 rounded-full font-bold">Chat on WhatsApp</a>
 </div></section>
-<footer class="bg-slate-900 text-white py-8 text-center"><p>© <span id="year"></span> Boni Bytes Edutech. All rights reserved.</p></footer>
-
-<a href="https://wa.me/919585996109?text=Hi%20Boni%20Bytes%20Edutech,%20I%20am%20interested%20in%20your%20programs." target="_blank" aria-label="WhatsApp" class="fixed bottom-6 right-6 w-16 h-16 rounded-full bg-green-500 text-white shadow-2xl flex items-center justify-center text-3xl z-50">☎</a>
-<script>
-document.getElementById('year').textContent=new Date().getFullYear();
-const b=document.getElementById('menuBtn'),m=document.getElementById('menu');
-function closeMenu(){m.classList.add('hidden');b.textContent='☰';b.setAttribute('aria-expanded','false');}
-b.addEventListener('click',()=>{const opening=m.classList.contains('hidden');m.classList.toggle('hidden');b.textContent=opening?'✕':'☰';b.setAttribute('aria-expanded',opening?'true':'false');});
-document.querySelectorAll('#menu a').forEach(a=>a.addEventListener('click',()=>{if(innerWidth<1024)closeMenu();}));
-window.addEventListener('resize',()=>{if(innerWidth>=1024){m.classList.remove('hidden')}else{closeMenu();}});
-  <a href="privacy-policy.html">Privacy Policy</a>
- <footer class="bg-slate-900 text-white py-10">
-
-  ...
+<footer class="bg-slate-900 text-white py-8 text-center"><p>© <span id="year"></span> Boni Bytes Edutech. All rights reserved.</p>
 
   <div class="mt-6 flex justify-center gap-6">
       <a href="privacy-policy.html" class="hover:text-blue-400">
@@ -166,6 +153,15 @@ window.addEventListener('resize',()=>{if(innerWidth>=1024){m.classList.remove('h
   </div>
 
 </footer>
+<a href="https://wa.me/919585996109?text=Hi%20Boni%20Bytes%20Edutech,%20I%20am%20interested%20in%20your%20programs." target="_blank" aria-label="WhatsApp" class="fixed bottom-6 right-6 w-16 h-16 rounded-full bg-green-500 text-white shadow-2xl flex items-center justify-center text-3xl z-50">☎</a>
+<script>
+document.getElementById('year').textContent=new Date().getFullYear();
+const b=document.getElementById('menuBtn'),m=document.getElementById('menu');
+function closeMenu(){m.classList.add('hidden');b.textContent='☰';b.setAttribute('aria-expanded','false');}
+b.addEventListener('click',()=>{const opening=m.classList.contains('hidden');m.classList.toggle('hidden');b.textContent=opening?'✕':'☰';b.setAttribute('aria-expanded',opening?'true':'false');});
+document.querySelectorAll('#menu a').forEach(a=>a.addEventListener('click',()=>{if(innerWidth<1024)closeMenu();}));
+window.addEventListener('resize',()=>{if(innerWidth>=1024){m.classList.remove('hidden')}else{closeMenu();}});
+  <a href="privacy-policy.html">Privacy Policy</a>
 </body>
 </html>
 </script></body></html>
