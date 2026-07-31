@@ -165,8 +165,6 @@ function closeMenu(){m.classList.add('hidden');b.textContent='☰';b.setAttribut
 b.addEventListener('click',()=>{const opening=m.classList.contains('hidden');m.classList.toggle('hidden');b.textContent=opening?'✕':'☰';b.setAttribute('aria-expanded',opening?'true':'false');});
 document.querySelectorAll('#menu a').forEach(a=>a.addEventListener('click',()=>{if(innerWidth<1024)closeMenu();}));
 window.addEventListener('resize',()=>{if(innerWidth>=1024){m.classList.remove('hidden')}else{closeMenu();}});
-</body>
-</html>
 </script>
 
 </body>
